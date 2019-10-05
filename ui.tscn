@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://track_inventory_open.gd" type="Script" id=1]
-[ext_resource path="res://display_inventory.gd" type="Script" id=2]
-[ext_resource path="res://sprite/inventory_test.png" type="Texture" id=3]
-[ext_resource path="res://sprite/dirt_icon.png" type="Texture" id=4]
-[ext_resource path="res://inventory_box.gd" type="Script" id=5]
-[ext_resource path="res://floating_item.gd" type="Script" id=6]
+[ext_resource path="res://sprite/hotbar.png" type="Texture" id=1]
+[ext_resource path="res://track_inventory_open.gd" type="Script" id=2]
+[ext_resource path="res://display_inventory.gd" type="Script" id=3]
+[ext_resource path="res://sprite/inventory_test.png" type="Texture" id=4]
+[ext_resource path="res://sprite/dirt_icon.png" type="Texture" id=5]
+[ext_resource path="res://sprite/inventory..png" type="Texture" id=6]
+[ext_resource path="res://inventory_box.gd" type="Script" id=7]
+[ext_resource path="res://floating_item.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://visitor1.ttf"
@@ -16,14 +18,21 @@ font_data = SubResource( 1 )
 
 [node name="Control" type="CanvasLayer"]
 
+[node name="hotbar_bg" type="TextureRect" parent="."]
+margin_left = 1.70515
+margin_top = 1.61989
+margin_right = 172.705
+margin_bottom = 102.62
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
 [node name="Hotbar" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 3.0
 margin_top = 3.0
 margin_right = -3.0
 margin_bottom = -3.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hotbar"]
 margin_right = 1018.0
@@ -31,6 +40,7 @@ margin_bottom = 24.0
 custom_constants/separation = 1
 
 [node name="Hotbar" type="HBoxContainer" parent="Hotbar/VBoxContainer"]
+editor/display_folded = true
 margin_right = 1018.0
 margin_bottom = 24.0
 custom_constants/separation = 1
@@ -40,18 +50,18 @@ editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/0"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/0/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/0/frame"]
 margin_left = -0.0352573
@@ -59,7 +69,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -70,18 +80,18 @@ margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/1"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/1/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/1/frame"]
 margin_left = -0.0352573
@@ -89,7 +99,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -100,18 +110,18 @@ margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/2"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/2/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/2/frame"]
 margin_left = -0.0352573
@@ -119,7 +129,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -130,18 +140,18 @@ margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/3"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/3/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/3/frame"]
 margin_left = -0.0352573
@@ -149,7 +159,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -160,18 +170,18 @@ margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/4"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/4/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/4/frame"]
 margin_left = -0.0352573
@@ -179,7 +189,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -190,18 +200,18 @@ margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/5"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/5/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/5/frame"]
 margin_left = -0.0352573
@@ -209,7 +219,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -220,18 +230,18 @@ margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/6"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/6/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/6/frame"]
 margin_left = -0.0352573
@@ -239,7 +249,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -250,18 +260,18 @@ margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/7"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/7/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/7/frame"]
 margin_left = -0.0352573
@@ -269,7 +279,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -280,18 +290,18 @@ margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/8"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/8/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/8/frame"]
 margin_left = -0.0352573
@@ -299,7 +309,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -310,18 +320,18 @@ margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="frame" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/9"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Hotbar/VBoxContainer/Hotbar/9/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Hotbar/VBoxContainer/Hotbar/9/frame"]
 margin_left = -0.0352573
@@ -329,28 +339,36 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
 
+[node name="inventory_bg" type="TextureRect" parent="."]
+margin_left = 1.70515
+margin_top = 1.61989
+margin_right = 172.705
+margin_bottom = 102.62
+texture = ExtResource( 6 )
+script = ExtResource( 2 )
+required_state = true
+
 [node name="Inventory" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 3.0
 margin_top = 3.0
 margin_right = -3.0
 margin_bottom = -3.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 required_state = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
-editor/display_folded = true
 margin_right = 1018.0
 margin_bottom = 99.0
 custom_constants/separation = 1
 
 [node name="hotbar row" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+editor/display_folded = true
 margin_right = 1018.0
 margin_bottom = 24.0
 custom_constants/separation = 1
@@ -360,18 +378,18 @@ editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/0"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/0/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/0/frame"]
 margin_left = -0.0352573
@@ -379,7 +397,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -390,18 +408,18 @@ margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/1"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/1/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/1/frame"]
 margin_left = -0.0352573
@@ -409,7 +427,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -420,18 +438,18 @@ margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/2"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/2/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/2/frame"]
 margin_left = -0.0352573
@@ -439,7 +457,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -450,18 +468,18 @@ margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/3"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/3/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/3/frame"]
 margin_left = -0.0352573
@@ -469,7 +487,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -480,18 +498,18 @@ margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/4"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/4/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/4/frame"]
 margin_left = -0.0352573
@@ -499,7 +517,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -510,18 +528,18 @@ margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/5"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/5/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/5/frame"]
 margin_left = -0.0352573
@@ -529,7 +547,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -540,18 +558,18 @@ margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/6"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/6/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/6/frame"]
 margin_left = -0.0352573
@@ -559,7 +577,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -570,18 +588,18 @@ margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/7"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/7/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/7/frame"]
 margin_left = -0.0352573
@@ -589,7 +607,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -600,18 +618,18 @@ margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/8"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/8/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/8/frame"]
 margin_left = -0.0352573
@@ -619,7 +637,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -630,18 +648,18 @@ margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/9"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/hotbar row/9/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/hotbar row/9/frame"]
 margin_left = -0.0352573
@@ -649,7 +667,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -665,18 +683,18 @@ editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/10"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/10/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/10/frame"]
 margin_left = -0.0352573
@@ -684,7 +702,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -695,18 +713,18 @@ margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/11"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/11/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/11/frame"]
 margin_left = -0.0352573
@@ -714,7 +732,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -725,18 +743,18 @@ margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/12"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/12/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/12/frame"]
 margin_left = -0.0352573
@@ -744,7 +762,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -755,18 +773,18 @@ margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/13"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/13/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/13/frame"]
 margin_left = -0.0352573
@@ -774,7 +792,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -785,18 +803,18 @@ margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/14"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/14/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/14/frame"]
 margin_left = -0.0352573
@@ -804,7 +822,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -815,18 +833,18 @@ margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/15"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/15/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/15/frame"]
 margin_left = -0.0352573
@@ -834,7 +852,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -845,18 +863,18 @@ margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/16"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/16/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/16/frame"]
 margin_left = -0.0352573
@@ -864,7 +882,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -875,18 +893,18 @@ margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/17"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/17/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/17/frame"]
 margin_left = -0.0352573
@@ -894,7 +912,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -905,18 +923,18 @@ margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/18"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/18/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/18/frame"]
 margin_left = -0.0352573
@@ -924,7 +942,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -935,18 +953,18 @@ margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 1/19"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 1/19/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 1/19/frame"]
 margin_left = -0.0352573
@@ -954,7 +972,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -970,18 +988,18 @@ editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/20"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/20/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/20/frame"]
 margin_left = -0.0352573
@@ -989,7 +1007,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1000,18 +1018,18 @@ margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/21"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/21/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/21/frame"]
 margin_left = -0.0352573
@@ -1019,7 +1037,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1030,18 +1048,18 @@ margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/22"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/22/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/22/frame"]
 margin_left = -0.0352573
@@ -1049,7 +1067,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1060,18 +1078,18 @@ margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/23"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/23/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/23/frame"]
 margin_left = -0.0352573
@@ -1079,7 +1097,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1090,18 +1108,18 @@ margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/24"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/24/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/24/frame"]
 margin_left = -0.0352573
@@ -1109,7 +1127,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1120,18 +1138,18 @@ margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/25"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/25/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/25/frame"]
 margin_left = -0.0352573
@@ -1139,7 +1157,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1150,18 +1168,18 @@ margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/26"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/26/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/26/frame"]
 margin_left = -0.0352573
@@ -1169,7 +1187,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1180,18 +1198,18 @@ margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/27"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/27/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/27/frame"]
 margin_left = -0.0352573
@@ -1199,7 +1217,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1210,18 +1228,18 @@ margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/28"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/28/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/28/frame"]
 margin_left = -0.0352573
@@ -1229,7 +1247,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1240,18 +1258,18 @@ margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 2/29"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 2/29/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 2/29/frame"]
 margin_left = -0.0352573
@@ -1259,7 +1277,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1275,18 +1293,18 @@ editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/30"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/30/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/30/frame"]
 margin_left = -0.0352573
@@ -1294,7 +1312,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1305,18 +1323,18 @@ margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/31"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/31/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/31/frame"]
 margin_left = -0.0352573
@@ -1324,7 +1342,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1335,18 +1353,18 @@ margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/32"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/32/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/32/frame"]
 margin_left = -0.0352573
@@ -1354,7 +1372,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1365,18 +1383,18 @@ margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/33"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/33/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/33/frame"]
 margin_left = -0.0352573
@@ -1384,7 +1402,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1395,18 +1413,18 @@ margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/34"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/34/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/34/frame"]
 margin_left = -0.0352573
@@ -1414,7 +1432,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1425,18 +1443,18 @@ margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/35"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/35/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/35/frame"]
 margin_left = -0.0352573
@@ -1444,7 +1462,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1455,18 +1473,18 @@ margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/36"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/36/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/36/frame"]
 margin_left = -0.0352573
@@ -1474,7 +1492,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1485,18 +1503,18 @@ margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/37"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/37/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/37/frame"]
 margin_left = -0.0352573
@@ -1504,7 +1522,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1515,18 +1533,18 @@ margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/38"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/38/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/38/frame"]
 margin_left = -0.0352573
@@ -1534,7 +1552,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1545,18 +1563,18 @@ margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
 custom_constants/separation = 0
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="frame" type="TextureRect" parent="Inventory/VBoxContainer/row 3/39"]
 margin_right = 16.0
 margin_bottom = 24.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="icon" type="TextureRect" parent="Inventory/VBoxContainer/row 3/39/frame"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="Inventory/VBoxContainer/row 3/39/frame"]
 margin_left = -0.0352573
@@ -1564,7 +1582,7 @@ margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
@@ -1576,8 +1594,8 @@ margin_top = 47.5823
 margin_right = 89.8246
 margin_bottom = 87.5823
 mouse_filter = 2
-texture = ExtResource( 4 )
-script = ExtResource( 6 )
+texture = ExtResource( 5 )
+script = ExtResource( 8 )
 
 [node name="count" type="Label" parent="floating_item"]
 margin_left = 0.235298

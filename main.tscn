@@ -12,9 +12,9 @@
 [ext_resource path="res://player.gd" type="Script" id=10]
 [ext_resource path="res://sprite/dirt.png" type="Texture" id=11]
 [ext_resource path="res://block_item_tracker.gd" type="Script" id=12]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=13]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=14]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=15]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=13]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=14]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=15]
 [ext_resource path="res://cursor.gd" type="Script" id=16]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=17]
 
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ) ]
+"values": [ ExtResource( 13 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -221,7 +221,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ) ]
+"values": [ ExtResource( 13 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -287,7 +287,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 15 ) ]
+"values": [ ExtResource( 14 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -353,7 +353,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 15 ) ]
+"values": [ ExtResource( 14 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -419,7 +419,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 13 ) ]
+"values": [ ExtResource( 15 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -485,7 +485,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 13 ) ]
+"values": [ ExtResource( 15 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -614,10 +614,10 @@ anims/swing_left = SubResource( 17 )
 shape = SubResource( 15 )
 
 [node name="sprite" type="Sprite" parent="player"]
-position = Vector2( -1, 0 )
+position = Vector2( -1.5, 0 )
 texture = ExtResource( 13 )
-hframes = 8
-frame = 2
+hframes = 6
+frame = 5
 
 [node name="animation_player" type="AnimationPlayer" parent="player"]
 anims/idle = SubResource( 1 )

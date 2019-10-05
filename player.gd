@@ -57,6 +57,9 @@ func _process(delta):
 		inventory_open = !inventory_open
 	
 func _unhandled_input(event):
+	if inventory_open:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == BUTTON_WHEEL_UP:
