@@ -34,6 +34,8 @@ var inventory
 var camera1
 var camera2
 
+var inventory_open = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Inventory = load("res://inventory.gd")
@@ -51,7 +53,8 @@ func _process(delta):
 		if last_horizontal_direction < 0:
 			ext = "_left"
 		$item_swing/animation_player.play("swing" + ext)
-	pass
+	if Input.is_action_just_pressed("inventory_open"):
+		inventory_open = !inventory_open
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

@@ -29,15 +29,15 @@ func _process(delta):
 	
 	if id == -1:
 		$frame/icon.hide()
-		$count.hide()
+		$frame/count.hide()
 	else:
 		$frame/icon.show()
 		$frame/icon.set_texture(id_to_tex.get(id))
 		if item.count == 1:
-			$count.hide()
+			$frame/count.hide()
 		else:
-			$count.show()
-			$count.set_text(String(item.count))
+			$frame/count.show()
+			$frame/count.set_text(String(item.count))
 			
 	if player.inventory.active_hotbar == slot:
 		$frame.texture = active
