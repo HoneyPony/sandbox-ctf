@@ -71,6 +71,20 @@ func place_block():
 	var y = tile_y()
 	if block_map.get_cell(x, y) != -1:
 		return
+		
+	var on_ground = false
+		
+	if block_map.get_cell(x + 1, y) != -1:
+		on_ground = true
+	if block_map.get_cell(x - 1, y) != -1:
+		on_ground = true
+	if block_map.get_cell(x, y + 1) != -1:
+		on_ground = true
+	if block_map.get_cell(x, y - 1) != -1:
+		on_ground = true
+		
+	if !on_ground:
+		return
 	
 	var id = player.inventory.active_item().id
 	if player.inventory.consume():
