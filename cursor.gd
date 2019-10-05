@@ -61,8 +61,6 @@ func break_block():
 		pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 		pickup.set_id(id)
 		
-		
-		# TODO: Drop item entity
 		return
 		
 	break_map.set_cell(x, y, 0, false, false, false, Vector2(progress + 1, 0))

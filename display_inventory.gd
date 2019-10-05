@@ -13,6 +13,9 @@ var id_to_tex = {
 	1: preload("res://sprite/dirt_icon.png")
 }
 
+var idle = preload("res://sprite/inventory_test.png")
+var active = preload("res://sprite/inventory_active.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	slot = int(get_name())
@@ -35,4 +38,9 @@ func _process(delta):
 		else:
 			$count.show()
 			$count.set_text(String(item.count))
+			
+	if player.inventory.active_hotbar == slot:
+		$frame.texture = active
+	else:
+		$frame.texture = idle
 		

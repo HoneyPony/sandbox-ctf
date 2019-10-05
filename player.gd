@@ -46,7 +46,27 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+#	if Input.is_action_pressed("inventory_next"):
+#		inventory.active_hotbar += 1
+#	if Input.is_action_pressed("inventory_previous"):
+#		inventory.active_hotbar -= 1
+#	if inventory.active_hotbar < 0:
+#		inventory.active_hotbar = 9
+#	if inventory.active_hotbar > 9:
+#		inventory.active_hotbar = 0
 	pass
+	
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == BUTTON_WHEEL_UP:
+				inventory.active_hotbar += 1
+			if event.button_index == BUTTON_WHEEL_DOWN:
+				inventory.active_hotbar -= 1
+			if inventory.active_hotbar < 0:
+				inventory.active_hotbar = 9
+			if inventory.active_hotbar > 9:
+				inventory.active_hotbar = 0
 	
 func jump_impulse_delta_delta():
 	if Input.is_action_pressed("player_jump"):
