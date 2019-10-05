@@ -100,60 +100,170 @@ func fill_poly(points: Array, type, noisy = false):
 			if filling:
 				plot(x, y, type)
 				
+func hill(s):
+	var width = rand(15, 37)
+	var height = rand(5, width / 1.9)
+	var delta = rand(-5, 10)
+	
+	if s.y - delta > 5:
+		delta = (5 - s.y)
+		
+	if s.y - delta < -40:
+		delta = -40 - s.y
+	
+	if s.x + width > 400:
+		width = 400 - s.x
+	
+	for x in range(0, width + 1):
+		var z = (2 * x - width) / width
+		var y = -( (2 * height * (0.5 - ((z * z) / 2)) + (delta * x / width)) )
+		
+		for a in range(s.y + y, 0):
+			plot(s.x + x, a, DIRT)
+
+	return [Vector2(s.x + width, s.y - delta), [0, 3]]
+	
+func left_cliff(s):
+	var height = rand(-5, -10)
+	var width = rand(6, 13)
+	
+	if s.y + height > 0:
+		height = 0 - s.y
+	
+	if s.y + height < -40:
+		height = -40 - s.y
+		
+	if s.x + width > 400:
+		width = 400 - s.x
+	
+	for x in range(0, width + 1):
+		
+		var delta = 0
+		if x < width / 2:
+			delta = -1
+
+		for a in range(s.y + height + delta, 0):
+			plot(s.x + x, a, DIRT)
+		
+	return [Vector2(s.x + width, s.y + height), [0, 1]]
+	
+func right_cliff(s):
+	var height = rand(5, 10)
+	var width = rand(6, 13)
+	
+	if s.y + height > 0:
+		height = 0 - s.y
+	
+	if s.y + height < -40:
+		height = -40 - s.y
+		
+	if s.x + width > 400:
+		width = 400 - s.x
+	
+	for x in range(0, width + 1):
+		
+		var delta = 0
+		if x > width / 2:
+			delta = -1
+
+		for a in range(s.y + delta, 0):
+			plot(s.x + x, a, DIRT)
+		
+	return [Vector2(s.x + width, s.y + height), [0]]
+	
+func flat(s):
+	var width = rand(15, 30)
+	
+	var delta = 0
+	
+	if s.x + width > 400:
+		width = 400 - s.x
+	
+	for x in range(0, width + 1):
+		if rand(0, 2) == 2:
+			delta += rand(-1, 1)
+		if s.y + delta < -40:
+			delta = -40 - s.y
+		if s.y + delta > 0:
+			delta = 0 - s.y
+		for a in range(s.y + delta, 0):
+			plot(s.x + x, a, DIRT)
+			
+	return [Vector2(s.x + width, s.y + delta), [1, 2, 3]]
+	
+func ground(kind, s):
+	if kind == 0:
+		return flat(s)
+	if kind == 1:
+		return hill(s)
+	if kind == 2:
+		return left_cliff(s)
+	if kind == 3:
+		return right_cliff(s)
 
 func _ready():
 	physics_map = get_node("/root/root/physics_map")
 	
-	for x in range(-400, 400):
-		var stop = rand(40, 60)
-		for y in range(0, stop):
-			plot(x, y, DIRT)
-		for y in range(stop, 400):
-			plot(x, y, ROCK)
-			
-	for i in range(0, 200):
-		var x = rand(-400 + 15, 400 - 15)
-		var y = rand(15, 60)
-		var points = []
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		fill_poly(points, ROCK, true)
+#	for x in range(-400, 400):
+#		var stop = rand(40, 60)
+#		for y in range(0, stop):
+#			plot(x, y, DIRT)
+#		for y in range(stop, 400):
+#			plot(x, y, ROCK)
+#
+#	for i in range(0, 200):
+#		var x = rand(-400 + 15, 400 - 15)
+#		var y = rand(15, 60)
+#		var points = []
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		fill_poly(points, ROCK, true)
+#
+#	for i in range(0, 50):
+#		var x = rand(-400 + 15, 400 - 15)
+#		var y = rand(40, 60)
+#		var points = []
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		fill_poly(points, ROCK, true)
+#
+#	for i in range(0, 50):
+#		var x = rand(-400 + 15, 400 - 15)
+#		var y = rand(40, 60)
+#		var points = []
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		fill_poly(points, DIRT, true)
+#
+#	for i in range(0, 900):
+#		var x = rand(-400 + 15, 400 - 15)
+#		var y = rand(40, 400 - 15)
+#		var points = []
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
+#		fill_poly(points, DIRT, true)
+
+	
 		
-	for i in range(0, 50):
-		var x = rand(-400 + 15, 400 - 15)
-		var y = rand(40, 60)
-		var points = []
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		fill_poly(points, ROCK, true)
-		
-	for i in range(0, 50):
-		var x = rand(-400 + 15, 400 - 15)
-		var y = rand(40, 60)
-		var points = []
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		fill_poly(points, DIRT, true)
-			
-	for i in range(0, 900):
-		var x = rand(-400 + 15, 400 - 15)
-		var y = rand(40, 400 - 15)
-		var points = []
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		points.append(Vector2(x + rand(-15, 15), y + rand(-15, 15)))
-		fill_poly(points, DIRT, true)
+	var ground_sweep = Vector2(-400, 0)
+	var allowed = [0, 1, 2, 3]
+	while ground_sweep.x < 400:
+		var next = allowed[rand(0, allowed.size() - 1)]
+		var result = ground(next, ground_sweep)
+		ground_sweep = result[0]
+		allowed = result[1]
 			
 	##fill_poly([Vector2(-10, 0), Vector2(0, -10), Vector2(10, 0)], DIRT)
 
