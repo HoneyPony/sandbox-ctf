@@ -6,9 +6,7 @@ extends KinematicBody2D
 
 # Player speed = 2 pixels / 0.66 seconds for walkcycle
 
-var walk_anim_speed = (2 / 0.66)
-
-export var player_speed = 15
+export var player_speed = 40
 export var player_horizontal_acceleration = 1
 
 var horizontal_v = 0
@@ -25,6 +23,7 @@ export var jump_impulse_delta_delta = 700
 export var jump_cancel_delta_delta = 1800
 
 var on_ground = false
+var zero_collision_frames = 0
 
 var anim_player
 
@@ -53,31 +52,19 @@ func _physics_process(delta):
 		if Input.is_action_pressed("player_jump"):
 			current_jump_impulse = initial_jump_impulse
 			current_jump_impulse_delta = 0
+			on_ground = false
 		
-	var max_h = player_speed * walk_anim_speed
+	var max_h = player_speed
 		
 	horizontal_v += acc_h * delta * player_horizontal_acceleration
 	horizontal_v = clamp(horizontal_v, -max_h, max_h)
+	
+	var attempted_horizontal_v = horizontal_v
 	
 	vertical_v += (gravity - current_jump_impulse) * delta
 	current_jump_impulse_delta += jump_impulse_delta_delta() * delta
 	current_jump_impulse -= current_jump_impulse_delta * delta
 	current_jump_impulse = max(current_jump_impulse, 0)
-	
-	if abs(horizontal_v) < player_horizontal_acceleration * delta * 0.9:
-		if last_horizontal_direction > 0:
-			anim_player.play("idle")
-		else:
-			anim_player.play("idle_left")
-		horizontal_v = 0
-	else:
-		if horizontal_v > 0:
-			anim_player.play("walk")
-		else:
-			anim_player.play("walk_left")
-		last_horizontal_direction = horizontal_v
-	
-	on_ground = false
 	
 	var v = move_and_slide(Vector2(horizontal_v, vertical_v))
 	horizontal_v = v.x
@@ -86,6 +73,37 @@ func _physics_process(delta):
 		var coll = get_slide_collision(i)
 		if coll.normal.dot(Vector2.UP) > cos(PI / 4):
 			on_ground = true
+			zero_collision_frames = 0
+			
+	if zero_collision_frames > 2:
+		on_ground = false
+	else:
+		zero_collision_frames += 1
+			
+	if abs(horizontal_v) < player_horizontal_acceleration * delta * 0.9:
+		horizontal_v = 0
+	else:
+		last_horizontal_direction = horizontal_v
+			
+	var next_anim = ""
+	
+	if on_ground:
+		if abs(attempted_horizontal_v) < 0.5:
+			next_anim = "idle"
+		else:
+			next_anim = "walk"
+	else:
+		if vertical_v < 0:
+			next_anim = "jumping"
+		else:
+			next_anim = "idle"
+			
+	if last_horizontal_direction < 0:
+		next_anim += "_left"
+		
+	if next_anim != "":
+		print("trying to play ", next_anim, " but ", anim_player.current_animation)
+		anim_player.play(next_anim)
 	
 	
 	
