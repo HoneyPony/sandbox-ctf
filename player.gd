@@ -102,8 +102,7 @@ func _physics_process(delta):
 		next_anim += "_left"
 		
 	if next_anim != "":
-		print("trying to play ", next_anim, " but ", anim_player.current_animation)
 		anim_player.play(next_anim)
 	
-	
+	#print(position.y)
 	
