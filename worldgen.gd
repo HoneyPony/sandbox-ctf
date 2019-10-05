@@ -100,6 +100,10 @@ func fill_poly(points: Array, type, noisy = false):
 			if filling:
 				plot(x, y, type)
 				
+func grass(x, y):
+	for a in range(0, rand(3, 4)):
+		plot(x, y + a, GRASS)
+				
 func hill(s):
 	var width = rand(15, 37)
 	var height = rand(5, width / 1.9)
@@ -120,8 +124,9 @@ func hill(s):
 		
 		for a in range(s.y + y, 0):
 			plot(s.x + x, a, DIRT)
+		grass(s.x + x, s.y + y)
 
-	return [Vector2(s.x + width, s.y - delta), [0, 3]]
+	return [Vector2(s.x + width, s.y - delta), [0, 0, 0, 0, 4, 4, 4, 3, 3]]
 	
 func left_cliff(s):
 	var height = rand(-5, -10)
@@ -135,17 +140,25 @@ func left_cliff(s):
 		
 	if s.x + width > 400:
 		width = 400 - s.x
+		
+	var type = GRASS
 	
 	for x in range(0, width + 1):
 		
 		var delta = 0
 		if x < width / 2:
 			delta = -1
+			
+		if x >= 3:
+			type = DIRT
 
-		for a in range(s.y + height + delta, 0):
+		for a in range(s.y + height + delta, s.y + 3):
+			plot(s.x + x, a, type)
+		for a in range(s.y + 3, 0):
 			plot(s.x + x, a, DIRT)
+		grass(s.x + x, s.y + height + delta)
 		
-	return [Vector2(s.x + width, s.y + height), [0, 1]]
+	return [Vector2(s.x + width, s.y + height), [0, 0, 1, 1, 1, 4, 4]]
 	
 func right_cliff(s):
 	var height = rand(5, 10)
@@ -159,17 +172,25 @@ func right_cliff(s):
 		
 	if s.x + width > 400:
 		width = 400 - s.x
+		
+	var type = DIRT
 	
 	for x in range(0, width + 1):
 		
 		var delta = 0
 		if x > width / 2:
 			delta = -1
+			
+		if x > width - 3:
+			type = GRASS
 
-		for a in range(s.y + delta, 0):
+		for a in range(s.y + delta, s.y + height + 3):
+			plot(s.x + x, a, type)
+		for a in range(s.y + height + 3, 0):
 			plot(s.x + x, a, DIRT)
+		grass(s.x + x, s.y + delta)
 		
-	return [Vector2(s.x + width, s.y + height), [0]]
+	return [Vector2(s.x + width, s.y + height), [0, 4]]
 	
 func flat(s):
 	var width = rand(15, 30)
@@ -188,8 +209,30 @@ func flat(s):
 			delta = 0 - s.y
 		for a in range(s.y + delta, 0):
 			plot(s.x + x, a, DIRT)
+		grass(s.x + x, s.y + delta)
 			
-	return [Vector2(s.x + width, s.y + delta), [1, 2, 3]]
+	return [Vector2(s.x + width, s.y + delta), [0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4]]
+	
+func bumpy(s):
+	var width = rand(15, 30)
+	
+	var delta = 0
+	
+	if s.x + width > 400:
+		width = 400 - s.x
+	
+	for x in range(0, width + 1):
+		if rand(0, 2) == 2:
+			delta += rand(-2, 2)
+		if s.y + delta < -40:
+			delta = -40 - s.y
+		if s.y + delta > 0:
+			delta = 0 - s.y
+		for a in range(s.y + delta, 0):
+			plot(s.x + x, a, DIRT)
+		grass(s.x + x, s.y + delta)
+			
+	return [Vector2(s.x + width, s.y + delta), [0, 0, 1, 1, 1, 1, 2, 2, 3, 3, 4]]
 	
 func ground(kind, s):
 	if kind == 0:
@@ -200,10 +243,14 @@ func ground(kind, s):
 		return left_cliff(s)
 	if kind == 3:
 		return right_cliff(s)
+	if kind == 4:
+		return bumpy(s)
 
 func _ready():
 	physics_map = get_node("/root/root/physics_map")
 	
+	randomize()
+#
 #	for x in range(-400, 400):
 #		var stop = rand(40, 60)
 #		for y in range(0, stop):
