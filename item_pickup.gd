@@ -19,9 +19,14 @@ var anim = 0
 var last_position
 var interpolate_position
 
+var tilemap
+var physics_map
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/root/player")
+	tilemap = get_node("/root/root/tiles")
+	physics_map = get_node("/root/root/physics_map")
 	last_position = position
 	pass # Replace with function body.
 	
@@ -55,5 +60,17 @@ var velocity = 0
 var gravity = 120
 	
 func _physics_process(dt):
+	var ax = position.x
+	
 	velocity += dt * gravity
-	move_and_collide(Vector2(0, velocity) * dt)
+	var max_speed = 4
+	var speed = min(velocity * dt, 4)
+	
+	if abs(speed) > 0.1:
+		var x = round(position.x / 4)
+		var y = round(position.y / 4)
+		if tilemap.get_cell(x, y + 1) != -1:
+			physics_map.set_cell(x, y + 1, 0)
+	
+	move_and_collide(Vector2(0, speed))
+	position.x = ax

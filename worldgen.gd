@@ -250,7 +250,7 @@ func _ready():
 	physics_map = get_node("/root/root/physics_map")
 	
 	randomize()
-#
+
 #	for x in range(-400, 400):
 #		var stop = rand(40, 60)
 #		for y in range(0, stop):

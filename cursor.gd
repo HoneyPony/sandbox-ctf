@@ -52,6 +52,10 @@ func break_block():
 	if progress == 9:
 		var id = block_map.get_cell(x, y)
 		
+		# Make sure physics will work
+		if block_map.get_cell(x, y + 1) != -1:
+			physics_map.set_cell(x, y + 1, 0)
+		
 		break_map.set_cell(x, y, -1)
 		block_map.set_cell(x, y, -1)
 		physics_map.set_cell(x, y, -1)

@@ -137,8 +137,8 @@ func _physics_process(delta):
 	if next_anim != "":
 		anim_player.play(next_anim)
 		
-	#camera1.position = position
-	#camera2.position = position
+	camera1.position = position
+	camera2.position = position
 	
 	#print(position.y)
 	
