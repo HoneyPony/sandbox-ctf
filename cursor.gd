@@ -12,11 +12,14 @@ var block_time = 0.1
 
 var block_timer = 0
 
+var item_pickup
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	break_map = get_node("/root/root/block_break_viewport/block_break_map")
 	block_map = get_node("/root/root/tiles")
 	physics_map = get_node("/root/root/physics_map")
+	item_pickup = load("res://item_pickup.tscn")
 	pass # Replace with function body.
 	
 func tile_x():
@@ -43,9 +46,18 @@ func break_block():
 	var progress = break_map.get_cell_autotile_coord(x, y).x
 		
 	if progress == 9:
+		var id = block_map.get_cell(x, y)
+		
 		break_map.set_cell(x, y, -1)
 		block_map.set_cell(x, y, -1)
 		physics_map.set_cell(x, y, -1)
+		
+		var pickup = item_pickup.instance()
+		get_node("/root/root").add_child(pickup)
+		pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
+		pickup.set_id(id)
+		
+		
 		# TODO: Drop item entity
 		return
 		
