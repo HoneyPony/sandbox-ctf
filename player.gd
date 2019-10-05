@@ -27,9 +27,22 @@ var zero_collision_frames = 0
 
 var anim_player
 
+var Inventory
+
+var inventory
+
+var camera1
+var camera2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Inventory = load("res://inventory.gd")
+	inventory = Inventory.new()
+	
 	anim_player = get_node("animation_player")
+	
+	camera1 = get_node("/root/root/camera")
+	camera2 = get_node("/root/root/block_break_viewport/camera")
 	pass # Replace with function body.
 
 func _process(delta):
@@ -103,6 +116,9 @@ func _physics_process(delta):
 		
 	if next_anim != "":
 		anim_player.play(next_anim)
+		
+	camera1.position = position
+	camera2.position = position
 	
 	#print(position.y)
 	

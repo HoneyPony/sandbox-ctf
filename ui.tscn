@@ -1,0 +1,315 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://display_inventory.gd" type="Script" id=1]
+[ext_resource path="res://sprite/inventory_test.png" type="Texture" id=2]
+[ext_resource path="res://sprite/dirt_icon.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://visitor1.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = SubResource( 1 )
+
+[node name="Control" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1018.0
+margin_bottom = 25.0
+custom_constants/separation = 1
+
+[node name="0" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_right = 16.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/0"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/0/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/0"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 17.0
+margin_right = 33.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/1"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/1/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/1"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 34.0
+margin_right = 50.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/2"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/2/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/2"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 51.0
+margin_right = 67.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/3"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/3/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/3"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="4" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/4"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/4/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/4"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="5" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 85.0
+margin_right = 101.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/5"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/5/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/5"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="6" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 102.0
+margin_right = 118.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/6"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/6/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/6"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="7" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 119.0
+margin_right = 135.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/7"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/7/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/7"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="8" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 136.0
+margin_right = 152.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/8"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/8/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/8"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="9" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 153.0
+margin_right = 169.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+script = ExtResource( 1 )
+
+[node name="frame" type="TextureRect" parent="MarginContainer/HBoxContainer/9"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="MarginContainer/HBoxContainer/9/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="count" type="Label" parent="MarginContainer/HBoxContainer/9"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -12,9 +12,8 @@
 [ext_resource path="res://sprite/player_walk.png" type="Texture" id=10]
 [ext_resource path="res://sprite/player_idle.png" type="Texture" id=11]
 [ext_resource path="res://sprite/player_jumping.png" type="Texture" id=12]
-[ext_resource path="res://sprite/sword_test.png" type="Texture" id=13]
-[ext_resource path="res://test_sword.gd" type="Script" id=14]
-[ext_resource path="res://cursor.gd" type="Script" id=15]
+[ext_resource path="res://cursor.gd" type="Script" id=13]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=11]
 0/name = "block_breaking.png 0"
@@ -476,47 +475,20 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "New Anim"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -35.0, 50.8, -35.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -4.18533, -76.9271 ), Vector2( 0.577759, -68.9051 ), Vector2( -4.18533, -76.9271 ) ]
-}
-
-[sub_resource type="ViewportTexture" id=14]
-viewport_path = NodePath("block_break_viewport")
-
 [node name="root" type="Node2D"]
 
 [node name="block_break_viewport" type="Viewport" parent="."]
+editor/display_folded = true
 size = Vector2( 1024, 600 )
 render_target_update_mode = 3
 script = ExtResource( 1 )
 
 [node name="camera" type="Camera2D" parent="block_break_viewport"]
 current = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
 script = ExtResource( 2 )
 
 [node name="background" type="Sprite" parent="block_break_viewport/camera"]
@@ -580,25 +552,17 @@ anims/walk_left = SubResource( 5 )
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
-
-[node name="sword_test" type="Sprite" parent="."]
-visible = false
-position = Vector2( -0.752825, -71.146 )
-rotation = 0.468298
-scale = Vector2( 0.063, 0.063 )
-texture = ExtResource( 13 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="sword_test"]
-"anims/New Anim" = SubResource( 10 )
-script = ExtResource( 14 )
-
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-texture = SubResource( 14 )
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-script = ExtResource( 15 )
+editor/display_folded = true
+script = ExtResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 5 )
+
+[node name="hotbar" parent="." instance=ExtResource( 14 )]
