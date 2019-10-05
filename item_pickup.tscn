@@ -23,9 +23,11 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 4, 4 )
 
 [node name="frame" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.243137 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -8,6 +8,8 @@ var break_map: TileMap
 var block_map: TileMap
 var physics_map: TileMap
 
+var player
+
 var block_time = 0.1
 
 var block_timer = 0
@@ -20,6 +22,8 @@ func _ready():
 	block_map = get_node("/root/root/tiles")
 	physics_map = get_node("/root/root/physics_map")
 	item_pickup = load("res://item_pickup.tscn")
+	
+	player = get_node("/root/root/player")
 	pass # Replace with function body.
 	
 func tile_x():
@@ -64,6 +68,16 @@ func break_block():
 	break_map.set_cell(x, y, 0, false, false, false, Vector2(progress + 1, 0))
 		
 	
+func place_block():
+	var x = tile_x()
+	var y = tile_y()
+	if block_map.get_cell(x, y) != -1:
+		return
+	
+	var id = player.inventory.active_item().id
+	if player.inventory.consume():
+		block_map.set_cell(x, y, id)
+		physics_map.set_cell(x, y, 0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,6 +94,9 @@ func _process(delta):
 		break_block()
 	else:
 		block_timer = 0
+		
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		place_block()
 		
 	block_timer += delta
 	
