@@ -46,14 +46,11 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-#	if Input.is_action_pressed("inventory_next"):
-#		inventory.active_hotbar += 1
-#	if Input.is_action_pressed("inventory_previous"):
-#		inventory.active_hotbar -= 1
-#	if inventory.active_hotbar < 0:
-#		inventory.active_hotbar = 9
-#	if inventory.active_hotbar > 9:
-#		inventory.active_hotbar = 0
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) or Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		var ext = ""
+		if last_horizontal_direction < 0:
+			ext = "_left"
+		$item_swing/animation_player.play("swing" + ext)
 	pass
 	
 func _unhandled_input(event):
