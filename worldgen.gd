@@ -316,7 +316,10 @@ func underground_ore(x, y, ty):
 			if (xs * xs + ys * ys) < (r * r):
 				var xv = xs + x
 				var yv = ys + y
-				if rand(0, 1) == 0:
+				if get_cell(xv, yv) != -1:
+					if rand(0, 1) == 0:
+						plot(xv, yv, ty)
+				elif connected(xv, yv) and rand(0, 2) == 0:
 					plot(xv, yv, ty)
 					
 func line_eval(p1, p2, y):
@@ -385,6 +388,42 @@ func quad(p1, p2, p3, p4, type):
 	triangle(p1, p2, p3, type)
 	triangle(p1, p3, p4, type)
 
+func line_chunk(p1, p2, width1, width2, type):
+	var delta = p2 - p1
+	var ortho = Vector2(-delta.y, delta.x).normalized()
+	
+	width1 *= 0.5
+	width2 *= 0.5
+	
+	quad(p1 - ortho * width1, p1 + ortho * width1, p2 + ortho * width2, p2 - ortho * width2, type)
+
+func circle(center, radius, type):
+	var sx = round(center.x - radius)
+	var ex = round(center.x + radius)
+	
+	for x in range(sx, ex + 1):
+		var t = x - center.x
+		var h = sqrt(radius * radius - t * t)
+		var sy = round(center.y - h)
+		var ey = round(center.y + h)
+		for y in range(sy, ey + 1):
+			plot(x, y, type)
+			
+func cave_snake(x, y):
+	var diameter = rand(5, 14)
+	for i in range(15, 30):
+		var ex = x + rand(-40, 40)
+		var ey = y + rand(5, 30)
+		var dr = rand(-5, 5)
+		var start = Vector2(x, y)
+		var end = Vector2(ex, ey)
+		circle(Vector2(x, y), diameter / 2, -1)
+		line_chunk(start, end, diameter, diameter + dr, -1)
+		diameter += dr
+		diameter = clamp(diameter, 5, 14)
+		x = ex
+		y = ey
+	circle(Vector2(x, y), diameter / 2, -1)
 
 func _ready():
 	Tree = load("res://tree.tscn")
@@ -400,6 +439,8 @@ func _ready():
 		ground_sweep = result[0]
 		allowed = result[1]
 		
+	
+		
 #	for i in range(0, 45):
 #		ground_coal(rand(-400, 400), ROCK)
 #
@@ -409,24 +450,26 @@ func _ready():
 #	for i in range(0, 25):
 #		ground_coal(rand(-400, 400), COAL)
 
-func nothing():
+# Note to self: the shapes created by underground_ore are really interesting
+# when not filled in
 	for x in range(-200, 200):
 		var stop = rand(40, 60)
 		var sy = -40
 		while get_cell(x, sy) == -1:
 			sy += 1
-		sy += 10
-		if sy > 0:
+		sy += 3
+		if sy < 0:
 			sy = 0
 		for y in range(sy, stop):
 			plot(x, y, DIRT)
-		for y in range(stop, 200):
-			plot(x, y, ROCK)
 			
-	for i in range(0, 200):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(20, 60)
-		underground_ore(x, y, ROCK)
+		var rate = 200
+			
+		for y in range(stop, 200):
+			# Decrease density as we descend
+			if rand(0, 200) < rate:
+				plot(x, y, ROCK)
+			rate -= 1
 		
 	for i in range(0, 100):
 		var x = rand(-400 + 20, 400 - 20)
@@ -434,12 +477,35 @@ func nothing():
 		var ty = DIRT
 		if rand(0, 1) == 0:
 			ty = ROCK
-		underground_ore(x, y, ROCK)
+		circle(Vector2(x, y), rand(6, 20), ty)
 		
 	for i in range(0, 900):
 		var x = rand(-400 + 20, 400 - 20)
 		var y = rand(40, 400 - 20)
+		
+		circle(Vector2(x, y), rand(6, 20), ROCK)
+		
+	for i in range(0, rand(4, 7)):
+		var x = rand(-400, 400)
+		var y = -40
+		while get_cell(x, y) == -1:
+			y += 1 
+		cave_snake(x, y)
+		
+	for i in range(0, 20):
+		var x = rand(-400, 400)
+		var y = rand(20, 300)
+		cave_snake(x, y)
+		
+	for i in range(0, 400):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(40, 400 - 20)
 		underground_ore(x, y, DIRT)
+		
+	for i in range(0, 600):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(20, 400)
+		underground_ore(x, y, ROCK)
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)
