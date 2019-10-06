@@ -6,6 +6,8 @@ var ROCK = 2
 
 var physics_map
 
+var Tree
+
 func snap_number(num, count):
 		var res = int(num) % count
 		if res < 0: res += count
@@ -100,9 +102,37 @@ func fill_poly(points: Array, type, noisy = false):
 			if filling:
 				plot(x, y, type)
 				
+var last_tree = -400
+var last_run = -800
+var tree_run = 0
+
+func finish_tree(x, y):
+	var t = Tree.instance()
+	t.position = Vector2(x * 4, (y + 1) * 4)
+	get_node("/root/root").call_deferred("add_child", t)
+
+func tree(x, y):
+	# somehow we were getting floats before.....
+	x = round(x)
+	y = round(y)
+	
+	if tree_run > 0:
+		if x - last_tree > 10 and rand(0, 7) == 0:
+			tree_run -= 1
+			last_tree = x
+			last_run = x
+			finish_tree(x, y)
+	else:
+		if x - last_run > 30 and rand(0, 8) == 0:
+			tree_run = rand(6, 21)
+			last_tree = x
+			finish_tree(x, y)
+				
 func grass(x, y):
 	for a in range(0, rand(3, 4)):
 		plot(x, y + a, GRASS)
+	tree(x, y - 1)
+		
 				
 func hill(s):
 	var width = rand(15, 37)
@@ -247,6 +277,7 @@ func ground(kind, s):
 		return bumpy(s)
 
 func _ready():
+	Tree = load("res://tree.tscn")
 	physics_map = get_node("/root/root/physics_map")
 	
 	randomize()
