@@ -308,19 +308,138 @@ func ground_coal(x, ty, depth = 5):
 						plot(xv, yv, ty)
 				elif connected(xv, yv) and rand(0, 2) == 0:
 					plot(xv, yv, ty)
+					
+func underground_ore(x, y, ty):
+	var r = rand(6, 20)
+	for xs in range(-r, r):
+		for ys in range(-r, r):
+			if (xs * xs + ys * ys) < (r * r):
+				var xv = xs + x
+				var yv = ys + y
+				if rand(0, 1) == 0:
+					plot(xv, yv, ty)
+					
+func line_eval(p1, p2, y):
+	if p1.x == p2.x:
+		return p1.x # not actually necessary
+		
+	var m = (p2.x - p1.x) / (p2.y - p1.y)
+	return m * (y - p1.y) + p1.x
+					
+func flat_triangle(p1, p2, ptop, type):
+	if(p1.y == ptop.y):
+		return
+		
+	var sy = p1.y
+	var ey = ptop.y
+	
+	if sy > ey:
+		var tmp = ey
+		ey = sy
+		sy = tmp
+		
+	sy = floor(sy)
+	ey = ceil(ey)
+	
+	for y in range(sy, ey + 1):
+		var sx = line_eval(p1, ptop, y)
+		var ex = line_eval(p2, ptop, y)
+		
+		if sx > ex:
+			var tmp = ex
+			ex = sx
+			sx = tmp
+		
+		sx = floor(sx)
+		ex = ceil(ex)
+		
+		for x in range(sx, ex + 1):
+			plot(x, y, type)
+			
+class VectorSortY:
+	static func sort(a, b):
+		return a.y < b.y
+
+			
+func triangle(p1, p2, p3, type):
+	if p1.y == p2.y:
+		flat_triangle(p1, p2, p3, type)
+		return
+	if p2.y == p3.y:
+		flat_triangle(p2, p3, p1, type)
+		return
+	if p3.y == p1.y:
+		flat_triangle(p3, p1, p2, type)
+		return
+		
+	var arr = [p1, p2, p3]
+	arr.sort_custom(VectorSortY, "sort")
+	
+	var mid_x = line_eval(arr[0], arr[2], arr[1].y)
+	var mid_point = Vector2(mid_x, arr[1].y)
+	
+	flat_triangle(mid_point, arr[1], arr[0], type)
+	flat_triangle(mid_point, arr[1], arr[2], type)
+	
+func quad(p1, p2, p3, p4, type):
+	triangle(p1, p2, p3, type)
+	triangle(p1, p3, p4, type)
+
 
 func _ready():
 	Tree = load("res://tree.tscn")
 	physics_map = get_node("/root/root/physics_map")
 	
 	randomize()
+	
+	var ground_sweep = Vector2(-400, 0)
+	var allowed = [0, 1, 2, 3]
+	while ground_sweep.x < 400:
+		var next = allowed[rand(0, allowed.size() - 1)]
+		var result = ground(next, ground_sweep)
+		ground_sweep = result[0]
+		allowed = result[1]
+		
+#	for i in range(0, 45):
+#		ground_coal(rand(-400, 400), ROCK)
+#
+#	for i in range(0, 25):
+#		ground_coal(rand(-400, 400), ROCK, 10)
+#
+#	for i in range(0, 25):
+#		ground_coal(rand(-400, 400), COAL)
 
-#	for x in range(-400, 400):
-#		var stop = rand(40, 60)
-#		for y in range(0, stop):
-#			plot(x, y, DIRT)
-#		for y in range(stop, 400):
-#			plot(x, y, ROCK)
+func nothing():
+	for x in range(-200, 200):
+		var stop = rand(40, 60)
+		var sy = -40
+		while get_cell(x, sy) == -1:
+			sy += 1
+		sy += 10
+		if sy > 0:
+			sy = 0
+		for y in range(sy, stop):
+			plot(x, y, DIRT)
+		for y in range(stop, 200):
+			plot(x, y, ROCK)
+			
+	for i in range(0, 200):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(20, 60)
+		underground_ore(x, y, ROCK)
+		
+	for i in range(0, 100):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(40, 60)
+		var ty = DIRT
+		if rand(0, 1) == 0:
+			ty = ROCK
+		underground_ore(x, y, ROCK)
+		
+	for i in range(0, 900):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(40, 400 - 20)
+		underground_ore(x, y, DIRT)
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)
@@ -368,22 +487,7 @@ func _ready():
 
 	
 		
-	var ground_sweep = Vector2(-400, 0)
-	var allowed = [0, 1, 2, 3]
-	while ground_sweep.x < 400:
-		var next = allowed[rand(0, allowed.size() - 1)]
-		var result = ground(next, ground_sweep)
-		ground_sweep = result[0]
-		allowed = result[1]
-		
-	for i in range(0, 45):
-		ground_coal(rand(-400, 400), ROCK)
-		
-	for i in range(0, 25):
-		ground_coal(rand(-400, 400), ROCK, 10)
-		
-	for i in range(0, 25):
-		ground_coal(rand(-400, 400), COAL)
+	
 			
 	##fill_poly([Vector2(-10, 0), Vector2(0, -10), Vector2(10, 0)], DIRT)
 
