@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -33,11 +33,13 @@
 [ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=31]
 [ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=32]
 [ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=33]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=34]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=35]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=36]
-[ext_resource path="res://cursor.gd" type="Script" id=37]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=38]
+[ext_resource path="res://sprite/player_falling.png" type="Texture" id=34]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=35]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=36]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=37]
+[ext_resource path="res://cursor.gd" type="Script" id=38]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=39]
+[ext_resource path="res://sprite.tscn" type="PackedScene" id=40]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -156,6 +158,138 @@ tracks/1/keys = {
 radius = 3.0
 height = 4.0
 
+[sub_resource type="Animation" id=14]
+resource_name = "falling"
+length = 0.32
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.5, -0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "falling_left"
+length = 0.32
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, -0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
 [sub_resource type="Animation" id=8]
 length = 0.54
 loop = true
@@ -170,7 +304,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 34 ) ]
+"values": [ ExtResource( 35 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -235,7 +369,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 34 ) ]
+"values": [ ExtResource( 35 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -300,7 +434,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 36 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -365,7 +499,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 36 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -430,7 +564,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ) ]
+"values": [ ExtResource( 37 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -495,7 +629,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ) ]
+"values": [ ExtResource( 37 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -549,6 +683,7 @@ tracks/4/keys = {
 [node name="root" type="Node2D"]
 
 [node name="block_break_viewport" type="Viewport" parent="."]
+editor/display_folded = true
 size = Vector2( 1024, 600 )
 render_target_update_mode = 3
 script = ExtResource( 1 )
@@ -573,6 +708,7 @@ cell_quadrant_size = 4
 format = 1
 
 [node name="light_viewport" type="Viewport" parent="."]
+editor/display_folded = true
 render_target_update_mode = 3
 script = ExtResource( 1 )
 
@@ -627,6 +763,7 @@ format = 1
 script = ExtResource( 15 )
 
 [node name="player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 material = ExtResource( 16 )
 position = Vector2( 0, -180 )
 collision_layer = 524801
@@ -640,6 +777,7 @@ jump_impulse_delta_delta = 3900
 jump_cancel_delta_delta = 10000
 
 [node name="item_swing" type="Node2D" parent="player"]
+editor/display_folded = true
 use_parent_material = true
 rotation = 1.94953
 script = ExtResource( 18 )
@@ -757,16 +895,18 @@ anims/swing_left = SubResource( 6 )
 
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
-position = Vector2( -1.5, 0 )
+position = Vector2( 1.5, -0.5 )
 texture = ExtResource( 34 )
-hframes = 6
+flip_h = true
+hframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-visible = false
 shape = SubResource( 7 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player"]
+anims/falling = SubResource( 14 )
+anims/falling_left = SubResource( 15 )
 anims/idle = SubResource( 8 )
 anims/idle_left = SubResource( 9 )
 anims/jumping = SubResource( 10 )
@@ -782,10 +922,13 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-script = ExtResource( 37 )
+script = ExtResource( 38 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 11 )
 
-[node name="ui" parent="." instance=ExtResource( 38 )]
+[node name="ui" parent="." instance=ExtResource( 39 )]
+
+[node name="sprite" parent="." instance=ExtResource( 40 )]
+position = Vector2( 306.352, -233.562 )

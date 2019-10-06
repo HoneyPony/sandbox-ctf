@@ -78,6 +78,8 @@ func _ready():
 	camera3 = get_node("/root/root/light_viewport/camera")
 	
 	craft_sentinel = get_node("/root/root/ui/crafting/sentinel")
+	
+	get_node("/root/root/physics_map").add_entity(self)
 	pass # Replace with function body.
 
 func _process(delta):
@@ -124,7 +126,7 @@ func jump_impulse_delta_delta():
 	else:
 		return jump_cancel_delta_delta
 	
-func _physics_process(delta):
+func _physics_process(delta):	
 	var acc_h = -sign(horizontal_v)
 	if Input.is_action_pressed("player_right"):
 		acc_h = 1
@@ -179,7 +181,7 @@ func _physics_process(delta):
 		if vertical_v < 0:
 			next_anim = "jumping"
 		else:
-			next_anim = "idle"
+			next_anim = "falling"
 			
 	if last_horizontal_direction < 0:
 		next_anim += "_left"
