@@ -126,7 +126,7 @@ func spawn_pickups():
 		var theta = rand(0, 6.28)
 		var x = c.x + sin(theta) * r
 		var y = c.y + cos(theta) * r
-		spawn_pickup(x + position.x, y + position.y, 1)
+		spawn_pickup(x + position.x, y + position.y, 3)
 
 func _process(dt):
 	if mouses > 0 and Input.is_mouse_button_pressed(BUTTON_LEFT):

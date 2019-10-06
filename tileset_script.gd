@@ -55,5 +55,6 @@ func _forward_subtile_selection(autotile_id, bitmask, tilemap, tile_location):
 	tiler.grasslike(0, 64, 64)
 	tiler.grasslike(1, 64, 64)
 	tiler.grasslike(2, 64, 64)
+	tiler.grasslike(3, 64, 64)
 
 	return tiler.result

@@ -16,6 +16,19 @@ var block_timer = 0
 
 var item_pickup
 
+func snap_number(num, count):
+		var res = int(num) % count
+		if res < 0: res += count
+		return res
+		
+func autotile(x, y, id):
+	var number = 64
+	if id > 2:
+		number = 4
+	x = snap_number(x, number)
+	y = snap_number(y, number)
+	return Vector2(x, y)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	break_map = get_node("/root/root/block_break_viewport/block_break_map")
@@ -92,7 +105,7 @@ func place_block():
 	
 	var id = player.inventory.active_item().id
 	if player.inventory.consume():
-		block_map.set_cell(x, y, id)
+		block_map.set_cell(x, y, id, false, false, false, autotile(x, y, id))
 		physics_map.set_cell(x, y, 0)
 
 

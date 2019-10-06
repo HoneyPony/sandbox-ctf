@@ -1,11 +1,15 @@
 const icon_map = {
 	0: preload("res://sprite/grass_icon.png"),
-	1: preload("res://sprite/dirt_icon.png")
+	1: preload("res://sprite/dirt_icon.png"),
+	2: preload("res://sprite/rocks_icon.png"),
+	3: preload("res://sprite/wood_icon.png")
 }
 
 const texture_map = {
 	0: preload("res://sprite/grass.png"),
-	1: preload("res://sprite/dirt.png")
+	1: preload("res://sprite/dirt.png"),
+	2: preload("res://sprite/rocks.png"),
+	3: preload("res://sprite/wood.png")
 }
 
 static func get_icon(id):
