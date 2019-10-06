@@ -8,7 +8,7 @@
 [ext_resource path="res://sprite/inventory..png" type="Texture" id=6]
 [ext_resource path="res://inventory_box.gd" type="Script" id=7]
 [ext_resource path="res://floating_item.gd" type="Script" id=8]
-[ext_resource path="res://crafting_option.tscn" type="PackedScene" id=9]
+[ext_resource path="res://manage_crafting_recipes.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://visitor1.ttf"
@@ -1612,28 +1612,37 @@ text = "10"
 align = 2
 valign = 1
 
-[node name="crafting_in_1" type="TextureRect" parent="."]
+[node name="crafting" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+required_state = true
+
+[node name="sentinel" type="Control" parent="crafting"]
+script = ExtResource( 9 )
+
+[node name="crafting_in_1" type="TextureRect" parent="crafting"]
 margin_left = 3.0
 margin_top = 107.0
 margin_right = 43.0
 margin_bottom = 147.0
 texture = ExtResource( 5 )
 
-[node name="crafting_in_2" type="TextureRect" parent="."]
+[node name="crafting_in_2" type="TextureRect" parent="crafting"]
 margin_left = 20.0
 margin_top = 107.0
 margin_right = 60.0
 margin_bottom = 147.0
 texture = ExtResource( 5 )
 
-[node name="crafting_in_3" type="TextureRect" parent="."]
+[node name="crafting_in_3" type="TextureRect" parent="crafting"]
 margin_left = 37.0
 margin_top = 107.0
 margin_right = 77.0
 margin_bottom = 147.0
 texture = ExtResource( 5 )
 
-[node name="crafting_count_1" type="Label" parent="."]
+[node name="crafting_count_1" type="Label" parent="crafting"]
 margin_left = 3.0
 margin_top = 122.0
 margin_right = 19.0
@@ -1644,7 +1653,7 @@ text = "10"
 align = 2
 valign = 1
 
-[node name="crafting_count_2" type="Label" parent="."]
+[node name="crafting_count_2" type="Label" parent="crafting"]
 margin_left = 20.0
 margin_top = 122.0
 margin_right = 36.0
@@ -1655,7 +1664,7 @@ text = "10"
 align = 2
 valign = 1
 
-[node name="crafting_count_3" type="Label" parent="."]
+[node name="crafting_count_3" type="Label" parent="crafting"]
 margin_left = 37.0
 margin_top = 122.0
 margin_right = 53.0
@@ -1665,18 +1674,6 @@ custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 text = "10"
 align = 2
 valign = 1
-
-[node name="crafting_option" parent="." instance=ExtResource( 9 )]
-margin_left = 70.0091
-margin_top = 103.244
-margin_right = 110.009
-margin_bottom = 143.244
-
-[node name="crafting_option2" parent="." instance=ExtResource( 9 )]
-margin_left = 88.7167
-margin_top = 102.969
-margin_right = 128.717
-margin_bottom = 142.969
 [connection signal="mouse_entered" from="Inventory/VBoxContainer/hotbar row/0" to="Inventory/VBoxContainer/hotbar row/0" method="mouse_enter"]
 [connection signal="mouse_exited" from="Inventory/VBoxContainer/hotbar row/0" to="Inventory/VBoxContainer/hotbar row/0" method="mouse_exit"]
 [connection signal="mouse_entered" from="Inventory/VBoxContainer/hotbar row/1" to="Inventory/VBoxContainer/hotbar row/1" method="mouse_enter"]
