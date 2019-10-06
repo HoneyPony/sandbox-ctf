@@ -12,7 +12,7 @@ const icon_map = {
 	-7: preload("res://sprite/rock_pick_icon.png"),
 	-8: preload("res://sprite/rock_axe_icon.png"),
 	-9: preload("res://sprite/rock_shovel_icon.png"),
-	5: preload("res://sprite/copper_ore.png"),
+	5: preload("res://sprite/copper_ore_icon.png"),
 }
 
 const texture_map = {

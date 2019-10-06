@@ -26,11 +26,7 @@ func snap_number(num, count):
 		return res
 		
 func autotile(x, y, id):
-	var number = 64
-	if id == 3:
-		number = 4
-	if id == 4:
-		number = 16
+	var number = Block.tiles(id)
 	x = snap_number(x, number)
 	y = snap_number(y, number)
 	return Vector2(x, y)

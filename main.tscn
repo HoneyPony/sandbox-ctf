@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -17,19 +17,20 @@
 [ext_resource path="res://sprite/rocks.png" type="Texture" id=15]
 [ext_resource path="res://sprite/wood.png" type="Texture" id=16]
 [ext_resource path="res://sprite/coal.png" type="Texture" id=17]
-[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=18]
-[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=19]
-[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=20]
-[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=21]
-[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=22]
-[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=23]
-[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=24]
-[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=25]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=26]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=27]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=28]
-[ext_resource path="res://cursor.gd" type="Script" id=29]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=30]
+[ext_resource path="res://sprite/copper_ore.png" type="Texture" id=18]
+[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=19]
+[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=20]
+[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=21]
+[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=22]
+[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=23]
+[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=24]
+[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=25]
+[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=26]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=27]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=28]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=29]
+[ext_resource path="res://cursor.gd" type="Script" id=30]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=31]
 
 [sub_resource type="TileSet" id=11]
 0/name = "block_breaking.png 0"
@@ -168,7 +169,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 26 ) ]
+"values": [ ExtResource( 27 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -234,7 +235,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 26 ) ]
+"values": [ ExtResource( 27 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -300,7 +301,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 27 ) ]
+"values": [ ExtResource( 28 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -366,7 +367,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 27 ) ]
+"values": [ ExtResource( 28 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -432,7 +433,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 28 ) ]
+"values": [ ExtResource( 29 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -498,7 +499,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 28 ) ]
+"values": [ ExtResource( 29 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -610,6 +611,8 @@ jump_impulse_delta_delta = 3900
 jump_cancel_delta_delta = 10000
 
 [node name="item_swing" type="Node2D" parent="player"]
+editor/display_folded = true
+rotation = 1.94953
 script = ExtResource( 11 )
 
 [node name="0" type="Sprite" parent="player/item_swing"]
@@ -647,12 +650,19 @@ scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 17 )
 script = ExtResource( 13 )
 
+[node name="5" type="Sprite" parent="player/item_swing"]
+visible = false
+position = Vector2( 0, -4 )
+scale = Vector2( 0.016, 0.016 )
+texture = ExtResource( 18 )
+script = ExtResource( 13 )
+
 [node name="-2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 rotation = -1.5708
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 script = ExtResource( 13 )
 
 [node name="-3" type="Sprite" parent="player/item_swing"]
@@ -660,7 +670,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 script = ExtResource( 13 )
 
 [node name="-4" type="Sprite" parent="player/item_swing"]
@@ -668,7 +678,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 script = ExtResource( 13 )
 
 [node name="-5" type="Sprite" parent="player/item_swing"]
@@ -676,7 +686,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 script = ExtResource( 13 )
 
 [node name="-6" type="Sprite" parent="player/item_swing"]
@@ -684,7 +694,7 @@ visible = false
 position = Vector2( -0.0338745, -5.71312 )
 rotation = -1.5708
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 script = ExtResource( 13 )
 
 [node name="-7" type="Sprite" parent="player/item_swing"]
@@ -692,7 +702,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 script = ExtResource( 13 )
 
 [node name="-8" type="Sprite" parent="player/item_swing"]
@@ -700,7 +710,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 script = ExtResource( 13 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
@@ -708,7 +718,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 script = ExtResource( 13 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player/item_swing"]
@@ -717,7 +727,7 @@ anims/swing_left = SubResource( 17 )
 
 [node name="sprite" type="Sprite" parent="player"]
 position = Vector2( -1.5, 0 )
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 hframes = 6
 frame = 5
 
@@ -741,10 +751,10 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 5 )
 
-[node name="ui" parent="." instance=ExtResource( 30 )]
+[node name="ui" parent="." instance=ExtResource( 31 )]
