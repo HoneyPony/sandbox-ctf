@@ -8,7 +8,10 @@ const icon_map = {
 	1: preload("res://sprite/dirt_icon.png"),
 	2: preload("res://sprite/rocks_icon.png"),
 	3: preload("res://sprite/wood_icon.png"),
-	4: preload("res://sprite/coal_icon.png")
+	4: preload("res://sprite/coal_icon.png"),
+	-7: preload("res://sprite/rock_pick_icon.png"),
+	-8: preload("res://sprite/rock_axe_icon.png"),
+	-9: preload("res://sprite/rock_shovel_icon.png"),
 }
 
 const texture_map = {
@@ -23,6 +26,20 @@ const texture_map = {
 const CAT_DIRT = 0
 const CAT_ROCK = 1
 const CAT_WOOD = 2
+
+const GRASS = 0
+const DIRT = 1
+const ROCK = 2
+const WOOD = 3
+const COAL = 4
+const CRAFT_TABLE = -2
+const WOOD_PICK = -3
+const WOOD_AXE = -4
+const WOOD_SHOVEL = -5
+const FURNACE = -6
+const ROCK_PICK = -7
+const ROCK_AXE = -8
+const ROCK_SHOVEL = -9
 
 static func get_icon(id):
 	return icon_map.get(id)
@@ -49,12 +66,16 @@ static func category(id):
 	if id == 3: return CAT_WOOD
 
 static func wood_strength(id):
+	if id == ROCK_AXE:
+		return 1.8
 	if id == -4:
 		# ok early axe
 		return 1.5
 	return 1
 	
 static func rock_strength(id):
+	if id == ROCK_PICK:
+		return 1.3
 	if id == -3:
 		# we used to use 5 here because 1/0.2 = 5. but these aren't multiplied so don't od that
 		return 1.1
@@ -62,12 +83,12 @@ static func rock_strength(id):
 	return 0.2
 	
 static func dirt_strength(id):
+	if id == ROCK_SHOVEL:
+		return 3.5
 	if id == -5:
 		# early shovel boost
 		return 2.5
-	if id == -3:
-		# small boost for pick
-		return 1.1
+	
 	return 1
 	
 # in case we want to make a really slow block

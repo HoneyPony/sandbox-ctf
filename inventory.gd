@@ -50,17 +50,23 @@ var floating_item
 
 var active_hotbar = 0
 
+var player
+var Block = preload("res://block.gd")
+
 var recipes = [
 	Recipe.new(-2, 1, 3, 10),
 	Recipe.new(-3, 1, 3, 15).table(), # pick
 	Recipe.new(-4, 1, 3, 10).table(), # axe
 	Recipe.new(-5, 1, 3, 9).table(), # shovel
 	Recipe.new(-6, 1, 2, 10, 4, 5, 3, 5),
-	Recipe.new(4, 1, 3, 10).furnace() # charcoal
+	Recipe.new(4, 1, 3, 10).furnace(), # charcoal
+	
+	Recipe.new(Block.ROCK_PICK, 1, Block.WOOD_PICK, 1, Block.ROCK, 5).table(),
+	Recipe.new(Block.ROCK_AXE, 1, Block.WOOD_AXE, 1, Block.ROCK, 5).table(),
+	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table()
 ]
 
-var player
-var Block = preload("res://block.gd")
+
 
 func active_item():
 	return items[active_hotbar]
