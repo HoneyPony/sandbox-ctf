@@ -9,15 +9,16 @@ var physics_map
 
 var Tree
 
+var Block = preload("res://block.gd")
+
 func snap_number(num, count):
 	var res = int(num) % count
 	if res < 0: res += count
 	return res
 
 func handle(x, y, id):
-	if id == COAL:
-		return Vector2(snap_number(x, 16), snap_number(y, 16))
-	return Vector2(snap_number(x, 64), snap_number(y, 64))
+	var n = Block.tiles(id)
+	return Vector2(snap_number(x, n), snap_number(y, n))
 
 func plot(x, y, id):
 	set_cell(x, y, id, false, false, false, handle(x, y, id))
@@ -309,8 +310,8 @@ func ground_coal(x, ty, depth = 5):
 				elif connected(xv, yv) and rand(0, 2) == 0:
 					plot(xv, yv, ty)
 					
-func underground_ore(x, y, ty):
-	var r = rand(6, 20)
+func underground_ore(x, y, ty, small = 6, large = 20):
+	var r = rand(small, large)
 	for xs in range(-r, r):
 		for ys in range(-r, r):
 			if (xs * xs + ys * ys) < (r * r):
@@ -452,7 +453,7 @@ func _ready():
 
 # Note to self: the shapes created by underground_ore are really interesting
 # when not filled in
-	for x in range(-200, 200):
+	for x in range(-400, 400):
 		var stop = rand(40, 60)
 		var sy = -40
 		while get_cell(x, sy) == -1:
@@ -506,6 +507,11 @@ func _ready():
 		var x = rand(-400 + 20, 400 - 20)
 		var y = rand(20, 400)
 		underground_ore(x, y, ROCK)
+		
+	for i in range(0, 600):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(20, 400)
+		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)

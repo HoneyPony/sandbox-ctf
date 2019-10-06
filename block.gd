@@ -12,6 +12,7 @@ const icon_map = {
 	-7: preload("res://sprite/rock_pick_icon.png"),
 	-8: preload("res://sprite/rock_axe_icon.png"),
 	-9: preload("res://sprite/rock_shovel_icon.png"),
+	5: preload("res://sprite/copper_ore.png"),
 }
 
 const texture_map = {
@@ -20,7 +21,8 @@ const texture_map = {
 	1: preload("res://sprite/dirt.png"),
 	2: preload("res://sprite/rocks.png"),
 	3: preload("res://sprite/wood.png"),
-	4: preload("res://sprite/coal.png")
+	4: preload("res://sprite/coal.png"),
+	5: preload("res://sprite/copper_ore.png")
 }
 
 const CAT_DIRT = 0
@@ -32,6 +34,7 @@ const DIRT = 1
 const ROCK = 2
 const WOOD = 3
 const COAL = 4
+const COPPER_ORE = 5
 const CRAFT_TABLE = -2
 const WOOD_PICK = -3
 const WOOD_AXE = -4
@@ -40,6 +43,22 @@ const FURNACE = -6
 const ROCK_PICK = -7
 const ROCK_AXE = -8
 const ROCK_SHOVEL = -9
+
+static func tiles(id):
+	if id == -1:
+		return 1
+	if id == 0:
+		return 64
+	if id == 1:
+		return 64
+	if id == 2:
+		return 64
+	if id == 3:
+		return 4
+	if id == 4:
+		return 16
+	if id == 5:
+		return 64
 
 static func get_icon(id):
 	return icon_map.get(id)
