@@ -21,6 +21,7 @@ class Recipe:
 	var input3_count: int = 1
 	
 	var requires_table: bool = false
+	var requires_furnace: bool = false
 	
 	func _init(output_, output_count_, input1_, input1_count_, input2_ = -1, input2_count_ = 0, input3_ = -1, input3_count_ = 0):
 		output = output_
@@ -38,6 +39,10 @@ class Recipe:
 	func table():
 		requires_table = true
 		return self
+		
+	func furnace():
+		requires_furnace = true
+		return self
 	
 var items: Array
 
@@ -50,6 +55,8 @@ var recipes = [
 	Recipe.new(-3, 1, 3, 15).table(), # pick
 	Recipe.new(-4, 1, 3, 10).table(), # axe
 	Recipe.new(-5, 1, 3, 9).table(), # shovel
+	Recipe.new(-6, 1, 2, 10, 4, 5, 3, 5),
+	Recipe.new(4, 1, 3, 10).furnace() # charcoal
 ]
 
 var player
@@ -66,6 +73,9 @@ func _init(player_):
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:
+		return false
+		
+	if recipe.requires_furnace and not player.at_furnace:
 		return false
 	
 	var id1 = 0

@@ -1,4 +1,5 @@
 const icon_map = {
+	-6: preload("res://sprite/furnace_icon.png"),
 	-5: preload("res://sprite/wood_shovel_icon.png"),
 	-4: preload("res://sprite/wood_axe_icon.png"),
 	-3: preload("res://sprite/stickaxe_icon.png"),

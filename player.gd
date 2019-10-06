@@ -37,12 +37,20 @@ var camera2
 var crafting_tables = 0
 var at_crafting_table = false
 
+var furnaces = 0
+var at_furnace = false
+
 var craft_sentinel
 
 func notify_crafting():
 	var last = at_crafting_table
 	at_crafting_table = crafting_tables > 0
 	if at_crafting_table != last:
+		craft_sentinel.create_recipe_ui()
+		
+	last = at_furnace
+	at_furnace = furnaces > 0
+	if at_furnace != last:
 		craft_sentinel.create_recipe_ui()
 
 var inventory_open = false
