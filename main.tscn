@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -125,6 +125,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 111.7 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hit stuff/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hit stuff/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "swing_left"
@@ -154,6 +178,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -111.7 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hit stuff/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hit stuff/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 2.30077
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 2.33263, 6.30463 )
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 3.0
@@ -777,9 +831,9 @@ jump_impulse_delta_delta = 3900
 jump_cancel_delta_delta = 10000
 
 [node name="item_swing" type="Node2D" parent="player"]
-editor/display_folded = true
+visible = false
 use_parent_material = true
-rotation = 1.94953
+rotation = -1.94953
 script = ExtResource( 18 )
 
 [node name="0" type="Sprite" parent="player/item_swing"]
@@ -882,7 +936,6 @@ texture = ExtResource( 32 )
 script = ExtResource( 20 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
-visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
@@ -893,6 +946,20 @@ script = ExtResource( 20 )
 anims/swing = SubResource( 5 )
 anims/swing_left = SubResource( 6 )
 
+[node name="hit stuff" type="KinematicBody2D" parent="player/item_swing"]
+collision_layer = 262144
+collision_mask = 262144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/item_swing/hit stuff"]
+position = Vector2( -0.0756741, -9.73339 )
+shape = SubResource( 16 )
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player/item_swing/hit stuff"]
+position = Vector2( -0.0616302, -4.21925 )
+shape = SubResource( 17 )
+disabled = true
+
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
 position = Vector2( 1.5, -0.5 )
@@ -902,6 +969,7 @@ hframes = 4
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+visible = false
 shape = SubResource( 7 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player"]

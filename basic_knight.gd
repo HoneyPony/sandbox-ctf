@@ -17,7 +17,9 @@ var on_ground = false
 
 var jump_timer = 0
 
-var acceleration = 120
+export var acceleration = 60
+
+export var max_speed = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,7 +47,7 @@ func _physics_process(delta):
 			velocity.x += harr * delta * acceleration
 		else:
 			velocity.x += harr * delta * acceleration / 2.0
-		velocity.x = clamp(velocity.x, -35, 35)
+		velocity.x = clamp(velocity.x, -30, 30)
 	
 	velocity += gravity * delta
 	velocity.y = min(velocity.y, 240)
@@ -76,3 +78,6 @@ func _physics_process(delta):
 		
 	if velocity.x != 0:
 		$flipper.scale.x = sign(velocity.x)
+		
+func you_died():
+	pass

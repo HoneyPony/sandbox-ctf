@@ -14,6 +14,9 @@ func _ready():
 	
 func add_entity(node):
 	entities.append(node)
+	
+func remove_entity(node):
+	entities.remove(entities.find(node))
 
 func handle_entity(player):
 	var xs = round(player.position.x / 4)
@@ -28,3 +31,4 @@ func handle_entity(player):
 func _process(delta):
 	for e in entities:
 		handle_entity(e)
+		

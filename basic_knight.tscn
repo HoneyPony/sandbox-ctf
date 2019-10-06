@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://basic_knight.gd" type="Script" id=1]
 [ext_resource path="res://sprite/basic_knight_attack.png" type="Texture" id=2]
 [ext_resource path="res://sprite/basic_knight_arm.png" type="Texture" id=3]
 [ext_resource path="res://sprite/basic_knight_arm_swing.png" type="Texture" id=4]
 [ext_resource path="res://sprite/basic_knight_walk.png" type="Texture" id=5]
+[ext_resource path="res://sprite/heart.png" type="Texture" id=6]
+[ext_resource path="res://hearts.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
@@ -138,7 +140,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 3.5
+radius = 5.4576
 height = 5.0
 
 [node name="basic_knight" type="KinematicBody2D"]
@@ -153,9 +155,8 @@ texture = ExtResource( 2 )
 
 [node name="node" type="Node2D" parent="flipper"]
 editor/display_folded = true
-visible = false
 position = Vector2( -2.49536, 0.926847 )
-rotation = 1.22173
+rotation = 0.226893
 
 [node name="arm" type="Sprite" parent="flipper/node"]
 position = Vector2( 3.72173, -4.96148 )
@@ -175,3 +176,20 @@ next/attack = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="hearts" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 11, 3 )
+script = ExtResource( 7 )
+health = 5
+
+[node name="heart_area" type="Area2D" parent="hearts"]
+collision_layer = 262144
+collision_mask = 262144
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
+position = Vector2( 0, 8 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

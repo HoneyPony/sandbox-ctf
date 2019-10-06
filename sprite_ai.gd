@@ -71,3 +71,6 @@ func hop():
 	if heading.y > 0.5:
 		correction = -0.1
 	hop_velocity.y = -hop_size * (0.5 + correction)
+	
+func you_died():
+	pass
