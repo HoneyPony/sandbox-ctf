@@ -13,7 +13,7 @@ vec3 f3(vec3 x) {
 
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
-	COLOR.a = texture(break_viewport, SCREEN_UV).r;
+	COLOR.a *= texture(break_viewport, SCREEN_UV).r;
 	
 	COLOR.rgb *= f3(texture(light_viewport, SCREEN_UV).rgb);
 }

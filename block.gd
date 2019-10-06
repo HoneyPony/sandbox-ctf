@@ -16,18 +16,21 @@ const icon_map = {
 }
 
 const texture_map = {
-	-2: preload("res://sprite/crafting_table.png"),
+	
 	0: preload("res://sprite/grass.png"),
 	1: preload("res://sprite/dirt.png"),
 	2: preload("res://sprite/rocks.png"),
 	3: preload("res://sprite/wood.png"),
 	4: preload("res://sprite/coal.png"),
-	5: preload("res://sprite/copper_ore.png")
+	5: preload("res://sprite/copper_ore.png"),
+	
+	-2: preload("res://sprite/crafting_table.png"),
 }
 
 const CAT_DIRT = 0
 const CAT_ROCK = 1
 const CAT_WOOD = 2
+const CAT_SPECIAL = 3
 
 const GRASS = 0
 const DIRT = 1
@@ -35,6 +38,7 @@ const ROCK = 2
 const WOOD = 3
 const COAL = 4
 const COPPER_ORE = 5
+const SPECIAL = 6
 const CRAFT_TABLE = -2
 const WOOD_PICK = -3
 const WOOD_AXE = -4
@@ -83,6 +87,10 @@ static func category(id):
 	if id == 1: return CAT_DIRT
 	if id == 2: return CAT_ROCK
 	if id == 3: return CAT_WOOD
+	if id == COAL: return CAT_ROCK
+	if id == COPPER_ORE: return CAT_ROCK
+	if id == SPECIAL: return CAT_SPECIAL
+	return CAT_ROCK
 
 static func wood_strength(id):
 	if id == ROCK_AXE:

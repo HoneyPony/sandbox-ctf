@@ -67,13 +67,33 @@ func break_block():
 	if progress == 9:
 		var id = block_map.get_cell(x, y)
 		
-		# Make sure physics will work
-		if block_map.get_cell(x, y + 1) != -1:
-			physics_map.set_cell(x, y + 1, 0)
-		
-		break_map.set_cell(x, y, -1)
-		block_map.set_cell(x, y, -1)
-		physics_map.set_cell(x, y, -1)
+		if id == Block.SPECIAL:
+			var closest = null
+			var closest_dist = 100000000
+			var pos = Vector2(x * 4, y * 4)
+			for n in get_tree().get_nodes_in_group("special"):
+				var delta = n.position - pos
+				var dist = delta.length()
+				if dist < closest_dist:
+					closest = n
+					closest_dist = dist
+					
+			if closest != null:
+				x = round(closest.position.x / 4)
+				y = round(closest.position.y / 4)
+				id = closest.tile_destroy(block_map, x, y)
+				closest.tile_destroy(break_map, x, y)
+				closest.tile_destroy(physics_map, x, y) # we're still using physics_map sadly
+				closest.get_parent().remove_child(closest)
+				
+		else:
+			# Make sure physics will work
+			if block_map.get_cell(x, y + 1) != -1:
+				physics_map.set_cell(x, y + 1, 0)
+			
+			break_map.set_cell(x, y, -1)
+			block_map.set_cell(x, y, -1)
+			physics_map.set_cell(x, y, -1)
 		
 		var pickup = item_pickup.instance()
 		get_node("/root/root").add_child(pickup)
@@ -139,6 +159,10 @@ func furnace():
 		var table = load("res://furnace.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
 		get_node("/root/root").add_child(table)
+		block_map.set_cell(x, y, Block.SPECIAL)
+		block_map.set_cell(x + 1, y, Block.SPECIAL)
+		block_map.set_cell(x, y - 1, Block.SPECIAL)
+		block_map.set_cell(x + 1, y - 1, Block.SPECIAL)
 
 func crafting_table():
 	var x = tile_x()
@@ -157,6 +181,8 @@ func crafting_table():
 		var table = load("res://crafting_table.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
 		get_node("/root/root").add_child(table)
+		block_map.set_cell(x, y, Block.SPECIAL)
+		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		#TODO:::!!:!:!:! Make fake blocks so that everything else works smoothyl
 
 func get_relevant_strength():
@@ -167,6 +193,8 @@ func get_relevant_strength():
 		return player.current_rock()
 	if cat == Block.CAT_WOOD:
 		return player.current_wood()
+	if cat == Block.SPECIAL:
+		return 12
 	# Fallback
 	return player.current_rock()
 	

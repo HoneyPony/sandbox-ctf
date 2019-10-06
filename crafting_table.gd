@@ -10,6 +10,16 @@ const FURNACE = 1
 var player
 export var mode = 0
 
+func tile_destroy(tilemap, x, y):
+	if mode == CRAFTING:
+		tilemap.set_cell(x, y, -1)
+		tilemap.set_cell(x + 1, y, -1)
+	if mode == FURNACE:
+		tilemap.set_cell(x, y, -1)
+		tilemap.set_cell(x + 1, y, -1)
+		tilemap.set_cell(x, y - 1, -1)
+		tilemap.set_cell(x + 1, y - 1, -1)
+
 func _ready():
 	player = get_node("/root/root/player")
 

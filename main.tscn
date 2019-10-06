@@ -39,7 +39,7 @@
 [ext_resource path="res://cursor.gd" type="Script" id=37]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=38]
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -70,13 +70,13 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="CanvasItemMaterial" id=19]
+[sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=4]
 0/name = "no_tile.png 0"
 0/texture = ExtResource( 11 )
 0/tex_offset = Vector2( 0, 0 )
@@ -89,12 +89,12 @@ points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 resource_name = "swing"
 length = 0.2
 step = 0.04
@@ -123,7 +123,7 @@ tracks/1/keys = {
 "values": [ 0.0, 111.7 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 resource_name = "swing_left"
 length = 0.2
 step = 0.04
@@ -152,12 +152,11 @@ tracks/1/keys = {
 "values": [ 0.0, -111.7 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 3.0
 height = 4.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=8]
 length = 0.54
 loop = true
 step = 0.09
@@ -222,8 +221,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle_left"
+[sub_resource type="Animation" id=9]
 length = 0.54
 loop = true
 step = 0.09
@@ -288,8 +286,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "jumping"
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 step = 0.04
@@ -354,8 +351,7 @@ tracks/4/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "jumping_left"
+[sub_resource type="Animation" id=11]
 length = 0.4
 loop = true
 step = 0.04
@@ -420,8 +416,7 @@ tracks/4/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "walk"
+[sub_resource type="Animation" id=12]
 length = 0.66
 loop = true
 step = 0.02
@@ -486,8 +481,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "walk_left"
+[sub_resource type="Animation" id=13]
 length = 0.66
 loop = true
 step = 0.02
@@ -573,7 +567,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
 [node name="block_break_map" type="TileMap" parent="block_break_viewport"]
-tile_set = SubResource( 11 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 4, 4 )
 cell_quadrant_size = 4
 format = 1
@@ -592,7 +586,7 @@ script = ExtResource( 2 )
 
 [node name="player_light" type="Sprite" parent="light_viewport/camera"]
 visible = false
-material = SubResource( 19 )
+material = SubResource( 2 )
 texture = ExtResource( 5 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
@@ -613,7 +607,7 @@ script = ExtResource( 10 )
 
 [node name="physics_map" type="TileMap" parent="."]
 visible = false
-tile_set = SubResource( 7 )
+tile_set = SubResource( 4 )
 cell_size = Vector2( 4, 4 )
 cell_quadrant_size = 1
 collision_use_kinematic = true
@@ -758,8 +752,8 @@ texture = ExtResource( 33 )
 script = ExtResource( 20 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player/item_swing"]
-anims/swing = SubResource( 16 )
-anims/swing_left = SubResource( 17 )
+anims/swing = SubResource( 5 )
+anims/swing_left = SubResource( 6 )
 
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
@@ -770,15 +764,15 @@ frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 visible = false
-shape = SubResource( 15 )
+shape = SubResource( 7 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player"]
-anims/idle = SubResource( 1 )
-anims/idle_left = SubResource( 4 )
-anims/jumping = SubResource( 8 )
-anims/jumping_left = SubResource( 9 )
-anims/walk = SubResource( 3 )
-anims/walk_left = SubResource( 5 )
+anims/idle = SubResource( 8 )
+anims/idle_left = SubResource( 9 )
+anims/jumping = SubResource( 10 )
+anims/jumping_left = SubResource( 11 )
+anims/walk = SubResource( 12 )
+anims/walk_left = SubResource( 13 )
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
