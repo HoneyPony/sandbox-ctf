@@ -37,7 +37,18 @@ var floating_item
 
 var active_hotbar = 0
 
-var recipes = [Recipe.new(3, 5, 0, 1)]
+var recipes = [
+	Recipe.new(3, 5, 0, 1),
+	Recipe.new(2, 5, 0, 1),
+	Recipe.new(3, 5, 0, 1),
+	Recipe.new(2, 5, 0, 1),
+	Recipe.new(3, 5, 0, 1),
+	Recipe.new(2, 5, 0, 1),
+	Recipe.new(3, 5, 0, 1),
+	Recipe.new(2, 5, 0, 1),
+	Recipe.new(3, 5, 0, 1),
+	Recipe.new(2, 5, 0, 1)
+]
 
 
 func active_item():

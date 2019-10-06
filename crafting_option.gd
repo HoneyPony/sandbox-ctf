@@ -42,6 +42,15 @@ var recipe
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if rect_position.x < 70:
+		var a = max(1.0 - ((70 - rect_position.x) / 8.0), 0.0)
+		modulate.a = a
+	elif rect_position.x > 155:
+		var a = max(1.0 - ((rect_position.x - 155) / 15.0), 0.0)
+		modulate.a = a
+	else:
+		modulate.a = 1.0
+	
 	if abs(rect_position.x - 70) < 8:
 		# am active
 		texture = active
@@ -66,6 +75,17 @@ func _process(delta):
 			used_mouse = true
 	else:
 		used_mouse = false
+		
+func _input(event):	
+	if event.is_action_pressed("inventory_next"):
+		rect_position.x -= (19 / 5)
+		if rect_position.x < min_position:
+			rect_position.x = min_position
+	if event.is_action_pressed("inventory_previous"):
+		rect_position.x += (19 / 5)
+		if rect_position.x > max_position:
+			rect_position.x = max_position
+				
 
 var mouse = false
 

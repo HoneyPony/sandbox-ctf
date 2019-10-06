@@ -25,22 +25,21 @@ func create_recipe_ui():
 			var option = CraftingOption.instance()
 			option.recipe = recipe
 			option.rect_position.x = x
-			option.min_position = x
+			option.max_position = x
 			add_child(option)
-			x += 17
-			total += 17
+			x += 19
+			total += 19
 			
 	# We will overshoot by one
-	total -= 17
+	total -= 19
 			
 	for c in get_children():
-		c.max_position = c.min_position + 17
+		c.min_position = c.max_position - total
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player.inventory_open:
 		if waiting:
-			print("creating the stufffff")
 			waiting = false
 			create_recipe_ui()
 	else:
