@@ -24,6 +24,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !player.inventory_open:
+		return
+	
 	$frame/icon.visible = player.inventory.items[slot].id != -1
 	$frame/count.visible = player.inventory.items[slot].count > 1
 	$frame/count.text = String(player.inventory.items[slot].count)
