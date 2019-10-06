@@ -1,19 +1,19 @@
-extends Sprite
+extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-var id
-var player
+var player_sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	id = int(get_name())
-	player = get_node("/root/root/player")
-	visible = true
+	player_sprite = get_node("/root/root/player/sprite")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	visible = (id == player.inventory.active_item().id)
+	if player_sprite.flip_h:
+		scale.x = -1
+	else:
+		scale.x = 1

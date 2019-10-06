@@ -357,6 +357,7 @@ script = ExtResource( 2 )
 required_state = true
 
 [node name="Inventory" type="MarginContainer" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 margin_left = 3.0
 margin_top = 3.0

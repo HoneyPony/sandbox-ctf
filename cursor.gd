@@ -10,6 +10,8 @@ var physics_map: TileMap
 
 var player
 
+var base_block_time = 0.111111
+
 var block_time = 0.1
 
 var block_timer = 0
@@ -137,11 +139,27 @@ func crafting_table():
 		get_node("/root/root").add_child(table)
 		#TODO:::!!:!:!:! Make fake blocks so that everything else works smoothyl
 
+func get_relevant_strength():
+	var cat = Block.category(block_map.get_cell(tile_x(), tile_y()))
+	if cat == Block.CAT_DIRT:
+		return player.current_dirt()
+	if cat == Block.CAT_ROCK:
+		return player.current_rock()
+	if cat == Block.CAT_WOOD:
+		return player.current_wood()
+	# Fallback
+	return player.current_rock()
+	
+func get_total_speedup():
+	return get_relevant_strength() * Block.block_slowdown(block_map.get_cell(tile_x(), tile_y()))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var x1 = tile_x()
 	var y1 = tile_y()
 	position = get_global_mouse_position()
+	
+	block_time = base_block_time / get_total_speedup()
 	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if tile_x() != x1:

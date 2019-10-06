@@ -47,7 +47,9 @@ var active_hotbar = 0
 
 var recipes = [
 	Recipe.new(-2, 1, 3, 10),
-	Recipe.new(-3, 1, 3, 15).table(),
+	Recipe.new(-3, 1, 3, 15).table(), # pick
+	Recipe.new(-4, 1, 3, 10).table(), # axe
+	Recipe.new(-5, 1, 3, 9).table(), # shovel
 ]
 
 var player

@@ -48,8 +48,14 @@ func notify_crafting():
 var inventory_open = false
 var Block = preload("res://block.gd")
 
-func current_strength():
-	return Block.item_strength(inventory.active_item().id)
+func current_dirt():
+	return Block.dirt_strength(inventory.active_item().id)
+	
+func current_rock():
+	return Block.rock_strength(inventory.active_item().id)
+
+func current_wood():
+	return Block.wood_strength(inventory.active_item().id)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

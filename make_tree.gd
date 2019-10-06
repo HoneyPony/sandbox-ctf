@@ -130,7 +130,7 @@ func spawn_pickups():
 
 func _process(dt):
 	if mouses > 0 and Input.is_mouse_button_pressed(BUTTON_LEFT):
-		health -= dt * player.current_strength()
+		health -= dt * player.current_wood()
 	
 	if health < 0:
 		spawn_pickups()
