@@ -35,6 +35,10 @@ var camera1
 var camera2
 
 var inventory_open = false
+var Block = preload("res://block.gd")
+
+func current_strength():
+	return Block.item_strength(inventory.active_item().id)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

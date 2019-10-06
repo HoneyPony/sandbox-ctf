@@ -4,6 +4,19 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+var player
+var ItemPickup = preload("res://item_pickup.tscn")
+var logs = 0
+var top
+
+func spawn_pickup(x, y, id):
+	x = round(x / 4)
+	y = round(y / 4)
+	var pickup = ItemPickup.instance()
+	get_node("/root/root").add_child(pickup)
+	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
+	pickup.set_id(id)
+
 func rand(a, b):
 	return round(rand_range(a, b))
 	
@@ -41,6 +54,7 @@ func should_wood(used, x, y, height):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(position)
+	player = get_node("/root/root/player")
 	
 	var leaf = load("res://leaf.tscn")
 	var wood = load("res://log.tscn")
@@ -50,6 +64,8 @@ func _ready():
 	
 	var width = rand(1, 2)
 	var height = rand(width * 3, width * 6)
+	logs = width * height
+	top = height
 	
 	
 	for y in range(-height, 1):
@@ -71,6 +87,7 @@ func _ready():
 			if should_wood(used, x, y, height):
 				plot(wood, x, y)
 				used.append(Vector2(x, y))
+				logs += 1
 			else:
 				plot(leaf, x, y)
 		y -= 1
@@ -81,6 +98,7 @@ func _ready():
 			if should_wood(used, x, y, height):
 				plot(wood, x, y)
 				used.append(Vector2(x, y))
+				logs += 1
 			else:
 				plot(leaf, x, y)
 		y -= 1
@@ -88,9 +106,32 @@ func _ready():
 	while width > 0:
 		width += rand(-1, -3)
 		for x in range(-width / 2, (width + 1) / 2):
-			if should_wood(used, x, y, height):
+			if should_wood(used, x, y, height) and width > 4:
 				plot(wood, x, y)
 				used.append(Vector2(x, y))
+				logs += 1
 			else:
 				plot(leaf, x, y)
 		y -= 1
+
+var mouses = 0
+	
+var health = 7
+
+func spawn_pickups():
+	var pickups = rand(logs, logs + 7)
+	for i in range(0, pickups):
+		var c = Vector2(0, -top * 4)
+		var r = rand(0, 13)
+		var theta = rand(0, 6.28)
+		var x = c.x + sin(theta) * r
+		var y = c.y + cos(theta) * r
+		spawn_pickup(x + position.x, y + position.y, 1)
+
+func _process(dt):
+	if mouses > 0 and Input.is_mouse_button_pressed(BUTTON_LEFT):
+		health -= dt * player.current_strength()
+	
+	if health < 0:
+		spawn_pickups()
+		get_parent().remove_child(self)

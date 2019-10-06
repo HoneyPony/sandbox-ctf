@@ -19,3 +19,6 @@ static func is_block(id):
 	
 static func is_item(id):
 	return id < -1
+
+static func item_strength(id):
+	return 1
