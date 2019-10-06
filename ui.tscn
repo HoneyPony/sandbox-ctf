@@ -24,6 +24,7 @@ margin_left = 1.70515
 margin_top = 1.61989
 margin_right = 172.705
 margin_bottom = 102.62
+mouse_filter = 2
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -34,6 +35,7 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = -3.0
 margin_bottom = -3.0
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hotbar"]
@@ -42,7 +44,6 @@ margin_bottom = 24.0
 custom_constants/separation = 1
 
 [node name="Hotbar" type="HBoxContainer" parent="Hotbar/VBoxContainer"]
-editor/display_folded = true
 margin_right = 1018.0
 margin_bottom = 24.0
 custom_constants/separation = 1
@@ -361,18 +362,20 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = -3.0
 margin_bottom = -3.0
+mouse_filter = 2
 script = ExtResource( 2 )
 required_state = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
 margin_right = 1018.0
 margin_bottom = 99.0
+mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="hotbar row" type="HBoxContainer" parent="Inventory/VBoxContainer"]
-editor/display_folded = true
 margin_right = 1018.0
 margin_bottom = 24.0
+mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="0" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
@@ -675,10 +678,10 @@ align = 2
 valign = 1
 
 [node name="row 1" type="HBoxContainer" parent="Inventory/VBoxContainer"]
-editor/display_folded = true
 margin_top = 25.0
 margin_right = 1018.0
 margin_bottom = 49.0
+mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="10" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
@@ -981,10 +984,10 @@ align = 2
 valign = 1
 
 [node name="row 2" type="HBoxContainer" parent="Inventory/VBoxContainer"]
-editor/display_folded = true
 margin_top = 50.0
 margin_right = 1018.0
 margin_bottom = 74.0
+mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="20" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
@@ -1287,10 +1290,10 @@ align = 2
 valign = 1
 
 [node name="row 3" type="HBoxContainer" parent="Inventory/VBoxContainer"]
-editor/display_folded = true
 margin_top = 75.0
 margin_right = 1018.0
 margin_bottom = 99.0
+mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="30" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
@@ -1563,6 +1566,7 @@ align = 2
 valign = 1
 
 [node name="39" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
+editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -1593,10 +1597,10 @@ valign = 1
 
 [node name="floating_item" type="TextureRect" parent="."]
 visible = false
-margin_left = 49.8246
-margin_top = 47.5823
-margin_right = 89.8246
-margin_bottom = 87.5823
+margin_left = 177.944
+margin_top = 104.524
+margin_right = 217.944
+margin_bottom = 144.524
 mouse_filter = 2
 texture = ExtResource( 5 )
 script = ExtResource( 8 )
@@ -1615,10 +1619,12 @@ valign = 1
 [node name="crafting" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 script = ExtResource( 2 )
 required_state = true
 
 [node name="sentinel" type="Control" parent="crafting"]
+mouse_filter = 2
 script = ExtResource( 9 )
 
 [node name="crafting_in_1" type="TextureRect" parent="crafting"]
