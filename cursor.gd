@@ -16,6 +16,8 @@ var block_timer = 0
 
 var item_pickup
 
+var Block = preload("res://block.gd")
+
 func snap_number(num, count):
 		var res = int(num) % count
 		if res < 0: res += count
@@ -84,6 +86,14 @@ func break_block():
 		
 	
 func place_block():
+	# crafting table
+	if player.inventory.active_item().id == -2:
+		crafting_table()
+		return
+		
+	if !Block.is_placeable(player.inventory.active_item().id):
+		return
+	
 	var x = tile_x()
 	var y = tile_y()
 	if block_map.get_cell(x, y) != -1:
@@ -108,6 +118,24 @@ func place_block():
 		block_map.set_cell(x, y, id, false, false, false, autotile(x, y, id))
 		physics_map.set_cell(x, y, 0)
 
+func crafting_table():
+	var x = tile_x()
+	var y = tile_y()
+	if block_map.get_cell(x, y) != -1:
+		return
+	if block_map.get_cell(x + 1, y) != -1:
+		return
+		
+	if block_map.get_cell(x, y + 1) == -1:
+		return
+	if block_map.get_cell(x + 1, y + 1) == -1:
+		return
+		
+	if player.inventory.consume():
+		var table = load("res://crafting_table.tscn").instance()
+		table.position = Vector2(x * 4, y * 4)
+		get_node("/root/root").add_child(table)
+		#TODO:::!!:!:!:! Make fake blocks so that everything else works smoothyl
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

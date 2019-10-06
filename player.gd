@@ -34,6 +34,17 @@ var inventory
 var camera1
 var camera2
 
+var crafting_tables = 0
+var at_crafting_table = false
+
+var craft_sentinel
+
+func notify_crafting():
+	var last = at_crafting_table
+	at_crafting_table = crafting_tables > 0
+	if at_crafting_table != last:
+		craft_sentinel.create_recipe_ui()
+
 var inventory_open = false
 var Block = preload("res://block.gd")
 
@@ -43,12 +54,14 @@ func current_strength():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Inventory = load("res://inventory.gd")
-	inventory = Inventory.new()
+	inventory = Inventory.new(self)
 	
 	anim_player = get_node("animation_player")
 	
 	camera1 = get_node("/root/root/camera")
 	camera2 = get_node("/root/root/block_break_viewport/camera")
+	
+	craft_sentinel = get_node("/root/root/ui/crafting/sentinel")
 	pass # Replace with function body.
 
 func _process(delta):

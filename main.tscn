@@ -587,8 +587,8 @@ script = ExtResource( 9 )
 [node name="player" type="KinematicBody2D" parent="."]
 editor/display_folded = true
 position = Vector2( 0, -180 )
-collision_layer = 524289
-collision_mask = 524289
+collision_layer = 524801
+collision_mask = 524801
 script = ExtResource( 10 )
 player_horizontal_acceleration = 200
 gravity = 120
@@ -636,11 +636,10 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 16 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 5 )
 
-[node name="Control" parent="." instance=ExtResource( 17 )]
+[node name="ui" parent="." instance=ExtResource( 17 )]

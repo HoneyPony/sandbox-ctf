@@ -1,3 +1,5 @@
+#TODO: Bug is caused by hovering over item when closing inventory
+
 class Item:
 	var id: int = -1
 	var count: int = 0
@@ -18,6 +20,8 @@ class Recipe:
 	var input3: int = 0
 	var input3_count: int = 1
 	
+	var requires_table: bool = false
+	
 	func _init(output_, output_count_, input1_, input1_count_, input2_ = -1, input2_count_ = 0, input3_ = -1, input3_count_ = 0):
 		output = output_
 		output_count = output_count_
@@ -30,6 +34,10 @@ class Recipe:
 		
 		input3 = input3_
 		input3_count = input3_count_
+		
+	func table():
+		requires_table = true
+		return self
 	
 var items: Array
 
@@ -38,28 +46,25 @@ var floating_item
 var active_hotbar = 0
 
 var recipes = [
-	Recipe.new(3, 5, 0, 1),
-	Recipe.new(2, 5, 0, 1),
-	Recipe.new(3, 5, 0, 1),
-	Recipe.new(2, 5, 0, 1),
-	Recipe.new(3, 5, 0, 1),
-	Recipe.new(2, 5, 0, 1),
-	Recipe.new(3, 5, 0, 1),
-	Recipe.new(2, 5, 0, 1),
-	Recipe.new(3, 5, 0, 1),
-	Recipe.new(2, 5, 0, 1)
+	Recipe.new(-2, 1, 3, 10),
+	Recipe.new(-3, 1, 3, 15).table(),
 ]
 
+var player
 
 func active_item():
 	return items[active_hotbar]
 
-func _init():
+func _init(player_):
+	player = player_
 	floating_item = Item.new()
 	for i in range(0, 40):
 		items.append(Item.new())
 		
 func check_recipe(recipe):
+	if recipe.requires_table and not player.at_crafting_table:
+		return false
+	
 	var id1 = 0
 	var id2 = 0
 	var id3 = 0
