@@ -3,17 +3,20 @@ extends TileMap
 var GRASS = 0
 var DIRT = 1
 var ROCK = 2
+var COAL = 4
 
 var physics_map
 
 var Tree
 
 func snap_number(num, count):
-		var res = int(num) % count
-		if res < 0: res += count
-		return res
+	var res = int(num) % count
+	if res < 0: res += count
+	return res
 
 func handle(x, y, id):
+	if id == COAL:
+		return Vector2(snap_number(x, 16), snap_number(y, 16))
 	return Vector2(snap_number(x, 64), snap_number(y, 64))
 
 func plot(x, y, id):
@@ -275,6 +278,36 @@ func ground(kind, s):
 		return right_cliff(s)
 	if kind == 4:
 		return bumpy(s)
+		
+func connected(x, y):
+	if get_cell(x - 1, y) != -1:
+		return true
+	if get_cell(x + 1, y) != -1:
+		return true
+	if get_cell(x, y - 1) != -1:
+		return true
+	if get_cell(x, y + 1) != -1:
+		return true
+	return false
+		
+func ground_coal(x, ty, depth = 5):
+	var y = -40
+	while get_cell(x, y) == -1:
+		y += 1
+		
+	y += rand(depth, depth + 2)
+		
+	var r = rand(2, 4)
+	for xs in range(-r, r):
+		for ys in range(-r, r):
+			if (xs * xs + ys * ys) < (r * r):
+				var xv = xs + x
+				var yv = ys + y
+				if get_cell(xv, yv) != -1:
+					if rand(0, 1) == 0:
+						plot(xv, yv, ty)
+				elif connected(xv, yv) and rand(0, 2) == 0:
+					plot(xv, yv, ty)
 
 func _ready():
 	Tree = load("res://tree.tscn")
@@ -342,6 +375,15 @@ func _ready():
 		var result = ground(next, ground_sweep)
 		ground_sweep = result[0]
 		allowed = result[1]
+		
+	for i in range(0, 45):
+		ground_coal(rand(-400, 400), ROCK)
+		
+	for i in range(0, 25):
+		ground_coal(rand(-400, 400), ROCK, 10)
+		
+	for i in range(0, 25):
+		ground_coal(rand(-400, 400), COAL)
 			
 	##fill_poly([Vector2(-10, 0), Vector2(0, -10), Vector2(10, 0)], DIRT)
 

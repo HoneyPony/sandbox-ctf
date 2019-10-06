@@ -6,7 +6,8 @@ const icon_map = {
 	0: preload("res://sprite/grass_icon.png"),
 	1: preload("res://sprite/dirt_icon.png"),
 	2: preload("res://sprite/rocks_icon.png"),
-	3: preload("res://sprite/wood_icon.png")
+	3: preload("res://sprite/wood_icon.png"),
+	4: preload("res://sprite/coal_icon.png")
 }
 
 const texture_map = {
@@ -14,7 +15,8 @@ const texture_map = {
 	0: preload("res://sprite/grass.png"),
 	1: preload("res://sprite/dirt.png"),
 	2: preload("res://sprite/rocks.png"),
-	3: preload("res://sprite/wood.png")
+	3: preload("res://sprite/wood.png"),
+	4: preload("res://sprite/coal.png")
 }
 
 const CAT_DIRT = 0
@@ -53,8 +55,10 @@ static func wood_strength(id):
 	
 static func rock_strength(id):
 	if id == -3:
-		return 1.4
-	return 0.9
+		# we used to use 5 here because 1/0.2 = 5. but these aren't multiplied so don't od that
+		return 1.1
+	# rocks are slow without a pick
+	return 0.2
 	
 static func dirt_strength(id):
 	if id == -5:
