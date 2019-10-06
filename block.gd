@@ -27,6 +27,9 @@ static func is_block(id):
 static func is_placeable(id):
 	return id >= 0
 	
+static func is_stackable(id):
+	return id >= -1
+	
 static func is_item(id):
 	return id < -1
 

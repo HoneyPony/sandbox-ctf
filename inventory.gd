@@ -51,6 +51,7 @@ var recipes = [
 ]
 
 var player
+var Block = preload("res://block.gd")
 
 func active_item():
 	return items[active_hotbar]
@@ -126,7 +127,7 @@ func make_recipe(recipe):
 # Returns whether there is a floating item.
 func float_slot(slot):
 	# Merge for same type (TODO IF STACKABLE)
-	if floating_item.id == items[slot].id:
+	if floating_item.id == items[slot].id and Block.is_stackable(floating_item.id):
 		items[slot].count += floating_item.count
 		floating_item.count = 0
 		floating_item.id = -1
@@ -145,6 +146,10 @@ func float_slot(slot):
 	
 # Returns whether mouse should need to be re-clicked
 func split_slot(slot):
+	if not Block.is_stackable(floating_item.id) or not Block.is_stackable(items[slot].id):
+		float_slot(slot)
+		return true
+	
 	if floating_item.id == -1:
 		var slot_count = int(floor(items[slot].count / 2))
 		var float_count = items[slot].count - slot_count
@@ -181,10 +186,12 @@ func consume():
 	return false
 		
 func accept(id):
-	for item in items:
-		if item.id == id:
-			item.count += 1
-			return true
+	if Block.is_stackable(id):
+		# try to stack
+		for item in items:
+			if item.id == id:
+				item.count += 1
+				return true
 			
 	for item in items:
 		if item.id == -1:
