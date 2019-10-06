@@ -193,8 +193,8 @@ func get_relevant_strength():
 		return player.current_rock()
 	if cat == Block.CAT_WOOD:
 		return player.current_wood()
-	if cat == Block.SPECIAL:
-		return 12
+	if cat == Block.CAT_SPECIAL:
+		return 9
 	# Fallback
 	return player.current_rock()
 	

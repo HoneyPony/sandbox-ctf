@@ -38,11 +38,15 @@ func picked_up(unused):
 	if player.inventory.accept(id):
 		accepted = true
 		interpolate_position = position
+		
+func parabola(t):
+	t = 2 * t - 1
+	return Vector2(0, 1 - t * t) * -12
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(dt):
 	if accepted:
-		position = interpolate_position * (1.0 - anim) + player.position * anim
+		position = interpolate_position * (1.0 - anim) + player.position * anim + parabola(anim)
 		modulate.a = 1.0 - anim
 		anim += dt * 2
 		if anim > 1:
@@ -53,21 +57,26 @@ func _process(dt):
 		position.y = round(position.y)
 	last_position = position
 	
-var velocity = 0
+var velocity = -40
 var gravity = 120
 	
 func _physics_process(dt):
 	var ax = position.x
 	
 	velocity += dt * gravity
-	var max_speed = 4
-	var speed = min(velocity * dt, 4)
+	var speed = min(velocity * dt, 8)
+	
+	var d = sign(speed)
 	
 	if abs(speed) > 0.1:
 		var x = round(position.x / 4)
 		var y = round(position.y / 4)
-		if tilemap.get_cell(x, y + 1) != -1:
-			physics_map.set_cell(x, y + 1, 0)
+		if tilemap.get_cell(x, y + d) != -1:
+			physics_map.set_cell(x, y + d, 0)
+		if tilemap.get_cell(x, y + 2 * d) != -1:
+			physics_map.set_cell(x, y + 2 * d, 0)
+		if tilemap.get_cell(x, y + 3 * d) != -1:
+			physics_map.set_cell(x, y + 3 * d, 0)
 	
 	move_and_collide(Vector2(0, speed))
 	position.x = ax
