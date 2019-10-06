@@ -33,6 +33,7 @@ var inventory
 
 var camera1
 var camera2
+var camera3
 
 var crafting_tables = 0
 var at_crafting_table = false
@@ -74,6 +75,7 @@ func _ready():
 	
 	camera1 = get_node("/root/root/camera")
 	camera2 = get_node("/root/root/block_break_viewport/camera")
+	camera3 = get_node("/root/root/light_viewport/camera")
 	
 	craft_sentinel = get_node("/root/root/ui/crafting/sentinel")
 	pass # Replace with function body.
@@ -187,6 +189,7 @@ func _physics_process(delta):
 		
 	camera1.position = position
 	camera2.position = position
+	camera3.position = position
 	
 	#print(position.y)
 	

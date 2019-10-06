@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://block_shader.shader" type="Shader" id=1]
+
+[sub_resource type="ViewportTexture" id=12]
+viewport_path = NodePath("block_break_viewport")
+
+[sub_resource type="ViewportTexture" id=18]
+viewport_path = NodePath("light_viewport")
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/break_viewport = SubResource( 12 )
+shader_param/light_viewport = SubResource( 18 )

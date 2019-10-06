@@ -66,8 +66,6 @@ var recipes = [
 	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table()
 ]
 
-
-
 func active_item():
 	return items[active_hotbar]
 

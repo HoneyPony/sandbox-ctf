@@ -4,17 +4,14 @@ extends Sprite
 # var a = 2
 # var b = "text"
 
-var id
 var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	use_parent_material = true
-	id = int(get_name())
 	player = get_node("/root/root/player")
-	visible = true
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	visible = (id == player.inventory.active_item().id)
+	position.x = player.position.x
+	pass
