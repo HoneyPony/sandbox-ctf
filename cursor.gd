@@ -27,8 +27,10 @@ func snap_number(num, count):
 		
 func autotile(x, y, id):
 	var number = 64
-	if id > 2:
+	if id == 3:
 		number = 4
+	if id == 4:
+		number = 16
 	x = snap_number(x, number)
 	y = snap_number(y, number)
 	return Vector2(x, y)
