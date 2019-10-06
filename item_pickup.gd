@@ -1,14 +1,5 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var id_to_tex = {
-	0: preload("res://sprite/grass.png"),
-	1: preload("res://sprite/dirt.png")
-}
-
 var id = 0
 var player
 
@@ -22,6 +13,8 @@ var interpolate_position
 var tilemap
 var physics_map
 
+var Block = preload("res://block.gd")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/root/player")
@@ -32,7 +25,7 @@ func _ready():
 	
 func set_id(x):
 	id = x
-	$item.texture = id_to_tex.get(id)
+	$item.texture = Block.get_texture(id)
 
 func picked_up(unused):
 	if accepted:

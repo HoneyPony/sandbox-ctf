@@ -8,10 +8,7 @@ var slot
 
 var player
 
-var id_to_tex = {
-	0: preload("res://sprite/grass_icon.png"),
-	1: preload("res://sprite/dirt_icon.png")
-}
+var Block = preload("res://block.gd")
 
 var idle = preload("res://sprite/inventory_test.png")
 var active = preload("res://sprite/inventory_active.png")
@@ -32,7 +29,7 @@ func _process(delta):
 		$frame/count.hide()
 	else:
 		$frame/icon.show()
-		$frame/icon.set_texture(id_to_tex.get(id))
+		$frame/icon.set_texture(Block.get_icon(id))
 		if item.count == 1:
 			$frame/count.hide()
 		else:

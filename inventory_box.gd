@@ -13,10 +13,7 @@ var used_mouse = false
 var used_right_mouse = false
 var right_mouse_delay = 0
 
-var id_to_tex = {
-	0: preload("res://sprite/grass_icon.png"),
-	1: preload("res://sprite/dirt_icon.png")
-}
+var Block = preload("res://block.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +27,7 @@ func _process(delta):
 	$frame/icon.visible = player.inventory.items[slot].id != -1
 	$frame/count.visible = player.inventory.items[slot].count > 1
 	$frame/count.text = String(player.inventory.items[slot].count)
-	$frame/icon.texture = id_to_tex.get(player.inventory.items[slot].id)
+	$frame/icon.texture = Block.get_icon(player.inventory.items[slot].id)
 	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if has_mouse and !used_mouse:

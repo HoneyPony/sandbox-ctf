@@ -19,6 +19,9 @@ func _init():
 	for i in range(0, 40):
 		items.append(Item.new())
 		
+
+	
+		
 # Returns whether there is a floating item.
 func float_slot(slot):
 	# Merge for same type (TODO IF STACKABLE)

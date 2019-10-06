@@ -4,12 +4,9 @@ extends Sprite
 # var a = 2
 # var b = "text"
 
-var item_map = {
-	0: preload("res://sprite/grass.png"),
-	1: preload("res://sprite/dirt.png")
-}
-
 var player
+
+var Block = preload("res://block.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,8 +16,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var id = player.inventory.active_item().id
-	if id in item_map:
-		texture = item_map.get(id)
+	if Block.is_block(id):
+		texture = Block.get_texture(id)
 		show()
 	else:
 		hide()

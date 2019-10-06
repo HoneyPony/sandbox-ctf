@@ -4,12 +4,9 @@ extends TextureRect
 # var a = 2
 # var b = "text"
 
-var id_to_tex = {
-	0: preload("res://sprite/grass_icon.png"),
-	1: preload("res://sprite/dirt_icon.png")
-}
-
 var player
+
+var Block = preload("res://block.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +27,7 @@ func _process(delta):
 	
 	goto(get_global_mouse_position() - Vector2(8, 8))
 	if player.inventory.floating_item.id != -1:
-		texture = id_to_tex.get(player.inventory.floating_item.id)
+		texture = Block.get_icon(player.inventory.floating_item.id)
 		$count.text = String(player.inventory.floating_item.count)
 		$count.visible = player.inventory.floating_item.count > 1
 	
