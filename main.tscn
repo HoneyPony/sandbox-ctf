@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -39,8 +39,6 @@
 [ext_resource path="res://sprite/player_walk.png" type="Texture" id=37]
 [ext_resource path="res://cursor.gd" type="Script" id=38]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=39]
-[ext_resource path="res://sprite.tscn" type="PackedScene" id=40]
-[ext_resource path="res://basic_knight.tscn" type="PackedScene" id=41]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -997,9 +995,3 @@ visible = false
 texture = ExtResource( 11 )
 
 [node name="ui" parent="." instance=ExtResource( 39 )]
-
-[node name="sprite" parent="." instance=ExtResource( 40 )]
-position = Vector2( 306.352, -233.562 )
-
-[node name="basic_knight" parent="." instance=ExtResource( 41 )]
-position = Vector2( 22.752, -180.22 )

@@ -30,6 +30,7 @@ tracks/0/keys = {
 "special",
 ]]
 script = ExtResource( 1 )
+mode = 1
 
 [node name="activate_player" type="Area2D" parent="."]
 collision_layer = 512
@@ -45,7 +46,7 @@ shape = SubResource( 1 )
 position = Vector2( 4, 0 )
 texture = ExtResource( 3 )
 hframes = 12
-frame = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
 anims/fire = SubResource( 2 )

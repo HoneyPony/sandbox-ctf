@@ -439,17 +439,15 @@ func _ready():
 		var result = ground(next, ground_sweep)
 		ground_sweep = result[0]
 		allowed = result[1]
-		
-	
-		
-#	for i in range(0, 45):
-#		ground_coal(rand(-400, 400), ROCK)
-#
-#	for i in range(0, 25):
-#		ground_coal(rand(-400, 400), ROCK, 10)
-#
-#	for i in range(0, 25):
-#		ground_coal(rand(-400, 400), COAL)
+			
+	for i in range(0, 45):
+		ground_coal(rand(-400, 400), ROCK)
+
+	for i in range(0, 25):
+		ground_coal(rand(-400, 400), ROCK, 10)
+
+	for i in range(0, 25):
+		ground_coal(rand(-400, 400), COAL)
 
 # Note to self: the shapes created by underground_ore are really interesting
 # when not filled in
@@ -508,7 +506,12 @@ func _ready():
 		var y = rand(20, 400)
 		underground_ore(x, y, ROCK)
 		
-	for i in range(0, 600):
+	for i in range(0, 400):
+		var x = rand(-400 + 20, 400 - 20)
+		var y = rand(20, 400)
+		underground_ore(x, y, Block.COAL, 3, 7)
+		
+	for i in range(0, 250):
 		var x = rand(-400 + 20, 400 - 20)
 		var y = rand(20, 400)
 		underground_ore(x, y, Block.COPPER_ORE, 3, 7)

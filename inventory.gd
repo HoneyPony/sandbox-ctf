@@ -76,6 +76,8 @@ func _init(player_):
 		items.append(Item.new())
 	items[0].id = Block.ROCK_PICK
 	items[0].count = 1
+	items[1].id = Block.FURNACE
+	items[1].count = 1
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:
