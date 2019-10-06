@@ -18,6 +18,9 @@ var hop_size = 20
 export var max_speed = 45
 export var acceleration = 200
 
+var knockback = 0
+var knockback_v
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("/root/root/physics_map").add_entity(self)
@@ -27,6 +30,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if knockback > 0:
+		move_and_collide(knockback_v * delta)
+		knockback -= delta
+		knockback_v -= (150 / 0.5) * delta * knockback_v.normalized()
+		return
+	
 	hop_velocity.y += (hop_size / hop_length) * delta
 	
 	var heading = (player.global_position - global_position).normalized()
@@ -74,3 +83,9 @@ func hop():
 	
 func you_died():
 	pass
+	
+func you_were_hit():
+	var heading = (player.global_position - global_position).normalized()
+	knockback = 0.5
+	knockback_v = heading * -150
+	velocity = Vector2(0, 0)

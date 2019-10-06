@@ -35,4 +35,6 @@ func hit(body):
 		get_node("/root/root/physics_map").remove_entity(get_parent())
 		get_parent().get_parent().remove_child(get_parent())
 	timer = 0.2
+	
+	get_parent().you_were_hit()
 	pass # Replace with function body.

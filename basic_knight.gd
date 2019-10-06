@@ -30,11 +30,20 @@ func _ready():
 	
 	pass # Replace with function body.
 
+var knockback = 0
+var knockback_v
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if knockback > 0:
+		move_and_collide(knockback_v * delta)
+		knockback -= delta
+		knockback_v -= (150 / 0.5) * delta * knockback_v.normalized()
+		return
+	
 	var to_player = player.global_position - global_position
 	
-	if to_player.length() < 6 and not attacking:
+	if to_player.length() < 9 and not attacking:
 		attack_timer = 0.7
 		attacking = true
 		velocity.x = 0
@@ -81,3 +90,9 @@ func _physics_process(delta):
 		
 func you_died():
 	pass
+	
+func you_were_hit():
+	var heading = (player.global_position - global_position).normalized()
+	knockback = 0.5
+	knockback_v = heading * -150
+	velocity = Vector2(0, 0)
