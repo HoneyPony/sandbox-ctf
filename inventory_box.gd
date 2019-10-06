@@ -25,6 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !player.inventory_open:
+		has_mouse = false
 		return
 	
 	$frame/icon.visible = player.inventory.items[slot].id != -1
