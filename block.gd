@@ -1,22 +1,25 @@
 const icon_map = {
-	-6: preload("res://sprite/furnace_icon.png"),
-	-5: preload("res://sprite/wood_shovel_icon.png"),
-	-4: preload("res://sprite/wood_axe_icon.png"),
-	-3: preload("res://sprite/stickaxe_icon.png"),
-	-2: preload("res://sprite/crafting_table_icon.png"),
+
 	0: preload("res://sprite/grass_icon.png"),
 	1: preload("res://sprite/dirt_icon.png"),
 	2: preload("res://sprite/rocks_icon.png"),
 	3: preload("res://sprite/wood_icon.png"),
 	4: preload("res://sprite/coal_icon.png"),
+	5: preload("res://sprite/copper_ore_icon.png"),
+	
+	
+	-2: preload("res://sprite/crafting_table_icon.png"),
+	-3: preload("res://sprite/stickaxe_icon.png"),
+	-4: preload("res://sprite/wood_axe_icon.png"),
+	-5: preload("res://sprite/wood_shovel_icon.png"),
+	-6: preload("res://sprite/furnace_icon.png"),
 	-7: preload("res://sprite/rock_pick_icon.png"),
 	-8: preload("res://sprite/rock_axe_icon.png"),
 	-9: preload("res://sprite/rock_shovel_icon.png"),
-	5: preload("res://sprite/copper_ore_icon.png"),
+	
 }
 
 const texture_map = {
-	
 	0: preload("res://sprite/grass.png"),
 	1: preload("res://sprite/dirt.png"),
 	2: preload("res://sprite/rocks.png"),
@@ -24,7 +27,14 @@ const texture_map = {
 	4: preload("res://sprite/coal.png"),
 	5: preload("res://sprite/copper_ore.png"),
 	
-	-2: preload("res://sprite/crafting_table.png"),
+	-2: preload("res://sprite/crafting_table_drop.png"),
+	-3: preload("res://sprite/stickaxe_drop.png"),
+	-4: preload("res://sprite/wood_axe_drop.png"),
+	-5: preload("res://sprite/wood_shovel_drop.png"),
+	-6: preload("res://sprite/furnace_drop.png"),
+	-7: preload("res://sprite/rock_pick_drop.png"),
+	-8: preload("res://sprite/rock_axe_drop.png"),
+	-9: preload("res://sprite/rock_shovel_drop.png"),
 }
 
 const CAT_DIRT = 0
