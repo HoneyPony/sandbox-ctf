@@ -7,6 +7,8 @@ extends TextureRect
 var active_slot = 0
 var active = false
 
+var track_chest = false
+
 var player
 
 var Block = preload("res://block.gd")
@@ -18,9 +20,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var source = player.inventory.items
+	if track_chest:
+		if player.current_chest == null:
+			return
+		source = player.current_chest.items
+	
 	visible = active and player.inventory.floating_item.id == -1 and player.inventory_open and player.inventory.items[active_slot].id != -1
-	$title.text = Block.item_name(player.inventory.items[active_slot].id)
-	$label.text = Block.item_description(player.inventory.items[active_slot].id)
+	$title.text = Block.item_name(source[active_slot].id)
+	$label.text = Block.item_description(source[active_slot].id)
 	
 	var target = get_global_mouse_position()
 	var offset_x = 0
@@ -37,10 +45,12 @@ func _process(delta):
 		
 	rect_position = target + Vector2(offset_x, offset_y)
 
-func activate(slot):
+func activate(slot, is_chest = false):
 	active_slot = slot
 	active = true
+	track_chest = is_chest
 	
-func deactivate(slot):
-	if slot == active_slot:
+func deactivate(slot, is_chest = false):
+	if slot == active_slot and is_chest == track_chest:
 		active = false
+		track_chest = false

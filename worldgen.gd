@@ -499,6 +499,8 @@ func hallway(x1, x2, sy, baseline, do_arch = true):
 func castle(x, y):
 	var t1 = tower(x, y)
 	
+	var start_x = x
+	
 	for z in range(0, rand(11, 13)):
 		var dist = rand(8, 30)
 		var t2 = tower(x + dist + t1.x, y)
@@ -512,6 +514,10 @@ func castle(x, y):
 		x = x + t1.x + dist
 		t1 = t2
 	pass
+	
+	for x in range(start_x, x + t1.x):
+		for yy in range(y, y + 5):
+			plot(x, yy, Block.BRICK)
 	
 func arch(sx, sy, width, height):
 	for x in range(sx, sx + width + 1):

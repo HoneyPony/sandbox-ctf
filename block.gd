@@ -26,6 +26,8 @@ const icon_map = {
 	-15: preload("res://sprite/sledgehammer_icon.png"),
 	
 	-16: preload("res://sprite/brick_wall_icon.png"),
+	
+	-17: preload("res://sprite/chest_icon.png"),
 }
 
 const texture_map = {
@@ -55,6 +57,8 @@ const texture_map = {
 	-15: preload("res://sprite/sledgehammer_drop.png"),
 	
 	-16: preload("res://sprite/brick_wall.png"),
+	
+	-17: preload("res://sprite/chest_drop.png"),
 }
 
 #const lore_map = {
@@ -99,8 +103,10 @@ const lore_map = {
 	-13: ["Rock wall", "Place in the background for a nice stone wall"],
 	-14: ["Wood wall", "Place in the background for an endearing wood wall"],
 	
-	-15: ["Sledgehammer", "Allows you to break walls."],
+	-15: ["Sledgehammer", "Allows you to break walls"],
 	-16: ["Brick wall", "Place in the background for a crimson brick wall"],
+	
+	-17: ["Chest", "Place to store extra items"],
 }
 
 const CAT_DIRT = 0
@@ -135,6 +141,8 @@ const ROCK_WALL = -13
 const WOOD_WALL = -14
 const SLEDGEHAMMER = -15
 const BRICK_WALL = -16
+
+const CHEST = -17
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0

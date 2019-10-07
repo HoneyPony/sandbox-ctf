@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest.png-c30327e3048ee84243576c05fef2d759.stex"
+path="res://.import/chest_inventory.png-5a1e2decac4979ac50b93c43a5d4ea13.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/chest.png"
-dest_files=[ "res://.import/chest.png-c30327e3048ee84243576c05fef2d759.stex" ]
+source_file="res://sprite/chest_inventory.png"
+dest_files=[ "res://.import/chest_inventory.png-5a1e2decac4979ac50b93c43a5d4ea13.stex" ]
 
 [params]
 

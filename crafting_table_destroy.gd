@@ -5,6 +5,7 @@ extends Node2D
 # var b = "text"
 const CRAFTING = 0
 const FURNACE = 1
+const CHEST = 2
 
 export var mode = 0
 
@@ -30,6 +31,12 @@ func tile_destroy(tilemap, x, y):
 		light = null
 		
 		return Block.FURNACE
+	if mode == CHEST:
+		tilemap.set_cell(x, y, -1)
+		tilemap.set_cell(x + 1, y, -1)
+		tilemap.set_cell(x, y - 1, -1)
+		tilemap.set_cell(x + 1, y - 1, -1)
+		return Block.CHEST
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

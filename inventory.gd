@@ -84,7 +84,7 @@ func _init(player_):
 		items.append(Item.new())
 	
 	give_self_debug(0, Block.ROCK_PICK)
-	give_self_debug(1, Block.FURNACE)
+	give_self_debug(1, Block.CHEST)
 	give_self_debug(2, Block.PLATFORM, 20)
 	give_self_debug(3, Block.WOOD, 20)
 
@@ -163,10 +163,15 @@ func make_recipe(recipe):
 	return check_recipe(recipe)
 			
 # Returns whether there is a floating item.
-func float_slot(slot):
+func float_slot(slot, use_chest = false):
+	
+	var item_ref = items
+	if use_chest:
+		item_ref = player.current_chest.items
+	
 	# Merge for same type (TODO IF STACKABLE)
-	if floating_item.id == items[slot].id and Block.is_stackable(floating_item.id):
-		items[slot].count += floating_item.count
+	if floating_item.id == item_ref[slot].id and Block.is_stackable(floating_item.id):
+		item_ref[slot].count += floating_item.count
 		floating_item.count = 0
 		floating_item.id = -1
 		return false
@@ -174,40 +179,44 @@ func float_slot(slot):
 	var fid = floating_item.id
 	var fc = floating_item.count
 	
-	floating_item.id = items[slot].id
-	floating_item.count = items[slot].count
+	floating_item.id = item_ref[slot].id
+	floating_item.count = item_ref[slot].count
 	
-	items[slot].id = fid
-	items[slot].count = fc
+	item_ref[slot].id = fid
+	item_ref[slot].count = fc
 	
 	return floating_item.id != -1
 	
 # Returns whether mouse should need to be re-clicked
-func split_slot(slot):
-	if not Block.is_stackable(floating_item.id) or not Block.is_stackable(items[slot].id):
+func split_slot(slot, use_chest = false):
+	var item_ref = items
+	if use_chest:
+		item_ref = player.current_chest.items
+	
+	if not Block.is_stackable(floating_item.id) or not Block.is_stackable(item_ref[slot].id):
 		float_slot(slot)
 		return true
 	
 	if floating_item.id == -1:
-		var slot_count = int(floor(items[slot].count / 2))
-		var float_count = items[slot].count - slot_count
-		floating_item.id = items[slot].id
+		var slot_count = int(floor(item_ref[slot].count / 2))
+		var float_count = item_ref[slot].count - slot_count
+		floating_item.id = item_ref[slot].id
 		floating_item.count = float_count
-		items[slot].count = slot_count
+		item_ref[slot].count = slot_count
 		if slot_count == 0:
-			items[slot].id = -1
+			item_ref[slot].id = -1
 		return true
 		
-	if floating_item.id != items[slot].id && items[slot].id != -1:
+	if floating_item.id != item_ref[slot].id && item_ref[slot].id != -1:
 		float_slot(slot)
 		return true
 		
-	# in case items[slot] was -1
-	items[slot].id = floating_item.id
+	# in case item_ref[slot] was -1
+	item_ref[slot].id = floating_item.id
 	
 	# ids are now guaranteed same
 	floating_item.count -= 1
-	items[slot].count += 1
+	item_ref[slot].count += 1
 	if floating_item.count == 0:
 		floating_item.id = -1
 		

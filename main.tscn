@@ -869,6 +869,7 @@ texture = ExtResource( 9 )
 script = ExtResource( 10 )
 
 [node name="physics_map" type="TileMap" parent="."]
+visible = false
 tile_set = SubResource( 4 )
 cell_size = Vector2( 4, 4 )
 cell_quadrant_size = 1

@@ -45,6 +45,23 @@ var craft_sentinel
 
 var health = 40
 
+var current_chest = null
+var chest_open = false
+
+func set_chest(node):
+	current_chest = node
+		
+func open_chest():
+	if inventory_open:
+		if chest_open:
+			inventory_open = false
+			chest_open = false
+		else:
+			chest_open = true
+	else:
+		inventory_open = true
+		chest_open = true
+
 func notify_crafting():
 	var last = at_crafting_table
 	at_crafting_table = crafting_tables > 0
@@ -100,6 +117,8 @@ func _process(delta):
 		$item_swing/animation_player.play("swing" + ext)
 	if Input.is_action_just_pressed("inventory_open"):
 		inventory_open = !inventory_open
+		current_chest = null
+		chest_open = false
 		
 func _input(event):
 	# Don't handle while inventory open
