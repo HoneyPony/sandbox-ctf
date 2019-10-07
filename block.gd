@@ -37,22 +37,40 @@ const texture_map = {
 	-9: preload("res://sprite/rock_shovel_drop.png"),
 }
 
+#const lore_map = {
+#	0: ["Grass", "Is always greener on the other side"],
+#	1: ["Dirt", "Not much you can do with this..."],
+#	2: ["Rocks", "Surprisingly easy to shape by hand"],
+#	3: ["Wood", "All-natural"],
+#	4: ["Coal", "You can light these rocks on fire"],
+#	5: ["Copper ore", "Something useful for once"],
+#
+#	-2: ["Crafting table", "You become craftier in the presence of this table"],
+#	-3: ["Stickaxe", "A pickaxe made out of sticks"],
+#	-4: ["Wood axe", "Chop down trees using a tree"],
+#	-5: ["Wood shovel", "Easier than using your hands"],
+#	-6: ["Furnace", "Nothing ever burns down by itself"],
+#	-7: ["Rock pick", "Breaks stuff better"],
+#	-8: ["Rock axe", "Chopin"],
+#	-9: ["Rock shovel", "Now you can dig even faster! Perfect, right?"]
+#}
+
 const lore_map = {
-	0: ["Grass", "Is always greener on the other side"],
+	0: ["Grass", "Grows on the top of the world"],
 	1: ["Dirt", "Not much you can do with this..."],
-	2: ["Rocks", "Surprisingly easy to shape by hand"],
-	3: ["Wood", "All-natural"],
-	4: ["Coal", "You can light these rocks on fire"],
-	5: ["Copper ore", "Something useful for once"],
-	
-	-2: ["Crafting table", "You become craftier in the presence of this table"],
+	2: ["Rocks", "Abundant material with some uses"],
+	3: ["Wood", "Material from trees. Can make tools"],
+	4: ["Coal", "Plentiful fuel source"],
+	5: ["Copper ore", "Common metal ore"],
+
+	-2: ["Crafting table", "Lets you craft fancier stuff"],
 	-3: ["Stickaxe", "A pickaxe made out of sticks"],
-	-4: ["Wood axe", "Chop down trees using a tree"],
-	-5: ["Wood shovel", "Easier than using your hands"],
-	-6: ["Furnace", "Nothing ever burns down by itself"],
-	-7: ["Rock pick", "Breaks stuff better"],
-	-8: ["Rock axe", "Chopin"],
-	-9: ["Rock shovel", "Now you can dig even faster! Perfect, right?"]
+	-4: ["Wood axe", "Some improvement to woodcutting speed"],
+	-5: ["Wood shovel", "Good improvement to digging speed"],
+	-6: ["Furnace", "Lets you smelt ores and make charcoal"],
+	-7: ["Rock pick", "Some improvement to mining speed"],
+	-8: ["Rock axe", "Some improvement to woodcutting speed"],
+	-9: ["Rock shovel", "Good improvement to digging speed"]
 }
 
 const CAT_DIRT = 0
