@@ -36,6 +36,7 @@ func picked_up(unused):
 		return
 	
 	if player.inventory.accept(id):
+		$pickup.play()
 		accepted = true
 		interpolate_position = position
 		
