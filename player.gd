@@ -121,6 +121,11 @@ func _process(delta):
 		current_chest = null
 		chest_open = false
 		
+	if not equipped:
+		for item in inventory.items:
+			if Block.damage(item.id) > 1:
+				equipped = true
+		
 func _input(event):
 	# Don't handle while inventory open
 	if inventory_open:
@@ -134,6 +139,9 @@ func _input(event):
 		inventory.active_hotbar = 9
 	if inventory.active_hotbar > 9:
 		inventory.active_hotbar = 0
+		
+	
+		
 	
 #func _unhandled_input(event):
 #	if inventory_open:
@@ -157,7 +165,7 @@ func jump_impulse_delta_delta():
 		return jump_cancel_delta_delta
 	
 func _physics_process(delta):	
-	set_collision_layer_bit(14, !Input.is_action_pressed("player_down"))
+	#set_collision_layer_bit(14, !Input.is_action_pressed("player_down"))
 	set_collision_mask_bit(14, !Input.is_action_pressed("player_down"))
 
 	var acc_h = -sign(horizontal_v)

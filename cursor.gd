@@ -31,6 +31,8 @@ const PLACE = 4
 
 var next_audio = HIT_NOTHING
 
+var consume_timer = 0
+
 func consume_audio():
 	if not player.inventory_open:
 		if next_audio == HIT_DIRT:
@@ -106,6 +108,14 @@ func break_wall():
 	audio_cat(id)
 	
 func break_block():
+	if player.inventory.active_item().id == Block.ENERGY_PART:
+		healing()
+		return
+		
+	if player.inventory.active_item().id == Block.JAVELIN:
+		javelin()
+		return
+	
 	if player.inventory.active_item().id == Block.BLUE_FLAG:
 		blue_flag()
 		return
@@ -355,6 +365,33 @@ func crafting_table():
 #todo: animation?
 func blue_flag():
 	player.spawn()
+	
+func healing():
+	if consume_timer > 0:
+		return
+	if player.health == 40:
+		return
+	var health = 0
+	if player.inventory.active_item().id == Block.ENERGY_PART:
+		health = 1
+	if player.inventory.consume():
+		player.health += health
+		consume_timer = 0.2
+		
+func javelin():
+	if consume_timer > 0:
+		return
+	if player.inventory.consume():
+		consume_timer = 0.2
+		var direction = (position - player.position).normalized()
+		var javelin = load("res://javelin.tscn").instance()
+		javelin.velocity = direction * 200
+		javelin.position = player.position
+		get_node("/root/root").add_child(javelin)
+	
+	
+	
+	pass
 
 func get_relevant_strength():
 	var cat = Block.category(block_map.get_cell(tile_x(), tile_y()))
@@ -388,6 +425,9 @@ func _process(delta):
 		break_block()
 	else:
 		block_timer = 0
+		
+	if consume_timer > 0:
+		consume_timer -= delta
 		
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		place_block()

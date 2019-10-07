@@ -55,25 +55,29 @@ var Block = preload("res://block.gd")
 
 var recipes = [
 	Recipe.new(-2, 1, 3, 10),
-	Recipe.new(-3, 1, 3, 15).table(), # pick
-	Recipe.new(-4, 1, 3, 10).table(), # axe
-	Recipe.new(-5, 1, 3, 9).table(), # shovel
+	Recipe.new(-3, 1, 3, 10).table(), # pick
+	Recipe.new(-4, 1, 3, 9).table(), # axe
+	Recipe.new(-5, 1, 3, 8).table(), # shovel
+	Recipe.new(Block.WOOD_SWORD, 1, 3, 10).table(),
 	Recipe.new(-6, 1, 2, 10, 4, 5, 3, 5),
-	Recipe.new(4, 1, 3, 10).furnace(), # charcoal
+	Recipe.new(4, 1, 3, 5).furnace(), # charcoal
 	
 	Recipe.new(Block.TORCH, 4, Block.COAL, 1, Block.WOOD, 1),
 	
-	Recipe.new(Block.ROCK_PICK, 1, Block.WOOD_PICK, 1, Block.ROCK, 5).table(),
-	Recipe.new(Block.ROCK_AXE, 1, Block.WOOD_AXE, 1, Block.ROCK, 5).table(),
-	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table(),
+	Recipe.new(Block.ROCK_PICK, 1, Block.WOOD, 5, Block.ROCK, 5).table(),
+	Recipe.new(Block.ROCK_AXE, 1, Block.WOOD, 5, Block.ROCK, 4).table(),
+	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD, 5, Block.ROCK, 3).table(),
+	Recipe.new(Block.ROCK_SWORD, 1, Block.WOOD, 5, Block.ROCK, 5).table(),
 	
 	Recipe.new(Block.SLEDGEHAMMER, 1, Block.WOOD, 5, Block.ROCK, 5).table(),
 	
 	Recipe.new(Block.COPPER_BAR, 1, Block.COPPER_ORE, 2).furnace(),
 	
 	Recipe.new(Block.COPPER_PICK, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
-	Recipe.new(Block.COPPER_AXE, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
-	Recipe.new(Block.COPPER_SHOVEL, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
+	Recipe.new(Block.COPPER_AXE, 1, Block.WOOD, 5, Block.COPPER_BAR, 4).table(),
+	Recipe.new(Block.COPPER_SHOVEL, 1, Block.WOOD, 5, Block.COPPER_BAR, 3).table(),
+	Recipe.new(Block.COPPER_SWORD, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
+	
 ]
 
 func active_item():
@@ -94,6 +98,11 @@ func _init(player_):
 	give_self_debug(2, Block.FURNACE, 1)
 	give_self_debug(3, Block.CRAFT_TABLE, 1)
 	give_self_debug(4, Block.WOOD, 50)
+	
+	give_self_debug(5, Block.ENERGY_PART, 50)
+	give_self_debug(6, Block.JAVELIN, 50)
+	
+	give_self_debug(7, Block.COPPER_SWORD, 1)
 	
 	give_self_debug(9, Block.BLUE_FLAG, 1)
 		

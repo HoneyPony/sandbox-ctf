@@ -21,6 +21,30 @@ export var acceleration = 200
 var knockback = 0
 var knockback_v
 
+var Block = preload("res://block.gd")
+var ItemPickup = preload("res://item_pickup.tscn")
+
+func spawn_pickup(id):
+	var x = round(position.x / 4)
+	var y = round(position.y / 4)
+	var pickup = ItemPickup.instance()
+	get_node("/root/root").call_deferred("add_child", pickup)
+	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
+	pickup.set_id(id)
+	
+func rand(a, b):
+	return round(rand_range(a, b))
+	
+func drops():
+	var drop_type = rand(0, 2)
+	if drop_type == 0:
+		for i in range(1, 3):
+			spawn_pickup(Block.ENERGY_PART)
+	if drop_type == 1:
+		for i in range(5, 9):
+			spawn_pickup(Block.JAVELIN)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("/root/root/physics_map").add_entity(self)
@@ -86,6 +110,7 @@ func hop():
 	hop_velocity.y = -hop_size * (0.5 + correction)
 	
 func you_died():
+	drops()
 	pass
 	
 func you_were_hit():

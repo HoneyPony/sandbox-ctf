@@ -34,6 +34,14 @@ const icon_map = {
 	-20: preload("res://sprite/copper_pick_icon.png"),
 	-21: preload("res://sprite/copper_axe_icon.png"),
 	-22: preload("res://sprite/copper_shovel_icon.png"),
+	
+	-23: preload("res://sprite/wood_sword_icon.png"),
+	-24: preload("res://sprite/rock_sword_icon.png"),
+	-25: preload("res://sprite/copper_sword_icon.png"),
+	
+	-26: preload("res://sprite/energy_particle_icon.png"),
+	-27: preload("res://sprite/javelin_icon.png"),
+	
 }
 
 const texture_map = {
@@ -71,6 +79,13 @@ const texture_map = {
 	-20: preload("res://sprite/copper_pick_drop.png"),
 	-21: preload("res://sprite/copper_axe_drop.png"),
 	-22: preload("res://sprite/copper_shovel_drop.png"),
+	
+	-23: preload("res://sprite/wood_sword_drop.png"),
+	-24: preload("res://sprite/rock_sword_drop.png"),
+	-25: preload("res://sprite/copper_sword_drop.png"),
+	
+	-26: preload("res://sprite/energy_particle_drop.png"),
+	-27: preload("res://sprite/javelin_drop.png"),
 }
 
 #const lore_map = {
@@ -125,6 +140,13 @@ const lore_map = {
 	-20: ["Copper pick", "Good improvement to mining speed"],
 	-21: ["Copper axe", "Good improvement to woodcutting speed"],
 	-22: ["Copper shovel", "Good improvement to digging speed"],
+	
+	-23: ["Wood sword", "Does 2 damage to enemies"],
+	-24: ["Rock sword", "Does 3 damage to enemies"],
+	-25: ["Copper sword", "Does 5 damage to enemies"],
+	
+	-26: ["Energy particle", "Heals one-half heart"],
+	-27: ["Javelin", "Throw to do 2 damage to enemies"],
 }
 
 const CAT_DIRT = 0
@@ -167,6 +189,13 @@ const COPPER_BAR = -19
 const COPPER_PICK = -20
 const COPPER_AXE = -21
 const COPPER_SHOVEL = -22
+
+const WOOD_SWORD = -23
+const ROCK_SWORD = -24
+const COPPER_SWORD = -25
+
+const ENERGY_PART = -26
+const JAVELIN = -27
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0
@@ -260,6 +289,8 @@ static func is_stackable(id):
 		return true
 	if id == COPPER_BAR:
 		return true
+	if id == ENERGY_PART or id == JAVELIN:
+		return true
 	return id >= -1
 	
 static func is_item(id):
@@ -312,6 +343,15 @@ static func dirt_strength(id):
 		# early shovel boost
 		return 2.5
 	
+	return 1
+	
+static func damage(id):
+	if id == WOOD_SWORD:
+		return 2
+	if id == ROCK_SWORD:
+		return 3
+	if id == COPPER_SWORD:
+		return 5
 	return 1
 	
 # in case we want to make a really slow block

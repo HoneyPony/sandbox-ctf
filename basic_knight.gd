@@ -21,6 +21,34 @@ export var acceleration = 60
 
 export var max_speed = 30
 
+var Block = preload("res://block.gd")
+var ItemPickup = preload("res://item_pickup.tscn")
+
+func spawn_pickup(id):
+	var x = round(position.x / 4)
+	var y = round(position.y / 4)
+	var pickup = ItemPickup.instance()
+	get_node("/root/root").add_child(pickup)
+	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
+	pickup.set_id(id)
+	
+func rand(a, b):
+	return round(rand_range(a, b))
+	
+func drops():
+	var drop_type = rand(0, 3)
+	if drop_type == 0:
+		for i in range(1, 3):
+			spawn_pickup(Block.ENERGY_PART)
+	if drop_type == 1:
+		for i in range(5, 9):
+			spawn_pickup(Block.JAVELIN)
+	if drop_type == 2:
+		for i in range(0, 4):
+			spawn_pickup(Block.WOOD)
+		for i in range(0, 2):
+			spawn_pickup(Block.COAL)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("/root/root/physics_map").add_entity(self)
@@ -39,7 +67,7 @@ func _physics_process(delta):
 		get_parent().remove_child(self)
 		return
 	
-	set_collision_layer_bit(14, player.position.y < position.y + 8)
+	#set_collision_layer_bit(14, player.position.y < position.y + 8)
 	set_collision_mask_bit(14, player.position.y < position.y + 8)
 	
 	if knockback > 0:
@@ -98,7 +126,7 @@ func _physics_process(delta):
 		$flipper.scale.x = sign(velocity.x)
 		
 func you_died():
-	pass
+	drops()
 	
 func you_were_hit():
 	var heading = (player.global_position - global_position).normalized()

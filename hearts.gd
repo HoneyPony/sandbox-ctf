@@ -11,11 +11,17 @@ var timer = 0
 var hearts2
 var hearts3
 
+var player
+var melee
+var Block = preload("res://block.gd")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health *= 3
 	hearts2 = get_node("hearts2")
 	hearts3 = get_node("hearts3")
+	player = get_node("/root/root/player")
+	melee = player.get_node("item_swing/hit stuff")
 	pass # Replace with function body.
 	
 func number(local_health):
@@ -51,8 +57,15 @@ func _process(delta):
 func hit(body):
 	if timer > 0:
 		return
+		
+	var damage = 0
 	
-	health -= 1
+	if body == melee:
+		damage = Block.damage(player.inventory.active_item().id)
+	else:
+		damage = body.get_damage()
+	
+	health -= damage
 	if health < 1:
 		get_parent().you_died()
 		# for now
