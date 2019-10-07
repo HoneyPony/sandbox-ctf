@@ -43,6 +43,8 @@ var at_furnace = false
 
 var craft_sentinel
 
+var health = 35
+
 func notify_crafting():
 	var last = at_crafting_table
 	at_crafting_table = crafting_tables > 0
