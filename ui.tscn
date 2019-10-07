@@ -9,8 +9,8 @@
 [ext_resource path="res://inventory_box.gd" type="Script" id=7]
 [ext_resource path="res://sprite/chest_inventory.png" type="Texture" id=8]
 [ext_resource path="res://chest_box.gd" type="Script" id=9]
-[ext_resource path="res://floating_item.gd" type="Script" id=10]
-[ext_resource path="res://manage_crafting_recipes.gd" type="Script" id=11]
+[ext_resource path="res://manage_crafting_recipes.gd" type="Script" id=10]
+[ext_resource path="res://floating_item.gd" type="Script" id=11]
 [ext_resource path="res://sprite/tooltip.png" type="Texture" id=12]
 [ext_resource path="res://tooltip.gd" type="Script" id=13]
 [ext_resource path="res://crafting_tooltip.gd" type="Script" id=14]
@@ -1720,28 +1720,6 @@ text = "10"
 align = 2
 valign = 1
 
-[node name="floating_item" type="TextureRect" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = 177.944
-margin_top = 104.524
-margin_right = 217.944
-margin_bottom = 144.524
-mouse_filter = 2
-texture = ExtResource( 5 )
-script = ExtResource( 10 )
-
-[node name="count" type="Label" parent="floating_item"]
-margin_left = 0.235298
-margin_top = 13.386
-margin_right = 16.2353
-margin_bottom = 22.386
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "10"
-align = 2
-valign = 1
-
 [node name="crafting" type="Control" parent="."]
 editor/display_folded = true
 margin_right = 40.0
@@ -1752,7 +1730,7 @@ required_state = true
 
 [node name="sentinel" type="Control" parent="crafting"]
 mouse_filter = 2
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="crafting_in_1" type="TextureRect" parent="crafting"]
 margin_left = 3.0
@@ -1804,6 +1782,28 @@ margin_right = 53.0
 margin_bottom = 131.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="floating_item" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 177.944
+margin_top = 104.524
+margin_right = 217.944
+margin_bottom = 144.524
+mouse_filter = 2
+texture = ExtResource( 5 )
+script = ExtResource( 11 )
+
+[node name="count" type="Label" parent="floating_item"]
+margin_left = 0.235298
+margin_top = 13.386
+margin_right = 16.2353
+margin_bottom = 22.386
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10"
 align = 2
 valign = 1

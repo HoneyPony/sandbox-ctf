@@ -29,6 +29,11 @@ const icon_map = {
 	
 	-17: preload("res://sprite/chest_icon.png"),
 	-18: preload("res://sprite/blue_flag_icon.png"),
+	-19: preload("res://sprite/copper_bar_icon.png"),
+	
+	-20: preload("res://sprite/copper_pick_icon.png"),
+	-21: preload("res://sprite/copper_axe_icon.png"),
+	-22: preload("res://sprite/copper_shovel_icon.png"),
 }
 
 const texture_map = {
@@ -61,6 +66,11 @@ const texture_map = {
 	
 	-17: preload("res://sprite/chest_drop.png"),
 	-18: preload("res://sprite/blue_flag_drop.png"),
+	-19: preload("res://sprite/copper_bar_drop.png"),
+	
+	-20: preload("res://sprite/copper_pick_drop.png"),
+	-21: preload("res://sprite/copper_axe_drop.png"),
+	-22: preload("res://sprite/copper_shovel_drop.png"),
 }
 
 #const lore_map = {
@@ -110,6 +120,11 @@ const lore_map = {
 	
 	-17: ["Chest", "Place to store extra items"],
 	-18: ["Blue flag", "Swing to teleport home. Does not work when carrying red flag"],
+	-19: ["Copper bar", "Used to make copper tools"],
+	
+	-20: ["Copper pick", "Good improvement to mining speed"],
+	-21: ["Copper axe", "Good improvement to woodcutting speed"],
+	-22: ["Copper shovel", "Good improvement to digging speed"],
 }
 
 const CAT_DIRT = 0
@@ -147,6 +162,11 @@ const BRICK_WALL = -16
 
 const CHEST = -17
 const BLUE_FLAG = -18
+
+const COPPER_BAR = -19
+const COPPER_PICK = -20
+const COPPER_AXE = -21
+const COPPER_SHOVEL = -22
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0
@@ -238,6 +258,8 @@ static func is_stackable(id):
 		return true
 	if id == BRICK_WALL:
 		return true
+	if id == COPPER_BAR:
+		return true
 	return id >= -1
 	
 static func is_item(id):
@@ -261,6 +283,8 @@ static func category(id):
 	return CAT_ROCK
 
 static func wood_strength(id):
+	if id == COPPER_AXE:
+		return 2.3
 	if id == ROCK_AXE:
 		return 1.8
 	if id == -4:
@@ -269,6 +293,8 @@ static func wood_strength(id):
 	return 1
 	
 static func rock_strength(id):
+	if id == COPPER_PICK:
+		return 1.7
 	if id == ROCK_PICK:
 		return 1.3
 	if id == -3:
@@ -278,6 +304,8 @@ static func rock_strength(id):
 	return 0.2
 	
 static func dirt_strength(id):
+	if id == COPPER_SHOVEL:
+		return 4.5
 	if id == ROCK_SHOVEL:
 		return 3.5
 	if id == -5:

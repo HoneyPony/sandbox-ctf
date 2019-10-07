@@ -68,6 +68,12 @@ var recipes = [
 	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table(),
 	
 	Recipe.new(Block.SLEDGEHAMMER, 1, Block.WOOD, 5, Block.ROCK, 5).table(),
+	
+	Recipe.new(Block.COPPER_BAR, 1, Block.COPPER_ORE, 2).furnace(),
+	
+	Recipe.new(Block.COPPER_PICK, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
+	Recipe.new(Block.COPPER_AXE, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
+	Recipe.new(Block.COPPER_SHOVEL, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
 ]
 
 func active_item():
@@ -84,16 +90,10 @@ func _init(player_):
 		items.append(Item.new())
 	
 	give_self_debug(0, Block.ROCK_PICK)
-	give_self_debug(1, Block.CHEST)
-	give_self_debug(2, Block.PLATFORM, 20)
-	give_self_debug(3, Block.WOOD, 20)
-
-	give_self_debug(4, Block.TORCH, 50)
-	
-	
-	give_self_debug(5, Block.DIRT_WALL, 20)
-	give_self_debug(6, Block.SLEDGEHAMMER, 20)
-	give_self_debug(7, Block.BRICK_WALL, 20)
+	give_self_debug(1, Block.COPPER_ORE, 50)
+	give_self_debug(2, Block.FURNACE, 1)
+	give_self_debug(3, Block.CRAFT_TABLE, 1)
+	give_self_debug(4, Block.WOOD, 50)
 	
 	give_self_debug(9, Block.BLUE_FLAG, 1)
 		
@@ -121,7 +121,7 @@ func check_recipe(recipe):
 # Returns whether you can make another of the same recipe.
 func make_recipe(recipe):
 	# Don't make if we're already floating (TODO: make another?)
-	if floating_item.id != -1:
+	if floating_item.id != -1 and floating_item.id != recipe.output or not Block.is_stackable(floating_item.id):
 		return true
 		
 	if !check_recipe(recipe):
@@ -158,8 +158,11 @@ func make_recipe(recipe):
 				items[slot].id = -1
 	
 	floating_item.id = recipe.output
-	floating_item.count = recipe.output_count
-	
+	if floating_item.id == recipe.output:
+		floating_item.count += recipe.output_count
+	else:
+		floating_item.count = recipe.output_count
+		
 	return check_recipe(recipe)
 			
 # Returns whether there is a floating item.

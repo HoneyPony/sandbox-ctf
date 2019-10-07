@@ -75,6 +75,8 @@ func _process(delta):
 			var result = player.inventory.make_recipe(recipe)
 			if !result:
 				get_parent().create_recipe_ui()
+			else:
+				get_parent().check_again()
 			used_mouse = true
 	else:
 		used_mouse = false

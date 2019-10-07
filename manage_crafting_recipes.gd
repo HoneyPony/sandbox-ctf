@@ -7,6 +7,8 @@ extends Node
 var player
 var waiting = true
 
+var possible_recipes = 0
+
 var CraftingOption = preload("res://crafting_option.tscn")
 var tooltip
 
@@ -31,8 +33,11 @@ func create_recipe_ui():
 	var x = 70
 	var total = 0
 	
+	possible_recipes = 0
+	
 	for recipe in player.inventory.recipes:
 		if player.inventory.check_recipe(recipe):
+			possible_recipes += 1
 			var option = CraftingOption.instance()
 			option.recipe = recipe
 			option.rect_position.x = x
@@ -46,6 +51,15 @@ func create_recipe_ui():
 			
 	for c in get_children():
 		c.min_position = c.max_position - total
+		
+func check_again():
+	var total = 0
+	for recipe in player.inventory.recipes:
+		if player.inventory.check_recipe(recipe):
+			total += 1
+			
+	if total != possible_recipes:
+		create_recipe_ui()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

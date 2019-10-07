@@ -32,16 +32,17 @@ const PLACE = 4
 var next_audio = HIT_NOTHING
 
 func consume_audio():
-	if next_audio == HIT_DIRT:
-		$hit_dirt.play()
-	if next_audio == HIT_ROCK:
-		$hit_rock.play()
-	if next_audio == HIT_WOOD:
-		$hit_wood.play()
-	if next_audio == HIT_NOTHING:
-		$hit_nothing.play()
-	if next_audio == PLACE:
-		$place.play()
+	if not player.inventory_open:
+		if next_audio == HIT_DIRT:
+			$hit_dirt.play()
+		if next_audio == HIT_ROCK:
+			$hit_rock.play()
+		if next_audio == HIT_WOOD:
+			$hit_wood.play()
+		if next_audio == HIT_NOTHING:
+			$hit_nothing.play()
+		if next_audio == PLACE:
+			$place.play()
 	next_audio = HIT_NOTHING
 	pass
 

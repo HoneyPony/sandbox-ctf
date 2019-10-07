@@ -561,81 +561,81 @@ func _ready():
 		ground_sweep = result[0]
 		allowed = result[1]
 			
-	for i in range(0, 45):
-		ground_coal(rand(-400, 400), ROCK)
-
-	for i in range(0, 25):
-		ground_coal(rand(-400, 400), ROCK, 10)
-
-	for i in range(0, 25):
-		ground_coal(rand(-400, 400), COAL)
-
-# Note to self: the shapes created by underground_ore are really interesting
-# when not filled in
-	for x in range(-400, 400):
-		var stop = rand(40, 60)
-		var sy = -40
-		while get_cell(x, sy) == -1:
-			sy += 1
-		sy += 3
-		if sy < 0:
-			sy = 0
-		for y in range(sy, stop):
-			plot(x, y, DIRT)
-			
-		var rate = 200
-			
-		for y in range(stop, 200):
-			# Decrease density as we descend
-			if rand(0, 200) < rate:
-				plot(x, y, ROCK)
-			rate -= 1
-		
-	for i in range(0, 100):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(40, 60)
-		var ty = DIRT
-		if rand(0, 1) == 0:
-			ty = ROCK
-		circle(Vector2(x, y), rand(6, 20), ty)
-		
-	for i in range(0, 900):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(40, 400 - 20)
-		
-		circle(Vector2(x, y), rand(6, 20), ROCK)
-		
-	for i in range(0, rand(4, 7)):
-		var x = rand(-400, 400)
-		var y = -40
-		while get_cell(x, y) == -1:
-			y += 1 
-		cave_snake(x, y)
-		
-	for i in range(0, 20):
-		var x = rand(-400, 400)
-		var y = rand(20, 300)
-		cave_snake(x, y)
-		
-	for i in range(0, 400):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(40, 400 - 20)
-		underground_ore(x, y, DIRT)
-		
-	for i in range(0, 600):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(20, 400)
-		underground_ore(x, y, ROCK)
-		
-	for i in range(0, 400):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(20, 400)
-		underground_ore(x, y, Block.COAL, 3, 7)
-		
-	for i in range(0, 250):
-		var x = rand(-400 + 20, 400 - 20)
-		var y = rand(20, 400)
-		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+#	for i in range(0, 45):
+#		ground_coal(rand(-400, 400), ROCK)
+#
+#	for i in range(0, 25):
+#		ground_coal(rand(-400, 400), ROCK, 10)
+#
+#	for i in range(0, 25):
+#		ground_coal(rand(-400, 400), COAL)
+#
+## Note to self: the shapes created by underground_ore are really interesting
+## when not filled in
+#	for x in range(-400, 400):
+#		var stop = rand(40, 60)
+#		var sy = -40
+#		while get_cell(x, sy) == -1:
+#			sy += 1
+#		sy += 3
+#		if sy < 0:
+#			sy = 0
+#		for y in range(sy, stop):
+#			plot(x, y, DIRT)
+#
+#		var rate = 200
+#
+#		for y in range(stop, 200):
+#			# Decrease density as we descend
+#			if rand(0, 200) < rate:
+#				plot(x, y, ROCK)
+#			rate -= 1
+#
+#	for i in range(0, 100):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(40, 60)
+#		var ty = DIRT
+#		if rand(0, 1) == 0:
+#			ty = ROCK
+#		circle(Vector2(x, y), rand(6, 20), ty)
+#
+#	for i in range(0, 900):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(40, 400 - 20)
+#
+#		circle(Vector2(x, y), rand(6, 20), ROCK)
+#
+#	for i in range(0, rand(4, 7)):
+#		var x = rand(-400, 400)
+#		var y = -40
+#		while get_cell(x, y) == -1:
+#			y += 1 
+#		cave_snake(x, y)
+#
+#	for i in range(0, 20):
+#		var x = rand(-400, 400)
+#		var y = rand(20, 300)
+#		cave_snake(x, y)
+#
+#	for i in range(0, 400):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(40, 400 - 20)
+#		underground_ore(x, y, DIRT)
+#
+#	for i in range(0, 600):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(20, 400)
+#		underground_ore(x, y, ROCK)
+#
+#	for i in range(0, 400):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(20, 400)
+#		underground_ore(x, y, Block.COAL, 3, 7)
+#
+#	for i in range(0, 250):
+#		var x = rand(-400 + 20, 400 - 20)
+#		var y = rand(20, 400)
+#		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
 		
 	#castle(-375, 0)
 		
