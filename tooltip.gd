@@ -20,6 +20,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !player.inventory_open:
+		visible = false
+		return
+	
 	var source = player.inventory.items
 	if track_chest:
 		if player.current_chest == null:

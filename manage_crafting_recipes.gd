@@ -58,8 +58,26 @@ func check_again():
 		if player.inventory.check_recipe(recipe):
 			total += 1
 			
-	if total != possible_recipes:
-		create_recipe_ui()
+	if total > possible_recipes:
+		var delta = total - possible_recipes
+		var x = get_children()[get_children().size() - 1].rect_position.x + 19
+		for c in get_children():
+			c.min_position -= delta * 19
+		for recipe in player.inventory.recipes:
+			var exists = false
+			for c in get_children():
+				if c.recipe == recipe:
+					exists = true
+					break
+			if not exists:
+				possible_recipes += 1
+				var option = CraftingOption.instance()
+				option.recipe = recipe
+				option.rect_position.x = x
+				option.max_position = x
+				option.min_position = option.max_position - total * 19
+				add_child(option)
+				x += 19
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -67,5 +85,6 @@ func _process(delta):
 		if waiting:
 			waiting = false
 			create_recipe_ui()
+		#check_again()
 	else:
 		waiting = true

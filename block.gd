@@ -42,6 +42,8 @@ const icon_map = {
 	-26: preload("res://sprite/energy_particle_icon.png"),
 	-27: preload("res://sprite/javelin_icon.png"),
 	
+	-28: preload("res://sprite/red_flag_icon.png"),
+	
 }
 
 const texture_map = {
@@ -86,6 +88,8 @@ const texture_map = {
 	
 	-26: preload("res://sprite/energy_particle_drop.png"),
 	-27: preload("res://sprite/javelin_drop.png"),
+	
+	-28: preload("res://sprite/red_flag_drop.png"),
 }
 
 #const lore_map = {
@@ -147,6 +151,8 @@ const lore_map = {
 	
 	-26: ["Energy particle", "Heals one-half heart"],
 	-27: ["Javelin", "Throw to do 2 damage to enemies"],
+	
+	-28: ["Red flag", "Take this back to your base to win!"],
 }
 
 const CAT_DIRT = 0
@@ -196,6 +202,7 @@ const COPPER_SWORD = -25
 
 const ENERGY_PART = -26
 const JAVELIN = -27
+const RED_FLAG = -28
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0

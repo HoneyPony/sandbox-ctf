@@ -3,5 +3,6 @@
 [ext_resource path="res://make_tree.gd" type="Script" id=1]
 
 [node name="tree" type="Node2D"]
+use_parent_material = true
 z_index = -1
 script = ExtResource( 1 )

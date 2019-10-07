@@ -389,7 +389,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="0" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -1606,6 +1605,7 @@ align = 2
 valign = 1
 
 [node name="chest_inventory" type="TextureRect" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 margin_left = 174.0
 margin_top = 27.0
@@ -1710,6 +1710,468 @@ margin_bottom = 40.0
 texture = ExtResource( 5 )
 
 [node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 1/2/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="3" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
+editor/display_folded = true
+margin_left = 51.0
+margin_right = 67.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/3"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/3/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 1/3/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="4" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
+editor/display_folded = true
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/4"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/4/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 1/4/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="5" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
+editor/display_folded = true
+margin_left = 85.0
+margin_right = 101.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/5"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 1/5/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 1/5/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="row 2" type="HBoxContainer" parent="chest_inventory/VBoxContainer"]
+margin_top = 25.0
+margin_right = 1018.0
+margin_bottom = 49.0
+mouse_filter = 2
+custom_constants/separation = 1
+
+[node name="6" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_right = 16.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/6"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/6/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/6/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="7" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_left = 17.0
+margin_right = 33.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/7"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/7/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/7/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="8" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_left = 34.0
+margin_right = 50.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/8"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/8/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/8/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="9" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_left = 51.0
+margin_right = 67.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/9"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/9/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/9/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="10" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/10"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/10/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/10/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="11" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
+editor/display_folded = true
+margin_left = 85.0
+margin_right = 101.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/11"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 2/11/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 2/11/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="row 3" type="HBoxContainer" parent="chest_inventory/VBoxContainer"]
+margin_top = 50.0
+margin_right = 1018.0
+margin_bottom = 74.0
+mouse_filter = 2
+custom_constants/separation = 1
+
+[node name="12" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_right = 16.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/12"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/12/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/12/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="13" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_left = 17.0
+margin_right = 33.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/13"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/13/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/13/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="14" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_left = 34.0
+margin_right = 50.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/14"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/14/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/14/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="15" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_left = 51.0
+margin_right = 67.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/15"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/15/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/15/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="16" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/16"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/16/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/16/frame"]
+margin_left = -0.0352573
+margin_top = 14.7387
+margin_right = 15.9647
+margin_bottom = 23.7387
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="17" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
+editor/display_folded = true
+margin_left = 85.0
+margin_right = 101.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+script = ExtResource( 9 )
+
+[node name="frame" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/17"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="icon" type="TextureRect" parent="chest_inventory/VBoxContainer/row 3/17/frame"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="count" type="Label" parent="chest_inventory/VBoxContainer/row 3/17/frame"]
 margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
@@ -1842,6 +2304,7 @@ align = 1
 autowrap = true
 
 [node name="crafting_tooltip" type="TextureRect" parent="."]
+editor/display_folded = true
 visible = false
 margin_right = 86.0
 margin_bottom = 101.0
@@ -2144,3 +2607,33 @@ script = ExtResource( 16 )
 [connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 1/1" to="chest_inventory/VBoxContainer/row 1/1" method="mouse_exit"]
 [connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 1/2" to="chest_inventory/VBoxContainer/row 1/2" method="mouse_enter"]
 [connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 1/2" to="chest_inventory/VBoxContainer/row 1/2" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 1/3" to="chest_inventory/VBoxContainer/row 1/3" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 1/3" to="chest_inventory/VBoxContainer/row 1/3" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 1/4" to="chest_inventory/VBoxContainer/row 1/4" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 1/4" to="chest_inventory/VBoxContainer/row 1/4" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 1/5" to="chest_inventory/VBoxContainer/row 1/5" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 1/5" to="chest_inventory/VBoxContainer/row 1/5" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/6" to="chest_inventory/VBoxContainer/row 2/6" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/6" to="chest_inventory/VBoxContainer/row 2/6" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/7" to="chest_inventory/VBoxContainer/row 2/7" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/7" to="chest_inventory/VBoxContainer/row 2/7" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/8" to="chest_inventory/VBoxContainer/row 2/8" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/8" to="chest_inventory/VBoxContainer/row 2/8" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/9" to="chest_inventory/VBoxContainer/row 2/9" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/9" to="chest_inventory/VBoxContainer/row 2/9" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/10" to="chest_inventory/VBoxContainer/row 2/10" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/10" to="chest_inventory/VBoxContainer/row 2/10" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 2/11" to="chest_inventory/VBoxContainer/row 2/11" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 2/11" to="chest_inventory/VBoxContainer/row 2/11" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/12" to="chest_inventory/VBoxContainer/row 3/12" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/12" to="chest_inventory/VBoxContainer/row 3/12" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/13" to="chest_inventory/VBoxContainer/row 3/13" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/13" to="chest_inventory/VBoxContainer/row 3/13" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/14" to="chest_inventory/VBoxContainer/row 3/14" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/14" to="chest_inventory/VBoxContainer/row 3/14" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/15" to="chest_inventory/VBoxContainer/row 3/15" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/15" to="chest_inventory/VBoxContainer/row 3/15" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/16" to="chest_inventory/VBoxContainer/row 3/16" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/16" to="chest_inventory/VBoxContainer/row 3/16" method="mouse_exit"]
+[connection signal="mouse_entered" from="chest_inventory/VBoxContainer/row 3/17" to="chest_inventory/VBoxContainer/row 3/17" method="mouse_enter"]
+[connection signal="mouse_exited" from="chest_inventory/VBoxContainer/row 3/17" to="chest_inventory/VBoxContainer/row 3/17" method="mouse_exit"]

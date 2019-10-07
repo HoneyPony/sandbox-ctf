@@ -17,6 +17,8 @@ var on_ground = false
 
 var jump_timer = 0
 
+export var may_have_flag = false
+
 export var acceleration = 60
 
 export var max_speed = 30
@@ -28,7 +30,7 @@ func spawn_pickup(id):
 	var x = round(position.x / 4)
 	var y = round(position.y / 4)
 	var pickup = ItemPickup.instance()
-	get_node("/root/root").add_child(pickup)
+	get_node("/root/root").call_deferred("add_child", pickup)
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 	
@@ -36,18 +38,26 @@ func rand(a, b):
 	return round(rand_range(a, b))
 	
 func drops():
-	var drop_type = rand(0, 3)
-	if drop_type == 0:
-		for i in range(1, 3):
-			spawn_pickup(Block.ENERGY_PART)
-	if drop_type == 1:
-		for i in range(5, 9):
-			spawn_pickup(Block.JAVELIN)
-	if drop_type == 2:
-		for i in range(0, 4):
-			spawn_pickup(Block.WOOD)
-		for i in range(0, 2):
-			spawn_pickup(Block.COAL)
+	if may_have_flag:
+		var drop_type = rand(0, 9)
+		if drop_type == 7:
+			spawn_pickup(Block.RED_FLAG)
+		if drop_type < 4:
+			for i in range(5, 9):
+				spawn_pickup(Block.JAVELIN)
+	else:
+		var drop_type = rand(0, 3)
+		if drop_type == 0:
+			for i in range(1, 3):
+				spawn_pickup(Block.ENERGY_PART)
+		if drop_type == 1:
+			for i in range(5, 9):
+				spawn_pickup(Block.JAVELIN)
+		if drop_type == 2:
+			for i in range(0, 4):
+				spawn_pickup(Block.WOOD)
+			for i in range(0, 2):
+				spawn_pickup(Block.COAL)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

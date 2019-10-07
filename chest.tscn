@@ -7,10 +7,12 @@
 [node name="chest" type="Node2D" groups=[
 "special",
 ]]
+use_parent_material = true
 script = ExtResource( 1 )
 mode = 2
 
 [node name="sprite" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 4, 0 )
 z_index = -1
 texture = ExtResource( 2 )

@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprite_ai.gd" type="Script" id=1]
+[ext_resource path="res://sprite/sprite.png" type="Texture" id=2]
+[ext_resource path="res://sprite/heart.png" type="Texture" id=3]
+[ext_resource path="res://hearts.gd" type="Script" id=4]
+[ext_resource path="res://sound/hit_enemy.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly"
+length = 0.6
+loop = true
+step = 0.38
+tracks/0/type = "value"
+tracks/0/path = NodePath("flipper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.08, 0.38 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "hop"
+}, {
+"args": [  ],
+"method": "hop"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.5
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.03914
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 6.39335
+
+[node name="sprite" type="KinematicBody2D" groups=[
+"enemies",
+]]
+use_parent_material = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+max_speed = 46
+
+[node name="flipper" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Sprite" type="Sprite" parent="flipper"]
+modulate = Color( 0.972549, 0.639216, 1, 1 )
+use_parent_material = true
+position = Vector2( 2, -1.5 )
+texture = ExtResource( 2 )
+hframes = 8
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fly = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="attacker" type="KinematicBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attacker"]
+shape = SubResource( 4 )
+
+[node name="hearts" type="Sprite" parent="."]
+position = Vector2( 0, -6 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 11, 3 )
+script = ExtResource( 4 )
+health = 13
+
+[node name="heart_area" type="Area2D" parent="hearts"]
+collision_layer = 262144
+collision_mask = 262144
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
+position = Vector2( 0.0356483, 6.0245 )
+shape = SubResource( 3 )
+
+[node name="hit" type="AudioStreamPlayer" parent="hearts"]
+stream = ExtResource( 5 )
+
+[node name="hearts2" type="Sprite" parent="hearts"]
+position = Vector2( 0, -4 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
+
+[node name="hearts3" type="Sprite" parent="hearts"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
+[connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

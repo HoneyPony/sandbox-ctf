@@ -78,6 +78,18 @@ var recipes = [
 	Recipe.new(Block.COPPER_SHOVEL, 1, Block.WOOD, 5, Block.COPPER_BAR, 3).table(),
 	Recipe.new(Block.COPPER_SWORD, 1, Block.WOOD, 5, Block.COPPER_BAR, 5).table(),
 	
+	Recipe.new(Block.DIRT_WALL, 4, Block.DIRT, 1).table(),
+	Recipe.new(Block.ROCK_WALL, 4, Block.ROCK, 1).table(),
+	Recipe.new(Block.WOOD_WALL, 4, Block.WOOD, 1).table(),
+	Recipe.new(Block.BRICK_WALL, 4, Block.BRICK, 1).table(),
+	
+	Recipe.new(Block.DIRT, 1, Block.DIRT_WALL, 4).table(),
+	Recipe.new(Block.ROCK, 1, Block.ROCK_WALL, 4).table(),
+	Recipe.new(Block.WOOD, 1, Block.WOOD_WALL, 4).table(),
+	Recipe.new(Block.BRICK, 1, Block.BRICK_WALL, 4).table(),
+	
+	Recipe.new(Block.CHEST, 1, Block.WOOD, 10).table()
+	
 ]
 
 func active_item():
@@ -92,17 +104,6 @@ func _init(player_):
 	floating_item = Item.new()
 	for i in range(0, 40):
 		items.append(Item.new())
-	
-	give_self_debug(0, Block.ROCK_PICK)
-	give_self_debug(1, Block.COPPER_ORE, 50)
-	give_self_debug(2, Block.FURNACE, 1)
-	give_self_debug(3, Block.CRAFT_TABLE, 1)
-	give_self_debug(4, Block.WOOD, 50)
-	
-	give_self_debug(5, Block.ENERGY_PART, 50)
-	give_self_debug(6, Block.JAVELIN, 50)
-	
-	give_self_debug(7, Block.COPPER_SWORD, 1)
 	
 	give_self_debug(9, Block.BLUE_FLAG, 1)
 		

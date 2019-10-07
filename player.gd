@@ -103,7 +103,10 @@ func _ready():
 	pass # Replace with function body
 	
 func spawn():
-	
+	if inventory != null:
+		for item in inventory.items:
+			if item.id == Block.RED_FLAG:
+				return
 	position = get_node("/root/root/spawn_point").position + Vector2(4, -5)
 	horizontal_v = 0
 	vertical_v = 0
@@ -243,8 +246,12 @@ func hit(body):
 	if health < 0:
 		var permadeath = get_node("/root/global").permadeath
 		if permadeath:
-			get_tree().change_scene("res://menu.tscn")
+			get_tree().change_scene("res://lose.tscn")
 		else:
+			for item in inventory.items:
+				if item.id == Block.RED_FLAG:
+					item.id = -1
+					item.count = 0
 			health = 40
 			spawn()
 	$hit.play()

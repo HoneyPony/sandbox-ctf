@@ -30,6 +30,7 @@ func spawn_pickups():
 		
 
 func _init():
+	items = []
 	for i in range(0, 18):
 		items.append(Inv.Item.new())
 

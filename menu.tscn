@@ -2,10 +2,10 @@
 
 [ext_resource path="res://set_shrink.gd" type="Script" id=1]
 [ext_resource path="res://sprite/menu.png" type="Texture" id=2]
-[ext_resource path="res://sprite/menu_play.png" type="Texture" id=3]
-[ext_resource path="res://menu_button.gd" type="Script" id=4]
-[ext_resource path="res://sprite/menu_play_perma.png" type="Texture" id=5]
-[ext_resource path="res://sprite/menu_help.png" type="Texture" id=6]
+[ext_resource path="res://sprite/title.png" type="Texture" id=3]
+[ext_resource path="res://sprite/menu_play.png" type="Texture" id=4]
+[ext_resource path="res://menu_button.gd" type="Script" id=5]
+[ext_resource path="res://sprite/menu_play_perma.png" type="Texture" id=6]
 
 [node name="Node2D" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -30,32 +30,29 @@ margin_right = 512.0
 margin_bottom = 300.0
 mouse_filter = 2
 
-[node name="play_normal" type="TextureRect" parent="CenterContainer/Control"]
-margin_left = -224.765
-margin_top = -155.379
-margin_right = 165.235
-margin_bottom = -68.379
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Control"]
+margin_left = -253.288
+margin_top = -135.743
+margin_right = 186.712
+margin_bottom = -44.7434
 texture = ExtResource( 3 )
-script = ExtResource( 4 )
+
+[node name="play_normal" type="TextureRect" parent="CenterContainer/Control"]
+margin_left = -232.0
+margin_top = -20.0
+margin_right = 158.0
+margin_bottom = 67.0
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="play_perma" type="TextureRect" parent="CenterContainer/Control"]
-margin_left = -224.765
-margin_top = -49.4931
-margin_right = 245.235
-margin_bottom = 37.5069
-texture = ExtResource( 5 )
-script = ExtResource( 4 )
-
-[node name="help" type="TextureRect" parent="CenterContainer/Control"]
-margin_left = -224.765
-margin_top = 48.2531
-margin_right = 245.235
-margin_bottom = 135.253
+margin_left = -232.0
+margin_top = 85.8859
+margin_right = 238.0
+margin_bottom = 172.886
 texture = ExtResource( 6 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 [connection signal="mouse_entered" from="CenterContainer/Control/play_normal" to="CenterContainer/Control/play_normal" method="mouse_enter"]
 [connection signal="mouse_exited" from="CenterContainer/Control/play_normal" to="CenterContainer/Control/play_normal" method="mouse_exit"]
 [connection signal="mouse_entered" from="CenterContainer/Control/play_perma" to="CenterContainer/Control/play_perma" method="mouse_enter"]
 [connection signal="mouse_exited" from="CenterContainer/Control/play_perma" to="CenterContainer/Control/play_perma" method="mouse_exit"]
-[connection signal="mouse_entered" from="CenterContainer/Control/help" to="CenterContainer/Control/help" method="mouse_enter"]
-[connection signal="mouse_exited" from="CenterContainer/Control/help" to="CenterContainer/Control/help" method="mouse_exit"]

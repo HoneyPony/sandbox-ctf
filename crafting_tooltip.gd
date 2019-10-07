@@ -18,6 +18,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !player.inventory_open:
+		visible = false
+		return
+	
 	if active_node == null:
 		visible = false
 		return

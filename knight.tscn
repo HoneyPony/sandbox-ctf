@@ -164,29 +164,36 @@ radius = 5.07286
 height = 5.0
 
 [node name="knight" type="KinematicBody2D"]
+use_parent_material = true
 collision_layer = 16384
 collision_mask = 16385
 script = ExtResource( 1 )
+may_have_flag = true
 max_speed = 40
 
 [node name="flipper" type="Node2D" parent="."]
+use_parent_material = true
 scale = Vector2( -1, 1 )
 
 [node name="sprite" type="Sprite" parent="flipper"]
+use_parent_material = true
 texture = ExtResource( 2 )
 
 [node name="node" type="Node2D" parent="flipper"]
 visible = false
+use_parent_material = true
 position = Vector2( -2.49536, 0.926847 )
 rotation = 1.22173
 
 [node name="arm" type="Sprite" parent="flipper/node"]
+use_parent_material = true
 position = Vector2( 3.72173, -4.96148 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="arm2" type="Sprite" parent="flipper/node"]
 visible = false
+use_parent_material = true
 position = Vector2( -1.07232, -4.99044 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )

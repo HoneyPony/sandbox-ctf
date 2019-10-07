@@ -4,6 +4,7 @@
 [ext_resource path="res://tile_sprite.gd" type="Script" id=2]
 
 [node name="leaf" type="Sprite"]
+use_parent_material = true
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true

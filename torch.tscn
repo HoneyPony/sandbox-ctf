@@ -24,14 +24,16 @@ tracks/0/keys = {
 [node name="torch" type="Node2D" groups=[
 "special",
 ]]
+use_parent_material = true
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 2, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 hframes = 8
-frame = 3
+frame = 2
 
 [node name="animation" type="AnimationPlayer" parent="sprite"]
 anims/fire = SubResource( 3 )

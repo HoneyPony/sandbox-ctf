@@ -9,6 +9,14 @@ var tiles
 
 var basic_knight
 var sprite
+var mean_sprite
+var knight
+
+func hard_territory():
+	return player.position.x > 0 or player.position.y < -400
+	
+func very_hard_territory():
+	return player.position.x > 100
 
 var spawn_timer = 0
 
@@ -17,7 +25,7 @@ func rand(a, b):
 
 func get_enemy_rate():
 	if player.position.y < 15:
-		return rand(8, 18)
+		return rand(11, 23)
 	else:
 		return rand(4, 8)
 	
@@ -28,16 +36,28 @@ func _ready():
 	tiles = get_node("/root/root/tiles")
 	
 	basic_knight = load("res://basic_knight.tscn")
+	mean_sprite = load("res://mean_sprite.tscn")
+	knight = load("res://knight.tscn")
 	sprite = load("res://sprite.tscn")
 	
 func spawn(x, y):
 	print("spawning at ", x, ", ", y)
 	spawn_timer = get_enemy_rate()
 	var instance
-	if rand(0, 2) == 0:
-		instance = basic_knight.instance()
+	if rand(0, 2) <= 0:
+		if very_hard_territory() and rand(0, 1) == 0:
+			instance = knight.instance()
+		elif hard_territory() and rand(0, 2) == 0:
+			instance = knight.instance()
+		else:
+			instance = basic_knight.instance()
 	else:
-		instance = sprite.instance()
+		if very_hard_territory() and rand(0, 1) == 0:
+			instance = mean_sprite.instance()
+		elif hard_territory() and rand(0, 2) == 0:
+			instance = mean_sprite.instance()
+		else:
+			instance = sprite.instance()
 	instance.position = Vector2(x, y) * 4
 	get_node("/root/root").add_child(instance)
 	pass
@@ -50,6 +70,7 @@ func try_vertical(start, end, start_y, end_y):
 	
 	var candidate = Vector2(0, 0)
 	var has_candidate = false
+	var candidate_brick = false
 	
 	for x in range(sx, ex + 1):
 		for y in range(sy, ey + 1):
@@ -71,12 +92,20 @@ func try_vertical(start, end, start_y, end_y):
 				continue
 				
 			var test = Vector2(x, y)
+			var brick = tiles.get_cell(x, y) == 8
 			if has_candidate:
-				if (test - player.position).length_squared() < (candidate - player.position).length_squared():
-					candidate = test
+				if candidate_brick == brick:
+					if (test - player.position).length_squared() < (candidate - player.position).length_squared():
+						candidate = test
+						candidate_brick = brick
+				elif brick and not candidate_brick:
+					if (test - player.position).length_squared() < (candidate - player.position).length_squared():
+						candidate = test
+						candidate_brick = brick
 			else:
 				candidate = test
 				has_candidate = true
+				candidate_brick = brick
 	if has_candidate:
 		spawn(candidate.x, candidate.y)
 		return true

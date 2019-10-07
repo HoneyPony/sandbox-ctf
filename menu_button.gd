@@ -25,6 +25,8 @@ func _process(delta):
 		if name == "play_perma":
 			get_node("/root/global").permadeath = true
 			get_tree().change_scene("res://main.tscn")
+		if name == "ok":
+			get_tree().change_scene("res://menu.tscn")
 		
 
 func mouse_enter():

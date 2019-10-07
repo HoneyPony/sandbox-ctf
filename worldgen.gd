@@ -16,6 +16,9 @@ var Block = preload("res://block.gd")
 
 var walls
 
+var X_BOUND = 300
+var Y_BOUND = 350
+
 func put_chest(x, y, items):
 	var table = load("res://chest.tscn").instance()
 	get_node("/root/root").call_deferred("add_child", table)
@@ -31,8 +34,8 @@ func put_chest(x, y, items):
 	
 	for i in items:
 		var arr: Array = i
-		chest.items[slot].id = i[0]
-		chest.items[slot].count = i[1]
+		chest.items[slot].id = int(i[0])
+		chest.items[slot].count = int(i[1])
 	
 
 func snap_number(num, count):
@@ -41,6 +44,8 @@ func snap_number(num, count):
 	return res
 
 func handle(x, y, id):
+	if id == 10 or id == 11:
+		return Vector2(0, 0)
 	var n = Block.tiles(id)
 	return Vector2(snap_number(x, n), snap_number(y, n))
 
@@ -135,8 +140,8 @@ func fill_poly(points: Array, type, noisy = false):
 			if filling:
 				plot(x, y, type)
 				
-var last_tree = -400
-var last_run = -800
+var last_tree = -X_BOUND
+var last_run = -10000
 var tree_run = 0
 
 func finish_tree(x, y):
@@ -178,8 +183,8 @@ func hill(s):
 	if s.y - delta < -40:
 		delta = -40 - s.y
 	
-	if s.x + width > 400:
-		width = 400 - s.x
+	if s.x + width > X_BOUND:
+		width = X_BOUND - s.x
 	
 	for x in range(0, width + 1):
 		var z = (2 * x - width) / width
@@ -201,8 +206,8 @@ func left_cliff(s):
 	if s.y + height < -40:
 		height = -40 - s.y
 		
-	if s.x + width > 400:
-		width = 400 - s.x
+	if s.x + width > X_BOUND:
+		width = X_BOUND - s.x
 		
 	var type = GRASS
 	
@@ -233,8 +238,8 @@ func right_cliff(s):
 	if s.y + height < -40:
 		height = -40 - s.y
 		
-	if s.x + width > 400:
-		width = 400 - s.x
+	if s.x + width > X_BOUND:
+		width = X_BOUND - s.x
 		
 	var type = DIRT
 	
@@ -260,8 +265,8 @@ func flat(s):
 	
 	var delta = 0
 	
-	if s.x + width > 400:
-		width = 400 - s.x
+	if s.x + width > X_BOUND:
+		width = X_BOUND - s.x
 	
 	for x in range(0, width + 1):
 		if rand(0, 2) == 2:
@@ -281,8 +286,8 @@ func bumpy(s):
 	
 	var delta = 0
 	
-	if s.x + width > 400:
-		width = 400 - s.x
+	if s.x + width > X_BOUND:
+		width = X_BOUND - s.x
 	
 	for x in range(0, width + 1):
 		if rand(0, 2) == 2:
@@ -545,6 +550,35 @@ func arch(sx, sy, width, height):
 		var start = ceil(height * sqrt(1 - t * t))
 		for y in range(sy + height, sy + start):
 			plot(x, y, Block.BRICK)
+		for y in range(sy + start, sy):
+			plot(x, y, -1)
+			
+func chest_underground():
+	var sx = rand(-400, 400)
+	var sy = rand(50, 400)
+	var width = rand(10, 20)
+	var height = rand(10, 20)
+	
+	for x in range(sx, sx + width + 1):
+		plot(x, sy, Block.WOOD)
+		plot(x, sy + height, Block.WOOD)
+	for y in range(sy, sy + height + 1):
+		plot(sx, y, Block.WOOD)
+		plot(sx + width, y, Block.WOOD)
+		
+	for x in range(sx + 1, sx + width):
+		for y in range(sy + 1, sy + height):
+			plot(x, y, -1)
+			plot_wall(x, y, Block.ROCK_WALL)
+			
+	var treasure = []
+	if rand(0, 1) == 0:
+		treasure.append([Block.JAVELIN, rand(10, 30)])
+	if rand(0, 1) == 0:
+		treasure.append([Block.ENERGY_PART, rand(3, 10)])
+	if rand(0, 2) == 0:
+		treasure.append([Block.COPPER_BAR, rand(5, 11)])
+	put_chest(sx + int(width / 2), sy + height - 1, treasure)
 
 func _ready():
 	Tree = load("res://tree.tscn")
@@ -553,94 +587,114 @@ func _ready():
 	
 	randomize()
 	
-	var ground_sweep = Vector2(-400, 0)
+	var ground_sweep = Vector2(-X_BOUND, 0)
 	var allowed = [0, 1, 2, 3]
-	while ground_sweep.x < 400:
+	while ground_sweep.x < X_BOUND:
 		var next = allowed[rand(0, allowed.size() - 1)]
 		var result = ground(next, ground_sweep)
 		ground_sweep = result[0]
 		allowed = result[1]
 			
-#	for i in range(0, 45):
-#		ground_coal(rand(-400, 400), ROCK)
-#
-#	for i in range(0, 25):
-#		ground_coal(rand(-400, 400), ROCK, 10)
-#
-#	for i in range(0, 25):
-#		ground_coal(rand(-400, 400), COAL)
-#
-## Note to self: the shapes created by underground_ore are really interesting
-## when not filled in
-#	for x in range(-400, 400):
-#		var stop = rand(40, 60)
-#		var sy = -40
-#		while get_cell(x, sy) == -1:
-#			sy += 1
-#		sy += 3
-#		if sy < 0:
-#			sy = 0
-#		for y in range(sy, stop):
-#			plot(x, y, DIRT)
-#
-#		var rate = 200
-#
-#		for y in range(stop, 200):
-#			# Decrease density as we descend
-#			if rand(0, 200) < rate:
-#				plot(x, y, ROCK)
-#			rate -= 1
-#
-#	for i in range(0, 100):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(40, 60)
-#		var ty = DIRT
-#		if rand(0, 1) == 0:
-#			ty = ROCK
-#		circle(Vector2(x, y), rand(6, 20), ty)
-#
-#	for i in range(0, 900):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(40, 400 - 20)
-#
-#		circle(Vector2(x, y), rand(6, 20), ROCK)
-#
-#	for i in range(0, rand(4, 7)):
-#		var x = rand(-400, 400)
-#		var y = -40
-#		while get_cell(x, y) == -1:
-#			y += 1 
-#		cave_snake(x, y)
-#
-#	for i in range(0, 20):
-#		var x = rand(-400, 400)
-#		var y = rand(20, 300)
-#		cave_snake(x, y)
-#
-#	for i in range(0, 400):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(40, 400 - 20)
-#		underground_ore(x, y, DIRT)
-#
-#	for i in range(0, 600):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(20, 400)
-#		underground_ore(x, y, ROCK)
-#
-#	for i in range(0, 400):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(20, 400)
-#		underground_ore(x, y, Block.COAL, 3, 7)
-#
-#	for i in range(0, 250):
-#		var x = rand(-400 + 20, 400 - 20)
-#		var y = rand(20, 400)
-#		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+	for i in range(0, 45):
+		ground_coal(rand(-X_BOUND, X_BOUND), ROCK)
+
+	for i in range(0, 25):
+		ground_coal(rand(-X_BOUND, X_BOUND), ROCK, 10)
+
+	for i in range(0, 25):
+		ground_coal(rand(-X_BOUND, X_BOUND), COAL)
+		
+	
+
+# Note to self: the shapes created by underground_ore are really interesting
+# when not filled in
+	for x in range(-X_BOUND, X_BOUND):
+		var stop = rand(40, 60)
+		var sy = -40
+		while get_cell(x, sy) == -1:
+			sy += 1
+		sy += 3
+		if sy < 0:
+			sy = 0
+		for y in range(sy, stop):
+			plot(x, y, DIRT)
+
+		var rate = 200
+
+		for y in range(stop, 200):
+			# Decrease density as we descend
+			if rand(0, 200) < rate:
+				plot(x, y, ROCK)
+			rate -= 1
+
+	for i in range(0, 100):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(40, 60)
+		var ty = DIRT
+		if rand(0, 1) == 0:
+			ty = ROCK
+		circle(Vector2(x, y), rand(6, 20), ty)
+
+	for i in range(0, 900):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(40, Y_BOUND - 20)
+
+		circle(Vector2(x, y), rand(6, 20), ROCK)
+
+	for i in range(0, rand(4, 7)):
+		var x = rand(-X_BOUND, X_BOUND)
+		var y = -40
+		while get_cell(x, y) == -1:
+			y += 1 
+		cave_snake(x, y)
+
+	for i in range(0, 20):
+		var x = rand(-X_BOUND, X_BOUND)
+		var y = rand(20, Y_BOUND - 100)
+		cave_snake(x, y)
+
+	for i in range(0, 400):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(40, Y_BOUND - 20)
+		underground_ore(x, y, DIRT)
+
+	for i in range(0, 600):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(20, Y_BOUND)
+		underground_ore(x, y, ROCK)
+
+	for i in range(0, 400):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(20, Y_BOUND)
+		underground_ore(x, y, Block.COAL, 3, 7)
+
+	for i in range(0, 250):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(20, Y_BOUND)
+		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+		
+	for x in range(-X_BOUND, X_BOUND):
+		plot(x, Y_BOUND - 10, 10)
+		plot(x, -Y_BOUND + 10, 10)
+	for y in range(-Y_BOUND, Y_BOUND):
+		plot(-X_BOUND + 10, y, 11)
+		plot(X_BOUND - 10, y, 11)
+		
+	for i in range(0, 20):
+		chest_underground()
 		
 	#castle(-375, 0)
+	
+	var c_spawn_y = -40
+	var c_spawn_x = rand(0, 50)
+	
+	while get_cell(c_spawn_x, c_spawn_y) == -1:
+		c_spawn_y += 1
+		
+	castle(c_spawn_x, c_spawn_y)
 		
 	var spawn_y = -40
-	var spawn_x = rand(-375, -325)
+	var spawn_x = -X_BOUND + 20
 	
 	while get_cell(spawn_x, spawn_y) == -1 and get_cell(spawn_x + 1, spawn_y) == -1:
 		spawn_y += 1
