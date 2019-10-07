@@ -106,6 +106,10 @@ func break_block():
 		
 	
 func place_block():
+	var distance = (position - player.position).length()
+	if distance > 4 * 14:
+		return
+	
 	# crafting table
 	if player.inventory.active_item().id == -2:
 		crafting_table()
