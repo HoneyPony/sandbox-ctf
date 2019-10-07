@@ -53,6 +53,9 @@ func break_block():
 	if block_map.get_cell(x, y) == -1:
 		return
 		
+	if block_map.get_cell(x, y) == Block.SPAWN:
+		return
+		
 	if break_map.get_cell(x, y) == -1:
 		break_map.set_cell(x, y, 0)
 		return

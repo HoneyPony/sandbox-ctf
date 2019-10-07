@@ -515,6 +515,19 @@ func _ready():
 		var x = rand(-400 + 20, 400 - 20)
 		var y = rand(20, 400)
 		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+		
+	var spawn_y = -40
+	var spawn_x = rand(-375, -325)
+	
+	while get_cell(spawn_x, spawn_y) == -1 and get_cell(spawn_x + 1, spawn_y) == -1:
+		spawn_y += 1
+		
+	spawn_y -= 10
+	set_cell(spawn_x, spawn_y, 7)
+	set_cell(spawn_x + 1, spawn_y, 7)
+	
+	get_node("/root/root/spawn_point").position = Vector2(spawn_x, spawn_y) * 4
+	get_node("/root/root/player").spawn()
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)

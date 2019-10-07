@@ -80,7 +80,15 @@ func _ready():
 	craft_sentinel = get_node("/root/root/ui/crafting/sentinel")
 	
 	get_node("/root/root/physics_map").add_entity(self)
-	pass # Replace with function body.
+	pass # Replace with function body
+	
+func spawn():
+	
+	position = get_node("/root/root/spawn_point").position + Vector2(4, -5)
+	horizontal_v = 0
+	vertical_v = 0
+	last_horizontal_direction = 1
+	on_ground = true
 
 func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) or Input.is_mouse_button_pressed(BUTTON_RIGHT):

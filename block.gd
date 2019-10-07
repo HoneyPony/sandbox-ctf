@@ -88,6 +88,8 @@ const WOOD = 3
 const COAL = 4
 const COPPER_ORE = 5
 const SPECIAL = 6
+const SPAWN = 7
+
 const CRAFT_TABLE = -2
 const WOOD_PICK = -3
 const WOOD_AXE = -4

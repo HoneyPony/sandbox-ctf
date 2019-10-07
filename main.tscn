@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://sprite/player_walk.png" type="Texture" id=38]
 [ext_resource path="res://cursor.gd" type="Script" id=39]
 [ext_resource path="res://ui.tscn" type="PackedScene" id=40]
+[ext_resource path="res://sprite/spawn.png" type="Texture" id=41]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -734,6 +735,9 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 4, 2 )
+
 [node name="root" type="Node2D"]
 
 [node name="block_break_viewport" type="Viewport" parent="."]
@@ -762,6 +766,7 @@ cell_quadrant_size = 4
 format = 1
 
 [node name="light_viewport" type="Viewport" parent="."]
+editor/display_folded = true
 render_target_update_mode = 3
 script = ExtResource( 1 )
 
@@ -818,8 +823,9 @@ format = 1
 script = ExtResource( 15 )
 
 [node name="player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 material = ExtResource( 16 )
-position = Vector2( 0, -180 )
+position = Vector2( 4, -5 )
 collision_layer = 524800
 collision_mask = 524801
 script = ExtResource( 17 )
@@ -1003,3 +1009,14 @@ visible = false
 texture = ExtResource( 11 )
 
 [node name="ui" parent="." instance=ExtResource( 40 )]
+
+[node name="spawn_point" type="StaticBody2D" parent="."]
+editor/display_folded = true
+
+[node name="spawn_point" type="Sprite" parent="spawn_point"]
+position = Vector2( 4, 2 )
+texture = ExtResource( 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_point"]
+position = Vector2( 4, 2 )
+shape = SubResource( 18 )
