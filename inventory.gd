@@ -81,12 +81,12 @@ func _init(player_):
 	for i in range(0, 40):
 		items.append(Item.new())
 	
-#	give_self_debug(0, Block.ROCK_PICK)
-#	give_self_debug(1, Block.CRAFT_TABLE)
-#	give_self_debug(2, Block.COAL, 20)
-#	give_self_debug(3, Block.WOOD, 20)
-#
-#	give_self_debug(4, Block.TORCH, 50)
+	give_self_debug(0, Block.ROCK_PICK)
+	give_self_debug(1, Block.FURNACE)
+	give_self_debug(2, Block.COAL, 20)
+	give_self_debug(3, Block.WOOD, 20)
+
+	give_self_debug(4, Block.TORCH, 50)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:

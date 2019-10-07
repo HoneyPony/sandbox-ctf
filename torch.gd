@@ -11,7 +11,7 @@ func tile_destroy(tilemap, x, y):
 	
 	# called multiple times
 	if light == null:
-		return
+		return -10
 
 	light.get_parent().remove_child(light)
 	light = null
