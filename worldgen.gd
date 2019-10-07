@@ -5,6 +5,9 @@ var DIRT = 1
 var ROCK = 2
 var COAL = 4
 
+var BRICK = 8
+var PLATFORM = 9
+
 var physics_map
 
 var Tree
@@ -432,6 +435,91 @@ func cave_snake(x, y):
 		x = ex
 		y = ey
 	circle(Vector2(x, y), diameter / 2, -1)
+	
+func tower(sx, sy):
+	var width = rand(4,7) * 3 - 1
+	var height = rand(-40, -80)
+	var platform = 1
+	for y in range(sy + height, sy):
+		platform -= 1
+		plot(sx, y, Block.BRICK)
+		plot(sx + width, y, Block.BRICK)
+		var platform_width = rand(4, width - 2)
+		var platform_start = rand(sx + 1, sx + width - 1 - platform_width)
+		for x in range(sx + 1, sx + width):
+			if platform == 0:
+				if x >= platform_start and x <= platform_start + platform_width:	
+					plot(x, y, Block.PLATFORM)
+				else:
+					plot(x, y, Block.BRICK)
+			else:
+				plot(x, y, -1)
+			plot_wall(x, y, Block.BRICK_WALL)
+		if platform == 0:
+			platform = 10
+			
+	sy += height
+			
+	plot(sx - 1, sy, Block.BRICK)
+	plot(sx - 2, sy - 1, Block.BRICK)
+	plot(sx - 3, sy - 2, Block.BRICK)
+	plot_wall(sx - 1, sy - 1, Block.BRICK_WALL)
+	plot_wall(sx - 2, sy - 2, Block.BRICK_WALL)
+	plot(sx + width + 1, sy, Block.BRICK)
+	plot(sx + width + 2, sy - 1, Block.BRICK)
+	plot(sx + width + 3, sy - 2, Block.BRICK)
+	plot_wall(sx + width + 1, sy - 1, Block.BRICK_WALL)
+	plot_wall(sx + width + 2, sy - 2, Block.BRICK_WALL)
+	
+	for x in range(sx, sx + width + 1):
+		plot_wall(x, sy - 1, Block.BRICK_WALL)
+		if int(x - sx) % 3 == 1:
+			plot_wall(x, sy - 2, Block.BRICK_WALL)
+	
+	return Vector2(width, height)
+	
+func hallway(x1, x2, sy, baseline, do_arch = true):
+	var height = rand(-5, -15)
+	var platform_height = rand(height / 2 - 1, height / 2 + 1)
+	var platform_type = Block.BRICK
+	if rand(0, 1) == 0:
+		platform_type = Block.PLATFORM
+	for x in range(x1, x2 + 1):
+		plot(x, sy, Block.BRICK)
+		plot(x, sy + height, Block.BRICK)
+		for y in range(sy + height + 1, sy):
+			plot(x, y, -1)
+			plot_wall(x, y, Block.BRICK_WALL)
+			if height < -7 and int(y - sy) == int(platform_height):
+				plot(x, y, platform_type)
+	if do_arch:
+		arch(x1, baseline, x2 - x1, sy - baseline)
+			
+	
+func castle(x, y):
+	var t1 = tower(x, y)
+	
+	for z in range(0, rand(11, 13)):
+		var dist = rand(8, 30)
+		var t2 = tower(x + dist + t1.x, y)
+		var height = rand(-20, max(t1.y, t2.y) + 15)
+		if rand(0, 1) == 0:
+			hallway(x + t1.x, x + dist + t1.x, height, y, false)
+			height = rand(0, height)
+			hallway(x + t1.x, x + dist + t1.x, height, y, true)
+		else:
+			hallway(x + t1.x, x + dist + t1.x, height, y, true)
+		x = x + t1.x + dist
+		t1 = t2
+	pass
+	
+func arch(sx, sy, width, height):
+	for x in range(sx, sx + width + 1):
+		var t = x - (sx + width * 0.5)
+		t = t / (width * 0.5)
+		var start = ceil(height * sqrt(1 - t * t))
+		for y in range(sy + height, sy + start):
+			plot(x, y, Block.BRICK)
 
 func _ready():
 	Tree = load("res://tree.tscn")
@@ -523,6 +611,8 @@ func _ready():
 		var x = rand(-400 + 20, 400 - 20)
 		var y = rand(20, 400)
 		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+		
+	castle(-375, 0)
 		
 	var spawn_y = -40
 	var spawn_x = rand(-375, -325)
