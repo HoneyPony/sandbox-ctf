@@ -58,8 +58,8 @@
 [ext_resource path="res://ui.tscn" type="PackedScene" id=56]
 [ext_resource path="res://sprite/spawn.png" type="Texture" id=57]
 [ext_resource path="res://music.wav" type="AudioStream" id=58]
-[ext_resource path="res://basic_knight.tscn" type="PackedScene" id=59]
-[ext_resource path="res://sprite.tscn" type="PackedScene" id=60]
+[ext_resource path="res://sprite.tscn" type="PackedScene" id=59]
+[ext_resource path="res://knight.tscn" type="PackedScene" id=60]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -930,6 +930,7 @@ jump_cancel_delta_delta = 10000
 stream = ExtResource( 19 )
 
 [node name="item_swing" type="Node2D" parent="player"]
+editor/display_folded = true
 use_parent_material = true
 script = ExtResource( 20 )
 
@@ -1203,9 +1204,8 @@ shape = SubResource( 18 )
 stream = ExtResource( 58 )
 autoplay = true
 
-[node name="basic_knight" parent="." instance=ExtResource( 59 )]
+[node name="sprite" parent="." instance=ExtResource( 59 )]
 position = Vector2( -375, -40 )
 
-[node name="sprite" parent="." instance=ExtResource( 60 )]
-position = Vector2( -375, -40 )
+[node name="knight" parent="." instance=ExtResource( 60 )]
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]

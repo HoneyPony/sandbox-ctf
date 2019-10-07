@@ -16,4 +16,16 @@ collision_mask = 262144
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="hearts2" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
+
+[node name="hearts3" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
 [connection signal="body_entered" from="heart_area" to="." method="hit"]

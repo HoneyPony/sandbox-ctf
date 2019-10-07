@@ -28,6 +28,8 @@ func _ready():
 	player = get_node("/root/root/player")
 	$animation_player.play("walk")
 	
+	position = player.position
+	
 	pass # Replace with function body.
 
 var knockback = 0
@@ -35,6 +37,9 @@ var knockback_v
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	set_collision_layer_bit(14, player.position.y < position.y + 8)
+	set_collision_mask_bit(14, player.position.y < position.y + 8)
+	
 	if knockback > 0:
 		move_and_collide(knockback_v * delta)
 		knockback -= delta
@@ -43,11 +48,13 @@ func _physics_process(delta):
 	
 	var to_player = player.global_position - global_position
 	
-	if to_player.length() < 9 and not attacking:
-		attack_timer = 0.7
+	if abs(position.x - player.position.x) < 12 and abs(position.y - player.position.y) < 12 and not attacking:
+		
 		attacking = true
 		velocity.x = 0
 		$animation_player.play("attack")
+		attack_timer = $animation_player.get_animation("attack").length
+		$flipper.scale.x = sign(player.position.x - position.x)
 	
 	if not attacking:
 		var harr = sign(to_player.x)
@@ -56,7 +63,7 @@ func _physics_process(delta):
 			velocity.x += harr * delta * acceleration
 		else:
 			velocity.x += harr * delta * acceleration / 2.0
-		velocity.x = clamp(velocity.x, -30, 30)
+		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	velocity += gravity * delta
 	velocity.y = min(velocity.y, 240)
@@ -73,7 +80,7 @@ func _physics_process(delta):
 	if !attacking:
 		if abs(velocity.x) < 10:
 			if on_ground and jump_timer <= 0:
-				velocity.y = -80
+				velocity.y = -100
 				on_ground = false
 				jump_timer = 0.2
 				

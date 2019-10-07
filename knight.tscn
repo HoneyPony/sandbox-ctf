@@ -1,20 +1,20 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://basic_knight.gd" type="Script" id=1]
-[ext_resource path="res://sprite/basic_knight_walk.png" type="Texture" id=2]
-[ext_resource path="res://sprite/basic_knight_arm.png" type="Texture" id=3]
-[ext_resource path="res://sprite/basic_knight_arm_swing.png" type="Texture" id=4]
-[ext_resource path="res://sprite/basic_knight_attack.png" type="Texture" id=5]
+[ext_resource path="res://sprite/knight_attack.png" type="Texture" id=2]
+[ext_resource path="res://sprite/knight_arm.png" type="Texture" id=3]
+[ext_resource path="res://sprite/knight_arm_swing.png" type="Texture" id=4]
+[ext_resource path="res://sprite/knight_walk.png" type="Texture" id=5]
 [ext_resource path="res://sprite/heart.png" type="Texture" id=6]
 [ext_resource path="res://hearts.gd" type="Script" id=7]
 [ext_resource path="res://sound/hit_enemy.wav" type="AudioStream" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2.02515, 6.62002 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 resource_name = "attack"
-length = 0.7
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("flipper/sprite:hframes")
@@ -47,7 +47,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.45, 0.5 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.35 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 52.0, 65.0, -117.0, 70.0 ]
@@ -59,7 +59,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.65 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -71,7 +71,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.5, 0.55 ),
+"times": PoolRealArray( 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -83,7 +83,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 0.55 ),
+"times": PoolRealArray( 0, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
@@ -96,9 +96,9 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0.466516 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 2 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("flipper/node/hit_player/collider:disabled")
@@ -107,13 +107,14 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.45, 0.7 ),
+"times": PoolRealArray( 0.3, 0.55 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
+resource_name = "walk"
 length = 0.64
 loop = true
 step = 0.08
@@ -149,12 +150,12 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 4.14106 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 3.5
 height = 5.0
 
@@ -162,7 +163,7 @@ height = 5.0
 radius = 5.07286
 height = 5.0
 
-[node name="basic_knight" type="KinematicBody2D"]
+[node name="knight" type="KinematicBody2D"]
 collision_layer = 16384
 collision_mask = 16385
 script = ExtResource( 1 )
@@ -172,8 +173,6 @@ scale = Vector2( -1, 1 )
 
 [node name="sprite" type="Sprite" parent="flipper"]
 texture = ExtResource( 2 )
-hframes = 8
-frame = 7
 
 [node name="node" type="Node2D" parent="flipper"]
 visible = false
@@ -196,34 +195,49 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="collider" type="CollisionShape2D" parent="flipper/node/hit_player"]
+visible = false
 position = Vector2( 4.51516, -5.39492 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/attack = SubResource( 3 )
+anims/walk = SubResource( 1 )
 next/attack = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+visible = false
+shape = SubResource( 2 )
 
 [node name="hearts" type="Sprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( -0.5, -8 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 11, 3 )
 script = ExtResource( 7 )
-health = 5
+health = 15
 
 [node name="heart_area" type="Area2D" parent="hearts"]
 collision_layer = 262144
 collision_mask = 262144
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
-position = Vector2( 0, 8 )
+visible = false
+position = Vector2( 0.5, 8 )
 shape = SubResource( 5 )
 
 [node name="hit" type="AudioStreamPlayer" parent="hearts"]
 stream = ExtResource( 8 )
+
+[node name="hearts2" type="Sprite" parent="hearts"]
+position = Vector2( 0, -4 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
+
+[node name="hearts3" type="Sprite" parent="hearts"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3, 3 )
 [connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]
