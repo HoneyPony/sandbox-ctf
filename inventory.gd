@@ -63,21 +63,30 @@ var recipes = [
 	
 	Recipe.new(Block.ROCK_PICK, 1, Block.WOOD_PICK, 1, Block.ROCK, 5).table(),
 	Recipe.new(Block.ROCK_AXE, 1, Block.WOOD_AXE, 1, Block.ROCK, 5).table(),
-	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table()
+	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table(),
+	
+	Recipe.new(Block.TORCH, 4, Block.COAL, 1, Block.WOOD, 1),
 ]
 
 func active_item():
 	return items[active_hotbar]
+
+func give_self_debug(where, id, count = 1):
+	items[where].id = id
+	items[where].count = count
 
 func _init(player_):
 	player = player_
 	floating_item = Item.new()
 	for i in range(0, 40):
 		items.append(Item.new())
-	items[0].id = Block.ROCK_PICK
-	items[0].count = 1
-	items[1].id = Block.FURNACE
-	items[1].count = 1
+	
+	give_self_debug(0, Block.ROCK_PICK)
+	give_self_debug(1, Block.CRAFT_TABLE)
+	give_self_debug(2, Block.COAL, 20)
+	give_self_debug(3, Block.WOOD, 20)
+	
+	give_self_debug(4, Block.TORCH, 50)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:

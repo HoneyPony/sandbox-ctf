@@ -115,6 +115,10 @@ func place_block():
 		furnace()
 		return
 		
+	if player.inventory.active_item().id == Block.TORCH:
+		torch()
+		return
+		
 	if !Block.is_placeable(player.inventory.active_item().id):
 		return
 	
@@ -141,6 +145,18 @@ func place_block():
 	if player.inventory.consume():
 		block_map.set_cell(x, y, id, false, false, false, autotile(x, y, id))
 		physics_map.set_cell(x, y, 0)
+
+func torch():
+	var x = tile_x()
+	var y = tile_y()
+	if block_map.get_cell(x, y) != -1:
+		return
+		
+	if player.inventory.consume():
+		var table = load("res://torch.tscn").instance()
+		table.position = Vector2(x * 4, y * 4)
+		get_node("/root/root").add_child(table)
+		block_map.set_cell(x, y, Block.SPECIAL)
 
 func furnace():
 	var x = tile_x()

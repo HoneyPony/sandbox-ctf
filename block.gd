@@ -16,6 +16,7 @@ const icon_map = {
 	-7: preload("res://sprite/rock_pick_icon.png"),
 	-8: preload("res://sprite/rock_axe_icon.png"),
 	-9: preload("res://sprite/rock_shovel_icon.png"),
+	-10: preload("res://sprite/torch_icon.png"),
 	
 }
 
@@ -35,6 +36,7 @@ const texture_map = {
 	-7: preload("res://sprite/rock_pick_drop.png"),
 	-8: preload("res://sprite/rock_axe_drop.png"),
 	-9: preload("res://sprite/rock_shovel_drop.png"),
+	-10: preload("res://sprite/torch_drop.png"),
 }
 
 #const lore_map = {
@@ -70,7 +72,8 @@ const lore_map = {
 	-6: ["Furnace", "Lets you smelt ores and make charcoal"],
 	-7: ["Rock pick", "Some improvement to mining speed"],
 	-8: ["Rock axe", "Some improvement to woodcutting speed"],
-	-9: ["Rock shovel", "Good improvement to digging speed"]
+	-9: ["Rock shovel", "Good improvement to digging speed"],
+	-10: ["Torch", "Lets you see better"]
 }
 
 const CAT_DIRT = 0
@@ -93,6 +96,7 @@ const FURNACE = -6
 const ROCK_PICK = -7
 const ROCK_AXE = -8
 const ROCK_SHOVEL = -9
+const TORCH = -10
 
 static func tiles(id):
 	if id == -1:
@@ -133,6 +137,8 @@ static func is_placeable(id):
 	return id >= 0
 	
 static func is_stackable(id):
+	if id == TORCH:
+		return true
 	return id >= -1
 	
 static func is_item(id):
