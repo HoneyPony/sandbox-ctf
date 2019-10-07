@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="LD45"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://global.gd"
 
 [display]
 
@@ -64,4 +68,5 @@ player_down={
 [rendering]
 
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.219608, 0.584314, 0.8, 1 )
 environment/default_environment="res://default_env.tres"

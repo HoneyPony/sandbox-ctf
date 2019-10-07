@@ -225,11 +225,17 @@ func _physics_process(delta):
 	camera1.position = position
 	camera2.position = position
 	camera3.position = position
-	
 	#print(position.y)
 	
 
 func hit(body):
 	# todo get thing
 	health -= 1
+	if health < 0:
+		var permadeath = get_node("/root/global").permadeath
+		if permadeath:
+			get_tree().change_scene("res://menu.tscn")
+		else:
+			health = 40
+			spawn()
 	$hit.play()
