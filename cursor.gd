@@ -135,14 +135,9 @@ func break_block():
 		
 		if id == Block.SPECIAL:
 			var closest = null
-			var closest_dist = 100000000
-			var pos = Vector2(x * 4, y * 4)
 			for n in get_tree().get_nodes_in_group("special"):
-				var delta = n.position - pos
-				var dist = delta.length()
-				if dist < closest_dist:
+				if n.is_at(x, y):
 					closest = n
-					closest_dist = dist
 					
 			if closest != null:
 				x = round(closest.position.x / 4)
@@ -152,6 +147,8 @@ func break_block():
 				closest.tile_destroy(physics_map, x, y) # we're still using physics_map sadly
 				closest.tile_destroy(platform_map, x, y) # is this necessary?
 				closest.get_parent().remove_child(closest)
+			else:
+				return
 				
 		else:
 			# Make sure physics will work

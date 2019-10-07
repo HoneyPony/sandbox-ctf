@@ -8,7 +8,7 @@
 "special",
 ]]
 script = ExtResource( 1 )
-mode = 1
+mode = 2
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 4, 0 )

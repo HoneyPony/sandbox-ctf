@@ -16,6 +16,25 @@ var Block = preload("res://block.gd")
 
 var walls
 
+func put_chest(x, y, items):
+	var table = load("res://chest.tscn").instance()
+	get_node("/root/root").call_deferred("add_child", table)
+	table.position = Vector2(round(x * 4), round(y * 4))
+	set_cell(x, y, Block.SPECIAL)
+	set_cell(x + 1, y, Block.SPECIAL)
+	set_cell(x, y - 1, Block.SPECIAL)
+	set_cell(x + 1, y - 1, Block.SPECIAL)
+	
+	var chest = table.get_node("sprite")
+	
+	var slot = 0
+	
+	for i in items:
+		var arr: Array = i
+		chest.items[slot].id = i[0]
+		chest.items[slot].count = i[1]
+	
+
 func snap_number(num, count):
 	var res = int(num) % count
 	if res < 0: res += count
@@ -457,6 +476,7 @@ func tower(sx, sy):
 			plot_wall(x, y, Block.BRICK_WALL)
 		if platform == 0:
 			platform = 10
+			put_chest(sx + int(width / 2), y - 1, [])
 			
 	sy += height
 			
