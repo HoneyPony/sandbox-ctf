@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ow.wav-21ac06d91e26d9ff8012c942168a9fb8.sample"
+
+[deps]
+
+source_file="res://sound/ow.wav"
+dest_files=[ "res://.import/ow.wav-21ac06d91e26d9ff8012c942168a9fb8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

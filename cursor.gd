@@ -22,6 +22,39 @@ var item_pickup
 
 var Block = preload("res://block.gd")
 
+const HIT_DIRT = 0
+const HIT_ROCK = 1
+const HIT_WOOD = 2
+const HIT_NOTHING = 3
+const PLACE = 4
+
+var next_audio = HIT_NOTHING
+
+func consume_audio():
+	if next_audio == HIT_DIRT:
+		$hit_dirt.play()
+	if next_audio == HIT_ROCK:
+		$hit_rock.play()
+	if next_audio == HIT_WOOD:
+		$hit_wood.play()
+	if next_audio == HIT_NOTHING:
+		$hit_nothing.play()
+	if next_audio == PLACE:
+		$place.play()
+	next_audio = HIT_NOTHING
+	pass
+
+func audio_cat(id):
+	var cat = Block.category(id)
+	if cat == Block.CAT_DIRT:
+		next_audio = HIT_DIRT
+	elif cat == Block.CAT_ROCK:
+		next_audio = HIT_ROCK
+	elif cat == Block.CAT_WOOD:
+		next_audio = HIT_WOOD
+	else:
+		next_audio = HIT_WOOD
+
 func snap_number(num, count):
 		var res = int(num) % count
 		if res < 0: res += count
@@ -67,6 +100,8 @@ func break_wall():
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 	
+	audio_cat(id)
+	
 func break_block():
 	if player.inventory.active_item().id == Block.SLEDGEHAMMER:
 		break_wall()
@@ -82,6 +117,7 @@ func break_block():
 		
 	if break_map.get_cell(x, y) == -1:
 		break_map.set_cell(x, y, 0)
+		audio_cat(block_map.get_cell(x, y))
 		return
 		
 	if block_timer < block_time:
@@ -91,6 +127,7 @@ func break_block():
 	
 	var progress = break_map.get_cell_autotile_coord(x, y).x
 		
+	audio_cat(block_map.get_cell(x, y))
 	if progress == 9:
 		var id = block_map.get_cell(x, y)
 		
@@ -141,6 +178,7 @@ func place_wall():
 	var id = player.inventory.active_item().id
 	if player.inventory.consume():
 		wall_map.set_cell(x, y, Block.wall_tile(id), false, false, false, autotile(x, y, id))
+		next_audio = PLACE
 	
 func place_block():
 	var distance = (position - player.position).length()
@@ -193,6 +231,7 @@ func place_block():
 	if player.inventory.consume():
 		block_map.set_cell(x, y, id, false, false, false, autotile(x, y, id))
 		physics_map.set_cell(x, y, 0)
+		next_audio = PLACE
 
 func torch():
 	var x = tile_x()
@@ -222,6 +261,7 @@ func torch():
 		table.position = Vector2(x * 4, y * 4)
 		get_node("/root/root").add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
+		next_audio = PLACE
 
 func furnace():
 	var x = tile_x()
@@ -244,6 +284,7 @@ func furnace():
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		block_map.set_cell(x, y - 1, Block.SPECIAL)
 		block_map.set_cell(x + 1, y - 1, Block.SPECIAL)
+		next_audio = PLACE
 
 func crafting_table():
 	var x = tile_x()
@@ -264,6 +305,7 @@ func crafting_table():
 		get_node("/root/root").add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
+		next_audio = PLACE
 		#TODO:::!!:!:!:! Make fake blocks so that everything else works smoothyl
 
 func get_relevant_strength():

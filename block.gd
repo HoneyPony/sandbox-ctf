@@ -214,6 +214,10 @@ static func category(id):
 	if id == COAL: return CAT_ROCK
 	if id == COPPER_ORE: return CAT_ROCK
 	if id == SPECIAL: return CAT_SPECIAL
+	
+	if id == DIRT_WALL: return CAT_DIRT
+	if id == WOOD_WALL: return CAT_WOOD
+	if id == ROCK_WALL: return CAT_ROCK
 	return CAT_ROCK
 
 static func wood_strength(id):

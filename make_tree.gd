@@ -55,6 +55,7 @@ func should_wood(used, x, y, height):
 func _ready():
 	#print(position)
 	player = get_node("/root/root/player")
+	cursor = get_node("/root/root/cursor")
 	
 	var leaf = load("res://leaf.tscn")
 	var wood = load("res://log.tscn")
@@ -117,6 +118,7 @@ func _ready():
 var mouses = 0
 	
 var health = 7
+var cursor
 
 func spawn_pickups():
 	var pickups = rand(logs, logs + 7)
@@ -131,6 +133,7 @@ func spawn_pickups():
 func _process(dt):
 	if mouses > 0 and Input.is_mouse_button_pressed(BUTTON_LEFT):
 		health -= dt * player.current_wood()
+		cursor.next_audio = cursor.HIT_WOOD
 	
 	if health < 0:
 		spawn_pickups()
