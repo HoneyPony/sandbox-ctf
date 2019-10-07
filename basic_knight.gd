@@ -28,8 +28,6 @@ func _ready():
 	player = get_node("/root/root/player")
 	$animation_player.play("walk")
 	
-	position = player.position
-	
 	pass # Replace with function body.
 
 var knockback = 0
@@ -37,6 +35,10 @@ var knockback_v
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if (position - player.position).length_squared() > 200 * 4 * 200 * 4:
+		get_parent().remove_child(self)
+		return
+	
 	set_collision_layer_bit(14, player.position.y < position.y + 8)
 	set_collision_mask_bit(14, player.position.y < position.y + 8)
 	

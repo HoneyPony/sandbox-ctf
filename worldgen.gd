@@ -651,6 +651,8 @@ func _ready():
 	
 	get_node("/root/root/spawn_point").position = Vector2(spawn_x, spawn_y) * 4
 	get_node("/root/root/player").spawn()
+	
+	get_node("/root/root/music").play()
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)

@@ -200,7 +200,9 @@ position = Vector2( 4.51516, -5.39492 )
 shape = SubResource( 1 )
 disabled = true
 
-[node name="animation_player" type="AnimationPlayer" parent="."]
+[node name="animation_player" type="AnimationPlayer" parent="." groups=[
+"enemies",
+]]
 anims/attack = SubResource( 2 )
 anims/walk = SubResource( 3 )
 next/attack = "walk"

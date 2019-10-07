@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://set_shrink.gd" type="Script" id=1]
 [ext_resource path="res://resize_viewport.gd" type="Script" id=2]
@@ -59,6 +59,7 @@
 [ext_resource path="res://ui.tscn" type="PackedScene" id=57]
 [ext_resource path="res://sprite/spawn.png" type="Texture" id=58]
 [ext_resource path="res://music.wav" type="AudioStream" id=59]
+[ext_resource path="res://enemy_spawner.gd" type="Script" id=60]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -1204,5 +1205,7 @@ shape = SubResource( 18 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 59 )
-autoplay = true
+
+[node name="enemy_spawner" type="Node2D" parent="."]
+script = ExtResource( 60 )
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]

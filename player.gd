@@ -26,6 +26,7 @@ var on_ground = false
 var zero_collision_frames = 0
 
 var anim_player
+var equipped = false
 
 var Inventory
 

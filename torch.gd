@@ -6,6 +6,11 @@ extends Node2D
 
 var light
 
+func is_at(x, y):
+	var px = int(position.x / 4)
+	var py = int(position.y / 4)
+	return x == px and y == py
+
 func tile_destroy(tilemap, x, y):
 	tilemap.set_cell(x, y, -1)
 	
