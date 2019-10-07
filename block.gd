@@ -18,6 +18,11 @@ const icon_map = {
 	-9: preload("res://sprite/rock_shovel_icon.png"),
 	-10: preload("res://sprite/torch_icon.png"),
 	
+	-12: preload("res://sprite/dirt_wall_icon.png"),
+	-13: preload("res://sprite/rocks_wall_icon.png"),
+	-14: preload("res://sprite/wood_wall_icon.png"),
+	
+	-15: preload("res://sprite/sledgehammer_icon.png"),
 }
 
 const texture_map = {
@@ -37,6 +42,12 @@ const texture_map = {
 	-8: preload("res://sprite/rock_axe_drop.png"),
 	-9: preload("res://sprite/rock_shovel_drop.png"),
 	-10: preload("res://sprite/torch_drop.png"),
+	
+	-12: preload("res://sprite/dirt_wall.png"),
+	-13: preload("res://sprite/rocks_wall.png"),
+	-14: preload("res://sprite/wood_wall.png"),
+	
+	-15: preload("res://sprite/sledgehammer_drop.png")
 }
 
 #const lore_map = {
@@ -73,7 +84,13 @@ const lore_map = {
 	-7: ["Rock pick", "Some improvement to mining speed"],
 	-8: ["Rock axe", "Some improvement to woodcutting speed"],
 	-9: ["Rock shovel", "Good improvement to digging speed"],
-	-10: ["Torch", "Lets you see better"]
+	-10: ["Torch", "Lets you see better"],
+	
+	-12: ["Dirt wall", "Place in the background for a boring dirt wall"],
+	-13: ["Rock wall", "Place in the background for a nice stone wall"],
+	-14: ["Wood wall", "Place in the background for an endearing wood wall"],
+	
+	-15: ["Sledgehammer", "Allows you to break walls."],
 }
 
 const CAT_DIRT = 0
@@ -100,6 +117,34 @@ const ROCK_AXE = -8
 const ROCK_SHOVEL = -9
 const TORCH = -10
 
+const GRASS_WALL = -11
+const DIRT_WALL = -12
+const ROCK_WALL = -13
+const WOOD_WALL = -14
+
+const SLEDGEHAMMER = -15
+
+const GRASS_WALL_TILE = -1
+const DIRT_WALL_TILE = 0
+const ROCK_WALL_TILE = 1
+const WOOD_WALL_TILE = 2
+
+static func wall_tile(item_id):
+	if item_id == DIRT_WALL:
+		return DIRT_WALL_TILE
+	if item_id == ROCK_WALL:
+		return ROCK_WALL_TILE
+	if item_id == WOOD_WALL:
+		return WOOD_WALL_TILE
+		
+static func wall_item(wall_id):
+	if wall_id == DIRT_WALL_TILE:
+		return DIRT_WALL
+	if wall_id == ROCK_WALL_TILE:
+		return ROCK_WALL
+	if wall_id == WOOD_WALL_TILE:
+		return WOOD_WALL
+
 static func tiles(id):
 	if id == -1:
 		return 1
@@ -115,6 +160,13 @@ static func tiles(id):
 		return 16
 	if id == 5:
 		return 64
+	if id == DIRT_WALL or id == ROCK_WALL:
+		return 64
+	if id == WOOD_WALL:
+		return 4
+		
+static func is_wall(id):
+	return id == DIRT_WALL or id == ROCK_WALL or id == WOOD_WALL
 
 static func get_icon(id):
 	return icon_map.get(id)
@@ -133,6 +185,8 @@ static func item_description(id):
 	return "ERROR"
 	
 static func is_block(id):
+	if id == WOOD_WALL or id == ROCK_WALL or id == DIRT_WALL:
+		return true
 	return id >= 0
 	
 static func is_placeable(id):
@@ -140,6 +194,12 @@ static func is_placeable(id):
 	
 static func is_stackable(id):
 	if id == TORCH:
+		return true
+	if id == DIRT_WALL:
+		return true
+	if id == ROCK_WALL:
+		return true
+	if id == WOOD_WALL:
 		return true
 	return id >= -1
 	

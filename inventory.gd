@@ -61,11 +61,13 @@ var recipes = [
 	Recipe.new(-6, 1, 2, 10, 4, 5, 3, 5),
 	Recipe.new(4, 1, 3, 10).furnace(), # charcoal
 	
+	Recipe.new(Block.TORCH, 4, Block.COAL, 1, Block.WOOD, 1),
+	
 	Recipe.new(Block.ROCK_PICK, 1, Block.WOOD_PICK, 1, Block.ROCK, 5).table(),
 	Recipe.new(Block.ROCK_AXE, 1, Block.WOOD_AXE, 1, Block.ROCK, 5).table(),
 	Recipe.new(Block.ROCK_SHOVEL, 1, Block.WOOD_SHOVEL, 1, Block.ROCK, 5).table(),
 	
-	Recipe.new(Block.TORCH, 4, Block.COAL, 1, Block.WOOD, 1),
+	Recipe.new(Block.SLEDGEHAMMER, 1, Block.WOOD, 5, Block.ROCK, 5).table(),
 ]
 
 func active_item():
@@ -87,6 +89,13 @@ func _init(player_):
 	give_self_debug(3, Block.WOOD, 20)
 
 	give_self_debug(4, Block.TORCH, 50)
+	
+	
+	give_self_debug(5, Block.DIRT_WALL, 20)
+	give_self_debug(6, Block.ROCK_WALL, 20)
+	give_self_debug(7, Block.WOOD_WALL, 20)
+	
+	give_self_debug(8, Block.ROCK, 50)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:

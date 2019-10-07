@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -15,32 +15,34 @@
 [ext_resource path="res://useful_material.tres" type="Material" id=13]
 [ext_resource path="res://tileset.tres" type="TileSet" id=14]
 [ext_resource path="res://worldgen.gd" type="Script" id=15]
-[ext_resource path="res://light_material.tres" type="Material" id=16]
-[ext_resource path="res://player.gd" type="Script" id=17]
-[ext_resource path="res://swing_flipper.gd" type="Script" id=18]
-[ext_resource path="res://sprite/grass.png" type="Texture" id=19]
-[ext_resource path="res://swing_icon.gd" type="Script" id=20]
-[ext_resource path="res://sprite/dirt.png" type="Texture" id=21]
-[ext_resource path="res://sprite/rocks.png" type="Texture" id=22]
-[ext_resource path="res://sprite/wood.png" type="Texture" id=23]
-[ext_resource path="res://sprite/coal.png" type="Texture" id=24]
-[ext_resource path="res://sprite/copper_ore.png" type="Texture" id=25]
-[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=26]
-[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=27]
-[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=28]
-[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=29]
-[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=30]
-[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=31]
-[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=32]
-[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=33]
-[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=34]
-[ext_resource path="res://sprite/player_falling.png" type="Texture" id=35]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=36]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=37]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=38]
-[ext_resource path="res://cursor.gd" type="Script" id=39]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=40]
-[ext_resource path="res://sprite/spawn.png" type="Texture" id=41]
+[ext_resource path="res://wall_tileset.tres" type="TileSet" id=16]
+[ext_resource path="res://light_material.tres" type="Material" id=17]
+[ext_resource path="res://player.gd" type="Script" id=18]
+[ext_resource path="res://swing_flipper.gd" type="Script" id=19]
+[ext_resource path="res://sprite/grass.png" type="Texture" id=20]
+[ext_resource path="res://swing_icon.gd" type="Script" id=21]
+[ext_resource path="res://sprite/dirt.png" type="Texture" id=22]
+[ext_resource path="res://sprite/rocks.png" type="Texture" id=23]
+[ext_resource path="res://sprite/wood.png" type="Texture" id=24]
+[ext_resource path="res://sprite/coal.png" type="Texture" id=25]
+[ext_resource path="res://sprite/copper_ore.png" type="Texture" id=26]
+[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=27]
+[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=28]
+[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=29]
+[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=30]
+[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=31]
+[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=32]
+[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=33]
+[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=34]
+[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=35]
+[ext_resource path="res://sprite/sledgehammer_icon.png" type="Texture" id=36]
+[ext_resource path="res://sprite/player_falling.png" type="Texture" id=37]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=38]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=39]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=40]
+[ext_resource path="res://cursor.gd" type="Script" id=41]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=42]
+[ext_resource path="res://sprite/spawn.png" type="Texture" id=43]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -228,7 +230,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 37 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -294,7 +296,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 37 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -359,7 +361,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ) ]
+"values": [ ExtResource( 38 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -424,7 +426,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ) ]
+"values": [ ExtResource( 38 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -489,7 +491,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 37 ) ]
+"values": [ ExtResource( 39 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -554,7 +556,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 37 ) ]
+"values": [ ExtResource( 39 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -619,7 +621,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 38 ) ]
+"values": [ ExtResource( 40 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -684,7 +686,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 38 ) ]
+"values": [ ExtResource( 40 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -822,13 +824,22 @@ collision_mask = 0
 format = 1
 script = ExtResource( 15 )
 
+[node name="walls" type="TileMap" parent="."]
+material = ExtResource( 13 )
+z_index = -2
+tile_set = ExtResource( 16 )
+cell_size = Vector2( 4, 4 )
+cell_quadrant_size = 2
+collision_layer = 0
+collision_mask = 0
+format = 1
+
 [node name="player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
-material = ExtResource( 16 )
+material = ExtResource( 17 )
 position = Vector2( 4, -5 )
 collision_layer = 524800
 collision_mask = 524801
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 player_horizontal_acceleration = 200
 gravity = 120
 initial_jump_impulse = 380
@@ -839,120 +850,127 @@ jump_cancel_delta_delta = 10000
 [node name="item_swing" type="Node2D" parent="player"]
 use_parent_material = true
 rotation = -1.94953
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="0" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 19 )
-script = ExtResource( 20 )
+texture = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="1" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 21 )
-script = ExtResource( 20 )
+texture = ExtResource( 22 )
+script = ExtResource( 21 )
 
 [node name="2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 22 )
-script = ExtResource( 20 )
+texture = ExtResource( 23 )
+script = ExtResource( 21 )
 
 [node name="3" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 23 )
-script = ExtResource( 20 )
+texture = ExtResource( 24 )
+script = ExtResource( 21 )
 
 [node name="4" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.063, 0.063 )
-texture = ExtResource( 24 )
-script = ExtResource( 20 )
+texture = ExtResource( 25 )
+script = ExtResource( 21 )
 
 [node name="5" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 25 )
-script = ExtResource( 20 )
+texture = ExtResource( 26 )
+script = ExtResource( 21 )
 
 [node name="-2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 rotation = -1.5708
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 26 )
-script = ExtResource( 20 )
+texture = ExtResource( 27 )
+script = ExtResource( 21 )
 
 [node name="-3" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 27 )
-script = ExtResource( 20 )
+texture = ExtResource( 28 )
+script = ExtResource( 21 )
 
 [node name="-4" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 28 )
-script = ExtResource( 20 )
+texture = ExtResource( 29 )
+script = ExtResource( 21 )
 
 [node name="-5" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 29 )
-script = ExtResource( 20 )
+texture = ExtResource( 30 )
+script = ExtResource( 21 )
 
 [node name="-6" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -0.0338745, -5.71312 )
 rotation = -1.5708
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 30 )
-script = ExtResource( 20 )
+texture = ExtResource( 31 )
+script = ExtResource( 21 )
 
 [node name="-7" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 31 )
-script = ExtResource( 20 )
+texture = ExtResource( 32 )
+script = ExtResource( 21 )
 
 [node name="-8" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
-script = ExtResource( 20 )
+texture = ExtResource( 33 )
+script = ExtResource( 21 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
-visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 33 )
-script = ExtResource( 20 )
+texture = ExtResource( 34 )
+script = ExtResource( 21 )
 
 [node name="-10" type="Sprite" parent="player/item_swing"]
+visible = false
 position = Vector2( -0.0460358, -5.46389 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 34 )
-script = ExtResource( 20 )
+texture = ExtResource( 35 )
+script = ExtResource( 21 )
+
+[node name="-15" type="Sprite" parent="player/item_swing"]
+position = Vector2( 2.38419e-007, -7.00002 )
+rotation = -0.785398
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 36 )
+script = ExtResource( 21 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player/item_swing"]
 anims/swing = SubResource( 5 )
@@ -975,7 +993,7 @@ disabled = true
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
 position = Vector2( 1.5, -0.5 )
-texture = ExtResource( 35 )
+texture = ExtResource( 37 )
 flip_h = true
 hframes = 4
 frame = 2
@@ -1002,20 +1020,20 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-script = ExtResource( 39 )
+script = ExtResource( 41 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 11 )
 
-[node name="ui" parent="." instance=ExtResource( 40 )]
+[node name="ui" parent="." instance=ExtResource( 42 )]
 
 [node name="spawn_point" type="StaticBody2D" parent="."]
 editor/display_folded = true
 
 [node name="spawn_point" type="Sprite" parent="spawn_point"]
 position = Vector2( 4, 2 )
-texture = ExtResource( 41 )
+texture = ExtResource( 43 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_point"]
 position = Vector2( 4, 2 )

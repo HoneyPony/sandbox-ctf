@@ -8,6 +8,8 @@ var break_map: TileMap
 var block_map: TileMap
 var physics_map: TileMap
 
+var wall_map: TileMap
+
 var player
 
 var base_block_time = 0.111111
@@ -38,6 +40,8 @@ func _ready():
 	physics_map = get_node("/root/root/physics_map")
 	item_pickup = load("res://item_pickup.tscn")
 	
+	wall_map = get_node("/root/root/walls")
+	
 	player = get_node("/root/root/player")
 	pass # Replace with function body.
 	
@@ -47,7 +51,27 @@ func tile_x():
 func tile_y():
 	return round((position.y - 2) / 4)
 	
+func break_wall():
+	var x = tile_x()
+	var y = tile_y()
+	if wall_map.get_cell(x, y) == -1:
+		return
+		
+	var wall_id = wall_map.get_cell(x, y)
+	wall_map.set_cell(x, y, -1)
+	
+	var id = Block.wall_item(wall_id)
+		
+	var pickup = item_pickup.instance()
+	get_node("/root/root").add_child(pickup)
+	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
+	pickup.set_id(id)
+	
 func break_block():
+	if player.inventory.active_item().id == Block.SLEDGEHAMMER:
+		break_wall()
+		return
+	
 	var x = tile_x()
 	var y = tile_y()
 	if block_map.get_cell(x, y) == -1:
@@ -108,9 +132,23 @@ func break_block():
 	break_map.set_cell(x, y, 0, false, false, false, Vector2(progress + 1, 0))
 		
 	
+func place_wall():
+	var x = tile_x()
+	var y = tile_y()
+	if wall_map.get_cell(x, y) != -1:
+		return
+	
+	var id = player.inventory.active_item().id
+	if player.inventory.consume():
+		wall_map.set_cell(x, y, Block.wall_tile(id), false, false, false, autotile(x, y, id))
+	
 func place_block():
 	var distance = (position - player.position).length()
 	if distance > 4 * 14:
+		return
+		
+	if Block.is_wall(player.inventory.active_item().id):
+		place_wall()
 		return
 	
 	# crafting table
@@ -136,6 +174,9 @@ func place_block():
 		
 	var on_ground = false
 		
+	if wall_map.get_cell(x, y) != -1:
+		on_ground = true
+		
 	if block_map.get_cell(x + 1, y) != -1:
 		on_ground = true
 	if block_map.get_cell(x - 1, y) != -1:
@@ -160,6 +201,9 @@ func torch():
 		return
 		
 	var on_ground = false
+	
+	if wall_map.get_cell(x, y) != -1:
+		on_ground = true
 		
 	if block_map.get_cell(x + 1, y) != -1:
 		on_ground = true

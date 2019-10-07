@@ -11,6 +11,8 @@ var Tree
 
 var Block = preload("res://block.gd")
 
+var walls
+
 func snap_number(num, count):
 	var res = int(num) % count
 	if res < 0: res += count
@@ -20,8 +22,13 @@ func handle(x, y, id):
 	var n = Block.tiles(id)
 	return Vector2(snap_number(x, n), snap_number(y, n))
 
+func plot_wall(x, y, id):
+	walls.set_cell(x, y, Block.wall_tile(id), false, false, false, handle(x, y, id))
+
 func plot(x, y, id):
 	set_cell(x, y, id, false, false, false, handle(x, y, id))
+	if id == Block.DIRT and y < 100:
+		plot_wall(x, y, Block.DIRT_WALL)
 	
 func rand(a, b):
 	return round(rand_range(a, b))
@@ -429,6 +436,7 @@ func cave_snake(x, y):
 func _ready():
 	Tree = load("res://tree.tscn")
 	physics_map = get_node("/root/root/physics_map")
+	walls = get_node("/root/root/walls")
 	
 	randomize()
 	
