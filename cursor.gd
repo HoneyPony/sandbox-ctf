@@ -7,6 +7,7 @@ extends Node2D
 var break_map: TileMap
 var block_map: TileMap
 var physics_map: TileMap
+var platform_map: TileMap
 
 var wall_map: TileMap
 
@@ -71,6 +72,7 @@ func _ready():
 	break_map = get_node("/root/root/block_break_viewport/block_break_map")
 	block_map = get_node("/root/root/tiles")
 	physics_map = get_node("/root/root/physics_map")
+	platform_map = get_node("/root/root/platform_map")
 	item_pickup = load("res://item_pickup.tscn")
 	
 	wall_map = get_node("/root/root/walls")
@@ -148,6 +150,7 @@ func break_block():
 				id = closest.tile_destroy(block_map, x, y)
 				closest.tile_destroy(break_map, x, y)
 				closest.tile_destroy(physics_map, x, y) # we're still using physics_map sadly
+				closest.tile_destroy(platform_map, x, y) # is this necessary?
 				closest.get_parent().remove_child(closest)
 				
 		else:
@@ -158,6 +161,7 @@ func break_block():
 			break_map.set_cell(x, y, -1)
 			block_map.set_cell(x, y, -1)
 			physics_map.set_cell(x, y, -1)
+			platform_map.set_cell(x, y, -1)
 		
 		var pickup = item_pickup.instance()
 		get_node("/root/root").add_child(pickup)
@@ -230,7 +234,10 @@ func place_block():
 	var id = player.inventory.active_item().id
 	if player.inventory.consume():
 		block_map.set_cell(x, y, id, false, false, false, autotile(x, y, id))
-		physics_map.set_cell(x, y, 0)
+		if id == Block.PLATFORM:
+			platform_map.set_cell(x, y, 0)
+		else:
+			physics_map.set_cell(x, y, 0)
 		next_audio = PLACE
 
 func torch():

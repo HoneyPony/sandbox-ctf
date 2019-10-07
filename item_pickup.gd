@@ -29,7 +29,8 @@ func set_id(x):
 	if Block.is_block(id):
 		$item.region_rect = Rect2(0, 0, 4, 4)
 		$item.region_enabled = true
-		$frame.visible = true
+		if id != Block.PLATFORM:
+			$frame.visible = true
 
 func picked_up(unused):
 	if accepted:
@@ -72,11 +73,11 @@ func _physics_process(dt):
 	if abs(speed) > 0.1:
 		var x = round(position.x / 4)
 		var y = round(position.y / 4)
-		if tilemap.get_cell(x, y + d) != -1:
+		if tilemap.get_cell(x, y + d) != -1 and tilemap.get_cell(x, y + d) != 9:
 			physics_map.set_cell(x, y + d, 0)
-		if tilemap.get_cell(x, y + 2 * d) != -1:
+		if tilemap.get_cell(x, y + 2 * d) != -1 and tilemap.get_cell(x, y + 2 * d) != 9:
 			physics_map.set_cell(x, y + 2 * d, 0)
-		if tilemap.get_cell(x, y + 3 * d) != -1:
+		if tilemap.get_cell(x, y + 3 * d) != -1 and tilemap.get_cell(x, y + 3 * d) != 9:
 			physics_map.set_cell(x, y + 3 * d, 0)
 	
 	move_and_collide(Vector2(0, speed))

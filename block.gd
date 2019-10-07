@@ -6,7 +6,8 @@ const icon_map = {
 	3: preload("res://sprite/wood_icon.png"),
 	4: preload("res://sprite/coal_icon.png"),
 	5: preload("res://sprite/copper_ore_icon.png"),
-	
+	8: preload("res://sprite/brick_icon.png"),
+	9: preload("res://sprite/platform_icon.png"),
 	
 	-2: preload("res://sprite/crafting_table_icon.png"),
 	-3: preload("res://sprite/stickaxe_icon.png"),
@@ -23,6 +24,8 @@ const icon_map = {
 	-14: preload("res://sprite/wood_wall_icon.png"),
 	
 	-15: preload("res://sprite/sledgehammer_icon.png"),
+	
+	-16: preload("res://sprite/brick_wall_icon.png"),
 }
 
 const texture_map = {
@@ -32,6 +35,8 @@ const texture_map = {
 	3: preload("res://sprite/wood.png"),
 	4: preload("res://sprite/coal.png"),
 	5: preload("res://sprite/copper_ore.png"),
+	8: preload("res://sprite/brick.png"),
+	9: preload("res://sprite/platform.png"),
 	
 	-2: preload("res://sprite/crafting_table_drop.png"),
 	-3: preload("res://sprite/stickaxe_drop.png"),
@@ -47,7 +52,9 @@ const texture_map = {
 	-13: preload("res://sprite/rocks_wall.png"),
 	-14: preload("res://sprite/wood_wall.png"),
 	
-	-15: preload("res://sprite/sledgehammer_drop.png")
+	-15: preload("res://sprite/sledgehammer_drop.png"),
+	
+	-16: preload("res://sprite/brick_wall.png"),
 }
 
 #const lore_map = {
@@ -75,6 +82,8 @@ const lore_map = {
 	3: ["Wood", "Material from trees. Can make tools"],
 	4: ["Coal", "Plentiful fuel source"],
 	5: ["Copper ore", "Common metal ore"],
+	8: ["Brick", "Building material from Red Team's base"],
+	9: ["Platform", "You can jump up through these or fall through by holding the down key"],
 
 	-2: ["Crafting table", "Lets you craft fancier stuff"],
 	-3: ["Stickaxe", "A pickaxe made out of sticks"],
@@ -91,6 +100,7 @@ const lore_map = {
 	-14: ["Wood wall", "Place in the background for an endearing wood wall"],
 	
 	-15: ["Sledgehammer", "Allows you to break walls."],
+	-16: ["Brick wall", "Place in the background for a crimson brick wall"],
 }
 
 const CAT_DIRT = 0
@@ -106,6 +116,8 @@ const COAL = 4
 const COPPER_ORE = 5
 const SPECIAL = 6
 const SPAWN = 7
+const BRICK = 8
+const PLATFORM = 9
 
 const CRAFT_TABLE = -2
 const WOOD_PICK = -3
@@ -121,13 +133,14 @@ const GRASS_WALL = -11
 const DIRT_WALL = -12
 const ROCK_WALL = -13
 const WOOD_WALL = -14
-
 const SLEDGEHAMMER = -15
+const BRICK_WALL = -16
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0
 const ROCK_WALL_TILE = 1
 const WOOD_WALL_TILE = 2
+const BRICK_WALL_TILE = 3
 
 static func wall_tile(item_id):
 	if item_id == DIRT_WALL:
@@ -136,6 +149,8 @@ static func wall_tile(item_id):
 		return ROCK_WALL_TILE
 	if item_id == WOOD_WALL:
 		return WOOD_WALL_TILE
+	if item_id == BRICK_WALL:
+		return BRICK_WALL_TILE
 		
 static func wall_item(wall_id):
 	if wall_id == DIRT_WALL_TILE:
@@ -144,6 +159,8 @@ static func wall_item(wall_id):
 		return ROCK_WALL
 	if wall_id == WOOD_WALL_TILE:
 		return WOOD_WALL
+	if wall_id == BRICK_WALL_TILE:
+		return BRICK_WALL
 
 static func tiles(id):
 	if id == -1:
@@ -164,9 +181,15 @@ static func tiles(id):
 		return 64
 	if id == WOOD_WALL:
 		return 4
+	if id == BRICK:
+		return 4
+	if id == BRICK_WALL:
+		return 4
+	if id == PLATFORM:
+		return 1
 		
 static func is_wall(id):
-	return id == DIRT_WALL or id == ROCK_WALL or id == WOOD_WALL
+	return id == DIRT_WALL or id == ROCK_WALL or id == WOOD_WALL or id == BRICK_WALL
 
 static func get_icon(id):
 	return icon_map.get(id)
@@ -185,7 +208,7 @@ static func item_description(id):
 	return "ERROR"
 	
 static func is_block(id):
-	if id == WOOD_WALL or id == ROCK_WALL or id == DIRT_WALL:
+	if id == WOOD_WALL or id == ROCK_WALL or id == DIRT_WALL or id == BRICK_WALL:
 		return true
 	return id >= 0
 	
@@ -201,6 +224,8 @@ static func is_stackable(id):
 		return true
 	if id == WOOD_WALL:
 		return true
+	if id == BRICK_WALL:
+		return true
 	return id >= -1
 	
 static func is_item(id):
@@ -215,9 +240,12 @@ static func category(id):
 	if id == COPPER_ORE: return CAT_ROCK
 	if id == SPECIAL: return CAT_SPECIAL
 	
+	if id == BRICK: return CAT_ROCK
+	
 	if id == DIRT_WALL: return CAT_DIRT
 	if id == WOOD_WALL: return CAT_WOOD
 	if id == ROCK_WALL: return CAT_ROCK
+	if id == BRICK_WALL: return CAT_ROCK
 	return CAT_ROCK
 
 static func wood_strength(id):
@@ -250,4 +278,6 @@ static func dirt_strength(id):
 # use e.g. 0.5
 # to make block faster do 2.0 or something
 static func block_slowdown(id):
+	if id == PLATFORM:
+		return 5.0
 	return 1

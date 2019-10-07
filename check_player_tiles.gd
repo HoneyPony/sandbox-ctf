@@ -7,9 +7,12 @@ extends TileMap
 var tilemap
 var entities = []
 
+var platform_map
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_node("/root/root/tiles")
+	platform_map = get_node("/root/root/platform_map")
 	pass # Replace with function body.
 	
 func add_entity(node):
@@ -25,7 +28,10 @@ func handle_entity(player):
 	for x in range(xs - 2, xs + 3):
 		for y in range(ys - 2, ys + 3):
 			if tilemap.get_cell(x, y) != -1 and tilemap.get_cell(x, y) != 6:
-				set_cell(x, y, 0)
+				if tilemap.get_cell(x, y) == 9:
+					platform_map.set_cell(x, y, 0)
+				else:
+					set_cell(x, y, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

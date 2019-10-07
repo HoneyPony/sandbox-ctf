@@ -137,6 +137,9 @@ func jump_impulse_delta_delta():
 		return jump_cancel_delta_delta
 	
 func _physics_process(delta):	
+	set_collision_layer_bit(14, !Input.is_action_pressed("player_down"))
+	set_collision_mask_bit(14, !Input.is_action_pressed("player_down"))
+
 	var acc_h = -sign(horizontal_v)
 	if Input.is_action_pressed("player_right"):
 		acc_h = 1

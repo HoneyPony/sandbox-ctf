@@ -85,17 +85,17 @@ func _init(player_):
 	
 	give_self_debug(0, Block.ROCK_PICK)
 	give_self_debug(1, Block.FURNACE)
-	give_self_debug(2, Block.COAL, 20)
+	give_self_debug(2, Block.PLATFORM, 20)
 	give_self_debug(3, Block.WOOD, 20)
 
 	give_self_debug(4, Block.TORCH, 50)
 	
 	
 	give_self_debug(5, Block.DIRT_WALL, 20)
-	give_self_debug(6, Block.ROCK_WALL, 20)
-	give_self_debug(7, Block.WOOD_WALL, 20)
+	give_self_debug(6, Block.SLEDGEHAMMER, 20)
+	give_self_debug(7, Block.BRICK_WALL, 20)
 	
-	give_self_debug(8, Block.ROCK, 50)
+	give_self_debug(8, Block.BRICK, 50)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:
