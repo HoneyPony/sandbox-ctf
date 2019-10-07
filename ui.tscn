@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://sprite/hotbar.png" type="Texture" id=1]
 [ext_resource path="res://track_inventory_open.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://manage_crafting_recipes.gd" type="Script" id=9]
 [ext_resource path="res://sprite/tooltip.png" type="Texture" id=10]
 [ext_resource path="res://tooltip.gd" type="Script" id=11]
+[ext_resource path="res://crafting_tooltip.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -1705,6 +1706,38 @@ align = 1
 autowrap = true
 
 [node name="title" type="Label" parent="tooltip"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 83.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_constants/line_spacing = -3
+text = "STICKAXE"
+align = 1
+autowrap = true
+
+[node name="crafting_tooltip" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+script = ExtResource( 12 )
+
+[node name="label" type="Label" parent="crafting_tooltip"]
+margin_left = 3.0
+margin_top = 23.0
+margin_right = 83.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_constants/line_spacing = -3
+text = "A pickaxe made of sticks."
+align = 1
+autowrap = true
+
+[node name="title" type="Label" parent="crafting_tooltip"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 83.0

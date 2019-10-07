@@ -21,9 +21,12 @@ var max_position
 
 var Block = preload("res://block.gd")
 
+var tooltip
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/root/player")
+	tooltip = get_node("../../../crafting_tooltip")
 	
 	$icon.texture = Block.get_icon(recipe.output)
 	$output_count.text = String(recipe.output_count)
@@ -90,7 +93,9 @@ func _input(event):
 var mouse = false
 
 func mouse_entered():
+	tooltip.activate(self)
 	mouse = true
 
 func mouse_exited():
+	tooltip.deactivate(self)
 	mouse = false
