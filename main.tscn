@@ -1,67 +1,68 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
-[ext_resource path="res://resize_viewport.gd" type="Script" id=1]
-[ext_resource path="res://copy_camera.gd" type="Script" id=2]
-[ext_resource path="res://sprite/red.png" type="Texture" id=3]
-[ext_resource path="res://sprite/block_breaking.png" type="Texture" id=4]
-[ext_resource path="res://sprite/centered_light.png" type="Texture" id=5]
-[ext_resource path="res://sprite/light_bg.png" type="Texture" id=6]
-[ext_resource path="res://sprite/sky_texture.png" type="Texture" id=7]
-[ext_resource path="res://sky.gd" type="Script" id=8]
-[ext_resource path="res://sprite/sky_fade.png" type="Texture" id=9]
-[ext_resource path="res://sky_fade.gd" type="Script" id=10]
-[ext_resource path="res://sprite/no_tile.png" type="Texture" id=11]
-[ext_resource path="res://check_player_tiles.gd" type="Script" id=12]
-[ext_resource path="res://useful_material.tres" type="Material" id=13]
-[ext_resource path="res://tileset.tres" type="TileSet" id=14]
-[ext_resource path="res://worldgen.gd" type="Script" id=15]
-[ext_resource path="res://wall_tileset.tres" type="TileSet" id=16]
-[ext_resource path="res://light_material.tres" type="Material" id=17]
-[ext_resource path="res://player.gd" type="Script" id=18]
-[ext_resource path="res://sound/ow.wav" type="AudioStream" id=19]
-[ext_resource path="res://swing_flipper.gd" type="Script" id=20]
-[ext_resource path="res://sprite/grass.png" type="Texture" id=21]
-[ext_resource path="res://swing_icon.gd" type="Script" id=22]
-[ext_resource path="res://sprite/dirt.png" type="Texture" id=23]
-[ext_resource path="res://sprite/rocks.png" type="Texture" id=24]
-[ext_resource path="res://sprite/wood.png" type="Texture" id=25]
-[ext_resource path="res://sprite/coal.png" type="Texture" id=26]
-[ext_resource path="res://sprite/copper_ore.png" type="Texture" id=27]
-[ext_resource path="res://sprite/brick.png" type="Texture" id=28]
-[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=29]
-[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=30]
-[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=31]
-[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=32]
-[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=33]
-[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=34]
-[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=35]
-[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=36]
-[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=37]
-[ext_resource path="res://sprite/dirt_wall.png" type="Texture" id=38]
-[ext_resource path="res://sprite/rocks_wall.png" type="Texture" id=39]
-[ext_resource path="res://sprite/wood_wall.png" type="Texture" id=40]
-[ext_resource path="res://sprite/sledgehammer_icon.png" type="Texture" id=41]
-[ext_resource path="res://sprite/brick_wall.png" type="Texture" id=42]
-[ext_resource path="res://sprite/chest_icon.png" type="Texture" id=43]
-[ext_resource path="res://sprite/blue_flag_icon.png" type="Texture" id=44]
-[ext_resource path="res://sprite/player_falling.png" type="Texture" id=45]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=46]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=47]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=48]
-[ext_resource path="res://sound/jump.wav" type="AudioStream" id=49]
-[ext_resource path="res://cursor.gd" type="Script" id=50]
-[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=51]
-[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=52]
-[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=53]
-[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=54]
-[ext_resource path="res://sound/place.wav" type="AudioStream" id=55]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=56]
-[ext_resource path="res://sprite/spawn.png" type="Texture" id=57]
-[ext_resource path="res://music.wav" type="AudioStream" id=58]
+[ext_resource path="res://set_shrink.gd" type="Script" id=1]
+[ext_resource path="res://resize_viewport.gd" type="Script" id=2]
+[ext_resource path="res://copy_camera.gd" type="Script" id=3]
+[ext_resource path="res://sprite/red.png" type="Texture" id=4]
+[ext_resource path="res://sprite/block_breaking.png" type="Texture" id=5]
+[ext_resource path="res://sprite/centered_light.png" type="Texture" id=6]
+[ext_resource path="res://sprite/light_bg.png" type="Texture" id=7]
+[ext_resource path="res://sprite/sky_texture.png" type="Texture" id=8]
+[ext_resource path="res://sky.gd" type="Script" id=9]
+[ext_resource path="res://sprite/sky_fade.png" type="Texture" id=10]
+[ext_resource path="res://sky_fade.gd" type="Script" id=11]
+[ext_resource path="res://sprite/no_tile.png" type="Texture" id=12]
+[ext_resource path="res://check_player_tiles.gd" type="Script" id=13]
+[ext_resource path="res://useful_material.tres" type="Material" id=14]
+[ext_resource path="res://tileset.tres" type="TileSet" id=15]
+[ext_resource path="res://worldgen.gd" type="Script" id=16]
+[ext_resource path="res://wall_tileset.tres" type="TileSet" id=17]
+[ext_resource path="res://light_material.tres" type="Material" id=18]
+[ext_resource path="res://player.gd" type="Script" id=19]
+[ext_resource path="res://sound/ow.wav" type="AudioStream" id=20]
+[ext_resource path="res://swing_flipper.gd" type="Script" id=21]
+[ext_resource path="res://sprite/grass.png" type="Texture" id=22]
+[ext_resource path="res://swing_icon.gd" type="Script" id=23]
+[ext_resource path="res://sprite/dirt.png" type="Texture" id=24]
+[ext_resource path="res://sprite/rocks.png" type="Texture" id=25]
+[ext_resource path="res://sprite/wood.png" type="Texture" id=26]
+[ext_resource path="res://sprite/coal.png" type="Texture" id=27]
+[ext_resource path="res://sprite/copper_ore.png" type="Texture" id=28]
+[ext_resource path="res://sprite/brick.png" type="Texture" id=29]
+[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=30]
+[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=31]
+[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=32]
+[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=33]
+[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=34]
+[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=35]
+[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=36]
+[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=37]
+[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=38]
+[ext_resource path="res://sprite/dirt_wall.png" type="Texture" id=39]
+[ext_resource path="res://sprite/rocks_wall.png" type="Texture" id=40]
+[ext_resource path="res://sprite/wood_wall.png" type="Texture" id=41]
+[ext_resource path="res://sprite/sledgehammer_icon.png" type="Texture" id=42]
+[ext_resource path="res://sprite/brick_wall.png" type="Texture" id=43]
+[ext_resource path="res://sprite/chest_icon.png" type="Texture" id=44]
+[ext_resource path="res://sprite/blue_flag_icon.png" type="Texture" id=45]
+[ext_resource path="res://sprite/player_falling.png" type="Texture" id=46]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=47]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=48]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=49]
+[ext_resource path="res://sound/jump.wav" type="AudioStream" id=50]
+[ext_resource path="res://cursor.gd" type="Script" id=51]
+[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=52]
+[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=53]
+[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=54]
+[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=55]
+[ext_resource path="res://sound/place.wav" type="AudioStream" id=56]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=57]
+[ext_resource path="res://sprite/spawn.png" type="Texture" id=58]
+[ext_resource path="res://music.wav" type="AudioStream" id=59]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
-0/texture = ExtResource( 4 )
+0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 44, 4 )
@@ -80,7 +81,7 @@
 0/shapes = [  ]
 0/z_index = 0
 1/name = "block_breaking.png 1"
-1/texture = ExtResource( 4 )
+1/texture = ExtResource( 5 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 36, 0, 4, 4 )
@@ -98,7 +99,7 @@ points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 
 [sub_resource type="TileSet" id=4]
 0/name = "no_tile.png 0"
-0/texture = ExtResource( 11 )
+0/texture = ExtResource( 12 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 4, 4 )
@@ -119,7 +120,7 @@ points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 
 [sub_resource type="TileSet" id=21]
 0/name = "no_tile.png 0"
-0/texture = ExtResource( 11 )
+0/texture = ExtResource( 12 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 4, 4 )
@@ -294,7 +295,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 45 ) ]
+"values": [ ExtResource( 46 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -360,7 +361,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 45 ) ]
+"values": [ ExtResource( 46 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -425,7 +426,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 46 ) ]
+"values": [ ExtResource( 47 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -490,7 +491,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 46 ) ]
+"values": [ ExtResource( 47 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -555,7 +556,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 47 ) ]
+"values": [ ExtResource( 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -620,7 +621,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 47 ) ]
+"values": [ ExtResource( 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -685,7 +686,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 48 ) ]
+"values": [ ExtResource( 49 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -750,7 +751,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 48 ) ]
+"values": [ ExtResource( 49 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -808,12 +809,14 @@ extents = Vector2( 2.37535, 3.43493 )
 extents = Vector2( 4, 2 )
 
 [node name="root" type="Node2D"]
+script = ExtResource( 1 )
+shrink = 3
 
 [node name="block_break_viewport" type="Viewport" parent="."]
 editor/display_folded = true
 size = Vector2( 1024, 600 )
 render_target_update_mode = 3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="camera" type="Camera2D" parent="block_break_viewport"]
 current = true
@@ -821,11 +824,11 @@ drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="background" type="Sprite" parent="block_break_viewport/camera"]
 scale = Vector2( 400, 400 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
 [node name="block_break_map" type="TileMap" parent="block_break_viewport"]
@@ -835,9 +838,8 @@ cell_quadrant_size = 4
 format = 1
 
 [node name="light_viewport" type="Viewport" parent="."]
-editor/display_folded = true
 render_target_update_mode = 3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="camera" type="Camera2D" parent="light_viewport"]
 current = true
@@ -845,30 +847,32 @@ drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="player_light" type="Sprite" parent="light_viewport/camera"]
 visible = false
 material = SubResource( 2 )
 z_index = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
 [node name="background" type="Sprite" parent="light_viewport/camera"]
 z_index = -3
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
 [node name="sky" type="Sprite" parent="light_viewport"]
+scale = Vector2( 4, 1 )
 z_index = -1
-texture = ExtResource( 7 )
-script = ExtResource( 8 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="sky_fade" type="Sprite" parent="light_viewport"]
 position = Vector2( 0, 310 )
+scale = Vector2( 4, 1 )
 z_index = -2
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="physics_map" type="TileMap" parent="."]
 visible = false
@@ -879,7 +883,7 @@ collision_use_kinematic = true
 collision_layer = 3
 collision_mask = 3
 format = 1
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="platform_map" type="TileMap" parent="."]
 visible = false
@@ -892,19 +896,19 @@ collision_mask = 16384
 format = 1
 
 [node name="tiles" type="TileMap" parent="."]
-material = ExtResource( 13 )
-tile_set = ExtResource( 14 )
+material = ExtResource( 14 )
+tile_set = ExtResource( 15 )
 cell_size = Vector2( 4, 4 )
 cell_quadrant_size = 2
 collision_layer = 0
 collision_mask = 0
 format = 1
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="walls" type="TileMap" parent="."]
-material = ExtResource( 13 )
+material = ExtResource( 14 )
 z_index = -2
-tile_set = ExtResource( 16 )
+tile_set = ExtResource( 17 )
 cell_size = Vector2( 4, 4 )
 cell_quadrant_size = 2
 collision_layer = 0
@@ -912,11 +916,11 @@ collision_mask = 0
 format = 1
 
 [node name="player" type="KinematicBody2D" parent="."]
-material = ExtResource( 17 )
+material = ExtResource( 18 )
 position = Vector2( 4, -5 )
 collision_layer = 541188
 collision_mask = 541189
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 player_horizontal_acceleration = 200
 gravity = 120
 initial_jump_impulse = 402
@@ -925,189 +929,189 @@ jump_impulse_delta_delta = 3900
 jump_cancel_delta_delta = 10000
 
 [node name="hit" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource( 19 )
+stream = ExtResource( 20 )
 
 [node name="item_swing" type="Node2D" parent="player"]
 editor/display_folded = true
 use_parent_material = true
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="0" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 21 )
-script = ExtResource( 22 )
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
 
 [node name="1" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 23 )
-script = ExtResource( 22 )
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
 
 [node name="2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 24 )
-script = ExtResource( 22 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
 
 [node name="3" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 25 )
-script = ExtResource( 22 )
+texture = ExtResource( 26 )
+script = ExtResource( 23 )
 
 [node name="4" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.063, 0.063 )
-texture = ExtResource( 26 )
-script = ExtResource( 22 )
+texture = ExtResource( 27 )
+script = ExtResource( 23 )
 
 [node name="5" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 27 )
-script = ExtResource( 22 )
+texture = ExtResource( 28 )
+script = ExtResource( 23 )
 
 [node name="6" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 28 )
-script = ExtResource( 22 )
+texture = ExtResource( 29 )
+script = ExtResource( 23 )
 
 [node name="-2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 rotation = -1.5708
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 29 )
-script = ExtResource( 22 )
+texture = ExtResource( 30 )
+script = ExtResource( 23 )
 
 [node name="-3" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 30 )
-script = ExtResource( 22 )
+texture = ExtResource( 31 )
+script = ExtResource( 23 )
 
 [node name="-4" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 31 )
-script = ExtResource( 22 )
+texture = ExtResource( 32 )
+script = ExtResource( 23 )
 
 [node name="-5" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
-script = ExtResource( 22 )
+texture = ExtResource( 33 )
+script = ExtResource( 23 )
 
 [node name="-6" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -0.0338745, -5.71312 )
 rotation = -1.5708
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 33 )
-script = ExtResource( 22 )
+texture = ExtResource( 34 )
+script = ExtResource( 23 )
 
 [node name="-7" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 34 )
-script = ExtResource( 22 )
+texture = ExtResource( 35 )
+script = ExtResource( 23 )
 
 [node name="-8" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 35 )
-script = ExtResource( 22 )
+texture = ExtResource( 36 )
+script = ExtResource( 23 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 36 )
-script = ExtResource( 22 )
+texture = ExtResource( 37 )
+script = ExtResource( 23 )
 
 [node name="-10" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -0.0460358, -5.46389 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 37 )
-script = ExtResource( 22 )
+texture = ExtResource( 38 )
+script = ExtResource( 23 )
 
 [node name="-12" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 38 )
-script = ExtResource( 22 )
+texture = ExtResource( 39 )
+script = ExtResource( 23 )
 
 [node name="-13" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 39 )
-script = ExtResource( 22 )
+texture = ExtResource( 40 )
+script = ExtResource( 23 )
 
 [node name="-14" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 40 )
-script = ExtResource( 22 )
+texture = ExtResource( 41 )
+script = ExtResource( 23 )
 
 [node name="-15" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 2.38419e-007, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 41 )
-script = ExtResource( 22 )
+texture = ExtResource( 42 )
+script = ExtResource( 23 )
 
 [node name="-16" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
 position = Vector2( 0, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 42 )
-script = ExtResource( 22 )
+texture = ExtResource( 43 )
+script = ExtResource( 23 )
 
 [node name="-17" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -0.0338745, -5.71312 )
 rotation = -1.5708
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 43 )
-script = ExtResource( 22 )
+texture = ExtResource( 44 )
+script = ExtResource( 23 )
 
 [node name="-18" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 2.9087, -6.63316 )
 rotation = -0.00125182
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 44 )
-script = ExtResource( 22 )
+texture = ExtResource( 45 )
+script = ExtResource( 23 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player/item_swing"]
 anims/swing = SubResource( 5 )
@@ -1128,7 +1132,7 @@ shape = SubResource( 17 )
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
 position = Vector2( -1.5, -0.5 )
-texture = ExtResource( 45 )
+texture = ExtResource( 46 )
 hframes = 4
 frame = 3
 
@@ -1146,7 +1150,7 @@ anims/walk = SubResource( 12 )
 anims/walk_left = SubResource( 13 )
 
 [node name="jump" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource( 49 )
+stream = ExtResource( 50 )
 
 [node name="hitbox" type="Area2D" parent="player"]
 collision_layer = 16
@@ -1164,41 +1168,41 @@ drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 50 )
+script = ExtResource( 51 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="hit_dirt" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 51 )
-
-[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 52 )
 
-[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 53 )
 
-[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 54 )
 
-[node name="place" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 55 )
 
-[node name="ui" parent="." instance=ExtResource( 56 )]
+[node name="place" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 56 )
+
+[node name="ui" parent="." instance=ExtResource( 57 )]
 
 [node name="spawn_point" type="StaticBody2D" parent="."]
 editor/display_folded = true
 
 [node name="spawn_point" type="Sprite" parent="spawn_point"]
 position = Vector2( 4, 2 )
-texture = ExtResource( 57 )
+texture = ExtResource( 58 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_point"]
 position = Vector2( 4, 2 )
 shape = SubResource( 18 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 58 )
+stream = ExtResource( 59 )
 autoplay = true
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]

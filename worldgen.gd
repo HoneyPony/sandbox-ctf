@@ -637,7 +637,7 @@ func _ready():
 		var y = rand(20, 400)
 		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
 		
-	castle(-375, 0)
+	#castle(-375, 0)
 		
 	var spawn_y = -40
 	var spawn_x = rand(-375, -325)
