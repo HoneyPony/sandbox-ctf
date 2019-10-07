@@ -16,6 +16,13 @@ func _ready():
 	player = get_node("/root/root/player")
 	
 func create_recipe_ui():
+	get_node("../crafting_in_1").texture = null
+	get_node("../crafting_in_2").texture = null
+	get_node("../crafting_in_3").texture = null
+	get_node("../crafting_count_1").visible = false
+	get_node("../crafting_count_2").visible = false
+	get_node("../crafting_count_3").visible = false
+	
 	tooltip.deactivate_all()
 	
 	for c in get_children():

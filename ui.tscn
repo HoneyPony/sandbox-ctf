@@ -1719,8 +1719,8 @@ autowrap = true
 
 [node name="crafting_tooltip" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 86.0
+margin_bottom = 101.0
 mouse_filter = 2
 texture = ExtResource( 10 )
 script = ExtResource( 12 )
