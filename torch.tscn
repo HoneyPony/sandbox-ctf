@@ -31,7 +31,7 @@ position = Vector2( 2, 1 )
 z_index = -1
 texture = ExtResource( 2 )
 hframes = 8
-frame = 3
+frame = 7
 
 [node name="animation" type="AnimationPlayer" parent="sprite"]
 anims/fire = SubResource( 3 )

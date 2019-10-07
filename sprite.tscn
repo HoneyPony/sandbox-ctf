@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprite_ai.gd" type="Script" id=1]
 [ext_resource path="res://sprite/sprite.png" type="Texture" id=2]
@@ -42,10 +42,17 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 6.9216
+radius = 3.5
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 6.39335
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.03914
 
 [node name="sprite" type="KinematicBody2D"]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="flipper" type="Node2D" parent="."]
@@ -76,8 +83,15 @@ collision_mask = 262144
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
 position = Vector2( 0.0356483, 6.0245 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="hit" type="AudioStreamPlayer" parent="hearts"]
 stream = ExtResource( 5 )
+
+[node name="attacker" type="KinematicBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attacker"]
+shape = SubResource( 4 )
 [connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://sprite/spawn.png" type="Texture" id=53]
 [ext_resource path="res://music.wav" type="AudioStream" id=54]
 [ext_resource path="res://basic_knight.tscn" type="PackedScene" id=55]
+[ext_resource path="res://sprite.tscn" type="PackedScene" id=56]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -880,8 +881,8 @@ format = 1
 [node name="player" type="KinematicBody2D" parent="."]
 material = ExtResource( 17 )
 position = Vector2( 4, -5 )
-collision_layer = 524800
-collision_mask = 524801
+collision_layer = 524804
+collision_mask = 524805
 script = ExtResource( 18 )
 player_horizontal_acceleration = 200
 gravity = 120
@@ -1138,5 +1139,8 @@ stream = ExtResource( 54 )
 autoplay = true
 
 [node name="basic_knight" parent="." instance=ExtResource( 55 )]
+position = Vector2( -375, -40 )
+
+[node name="sprite" parent="." instance=ExtResource( 56 )]
 position = Vector2( -375, -40 )
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]
