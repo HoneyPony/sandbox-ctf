@@ -476,7 +476,6 @@ func tower(sx, sy):
 			plot_wall(x, y, Block.BRICK_WALL)
 		if platform == 0:
 			platform = 10
-			put_chest(sx + int(width / 2), y - 1, [])
 			
 	sy += height
 			

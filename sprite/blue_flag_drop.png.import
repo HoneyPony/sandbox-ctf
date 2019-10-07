@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_icon.png-3b66db3dc1f2ed88beb333c636bfa95e.stex"
+path="res://.import/blue_flag_drop.png-7685f500a1f50a33e3534ef789db2c3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/chest_icon.png"
-dest_files=[ "res://.import/chest_icon.png-3b66db3dc1f2ed88beb333c636bfa95e.stex" ]
+source_file="res://sprite/blue_flag_drop.png"
+dest_files=[ "res://.import/blue_flag_drop.png-7685f500a1f50a33e3534ef789db2c3e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

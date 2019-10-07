@@ -28,6 +28,7 @@ const icon_map = {
 	-16: preload("res://sprite/brick_wall_icon.png"),
 	
 	-17: preload("res://sprite/chest_icon.png"),
+	-18: preload("res://sprite/blue_flag_icon.png"),
 }
 
 const texture_map = {
@@ -59,6 +60,7 @@ const texture_map = {
 	-16: preload("res://sprite/brick_wall.png"),
 	
 	-17: preload("res://sprite/chest_drop.png"),
+	-18: preload("res://sprite/blue_flag_drop.png"),
 }
 
 #const lore_map = {
@@ -107,6 +109,7 @@ const lore_map = {
 	-16: ["Brick wall", "Place in the background for a crimson brick wall"],
 	
 	-17: ["Chest", "Place to store extra items"],
+	-18: ["Blue flag", "Swing to teleport home. Does not work when carrying red flag"],
 }
 
 const CAT_DIRT = 0
@@ -143,6 +146,7 @@ const SLEDGEHAMMER = -15
 const BRICK_WALL = -16
 
 const CHEST = -17
+const BLUE_FLAG = -18
 
 const GRASS_WALL_TILE = -1
 const DIRT_WALL_TILE = 0

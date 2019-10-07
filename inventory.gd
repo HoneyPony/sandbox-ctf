@@ -95,7 +95,7 @@ func _init(player_):
 	give_self_debug(6, Block.SLEDGEHAMMER, 20)
 	give_self_debug(7, Block.BRICK_WALL, 20)
 	
-	give_self_debug(8, Block.BRICK, 50)
+	give_self_debug(9, Block.BLUE_FLAG, 1)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:

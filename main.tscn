@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -27,35 +27,39 @@
 [ext_resource path="res://sprite/wood.png" type="Texture" id=25]
 [ext_resource path="res://sprite/coal.png" type="Texture" id=26]
 [ext_resource path="res://sprite/copper_ore.png" type="Texture" id=27]
-[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=28]
-[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=29]
-[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=30]
-[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=31]
-[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=32]
-[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=33]
-[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=34]
-[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=35]
-[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=36]
-[ext_resource path="res://sprite/dirt_wall.png" type="Texture" id=37]
-[ext_resource path="res://sprite/rocks_wall.png" type="Texture" id=38]
-[ext_resource path="res://sprite/wood_wall.png" type="Texture" id=39]
-[ext_resource path="res://sprite/sledgehammer_icon.png" type="Texture" id=40]
-[ext_resource path="res://sprite/player_falling.png" type="Texture" id=41]
-[ext_resource path="res://sprite/player_idle.png" type="Texture" id=42]
-[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=43]
-[ext_resource path="res://sprite/player_walk.png" type="Texture" id=44]
-[ext_resource path="res://sound/jump.wav" type="AudioStream" id=45]
-[ext_resource path="res://cursor.gd" type="Script" id=46]
-[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=47]
-[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=48]
-[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=49]
-[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=50]
-[ext_resource path="res://sound/place.wav" type="AudioStream" id=51]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=52]
-[ext_resource path="res://sprite/spawn.png" type="Texture" id=53]
-[ext_resource path="res://music.wav" type="AudioStream" id=54]
-[ext_resource path="res://basic_knight.tscn" type="PackedScene" id=55]
-[ext_resource path="res://sprite.tscn" type="PackedScene" id=56]
+[ext_resource path="res://sprite/brick.png" type="Texture" id=28]
+[ext_resource path="res://sprite/crafting_table_icon.png" type="Texture" id=29]
+[ext_resource path="res://sprite/stickaxe_icon.png" type="Texture" id=30]
+[ext_resource path="res://sprite/wood_axe_icon.png" type="Texture" id=31]
+[ext_resource path="res://sprite/wood_shovel_icon.png" type="Texture" id=32]
+[ext_resource path="res://sprite/furnace_icon.png" type="Texture" id=33]
+[ext_resource path="res://sprite/rock_pick_icon.png" type="Texture" id=34]
+[ext_resource path="res://sprite/rock_axe_icon.png" type="Texture" id=35]
+[ext_resource path="res://sprite/rock_shovel_icon.png" type="Texture" id=36]
+[ext_resource path="res://sprite/torch_icon.png" type="Texture" id=37]
+[ext_resource path="res://sprite/dirt_wall.png" type="Texture" id=38]
+[ext_resource path="res://sprite/rocks_wall.png" type="Texture" id=39]
+[ext_resource path="res://sprite/wood_wall.png" type="Texture" id=40]
+[ext_resource path="res://sprite/sledgehammer_icon.png" type="Texture" id=41]
+[ext_resource path="res://sprite/brick_wall.png" type="Texture" id=42]
+[ext_resource path="res://sprite/chest_icon.png" type="Texture" id=43]
+[ext_resource path="res://sprite/blue_flag_icon.png" type="Texture" id=44]
+[ext_resource path="res://sprite/player_falling.png" type="Texture" id=45]
+[ext_resource path="res://sprite/player_idle.png" type="Texture" id=46]
+[ext_resource path="res://sprite/player_jumping.png" type="Texture" id=47]
+[ext_resource path="res://sprite/player_walk.png" type="Texture" id=48]
+[ext_resource path="res://sound/jump.wav" type="AudioStream" id=49]
+[ext_resource path="res://cursor.gd" type="Script" id=50]
+[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=51]
+[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=52]
+[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=53]
+[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=54]
+[ext_resource path="res://sound/place.wav" type="AudioStream" id=55]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=56]
+[ext_resource path="res://sprite/spawn.png" type="Texture" id=57]
+[ext_resource path="res://music.wav" type="AudioStream" id=58]
+[ext_resource path="res://basic_knight.tscn" type="PackedScene" id=59]
+[ext_resource path="res://sprite.tscn" type="PackedScene" id=60]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -292,7 +296,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 41 ) ]
+"values": [ ExtResource( 45 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -358,7 +362,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 41 ) ]
+"values": [ ExtResource( 45 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -423,7 +427,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 42 ) ]
+"values": [ ExtResource( 46 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -488,7 +492,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 42 ) ]
+"values": [ ExtResource( 46 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -553,7 +557,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 43 ) ]
+"values": [ ExtResource( 47 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -618,7 +622,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 43 ) ]
+"values": [ ExtResource( 47 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -683,7 +687,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 44 ) ]
+"values": [ ExtResource( 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -748,7 +752,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 44 ) ]
+"values": [ ExtResource( 48 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -926,7 +930,6 @@ jump_cancel_delta_delta = 10000
 stream = ExtResource( 19 )
 
 [node name="item_swing" type="Node2D" parent="player"]
-editor/display_folded = true
 use_parent_material = true
 script = ExtResource( 20 )
 
@@ -973,12 +976,19 @@ scale = Vector2( 0.016, 0.016 )
 texture = ExtResource( 27 )
 script = ExtResource( 22 )
 
+[node name="6" type="Sprite" parent="player/item_swing"]
+visible = false
+position = Vector2( 0, -4 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 28 )
+script = ExtResource( 22 )
+
 [node name="-2" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( 0, -4 )
 rotation = -1.5708
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 script = ExtResource( 22 )
 
 [node name="-3" type="Sprite" parent="player/item_swing"]
@@ -986,7 +996,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 29 )
+texture = ExtResource( 30 )
 script = ExtResource( 22 )
 
 [node name="-4" type="Sprite" parent="player/item_swing"]
@@ -994,7 +1004,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 30 )
+texture = ExtResource( 31 )
 script = ExtResource( 22 )
 
 [node name="-5" type="Sprite" parent="player/item_swing"]
@@ -1002,7 +1012,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 31 )
+texture = ExtResource( 32 )
 script = ExtResource( 22 )
 
 [node name="-6" type="Sprite" parent="player/item_swing"]
@@ -1010,7 +1020,7 @@ visible = false
 position = Vector2( -0.0338745, -5.71312 )
 rotation = -1.5708
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 script = ExtResource( 22 )
 
 [node name="-7" type="Sprite" parent="player/item_swing"]
@@ -1018,7 +1028,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 script = ExtResource( 22 )
 
 [node name="-8" type="Sprite" parent="player/item_swing"]
@@ -1026,7 +1036,7 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 34 )
+texture = ExtResource( 35 )
 script = ExtResource( 22 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
@@ -1034,14 +1044,14 @@ visible = false
 position = Vector2( -3.41061e-013, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 35 )
+texture = ExtResource( 36 )
 script = ExtResource( 22 )
 
 [node name="-10" type="Sprite" parent="player/item_swing"]
 visible = false
 position = Vector2( -0.0460358, -5.46389 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 36 )
+texture = ExtResource( 37 )
 script = ExtResource( 22 )
 
 [node name="-12" type="Sprite" parent="player/item_swing"]
@@ -1049,7 +1059,7 @@ visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 37 )
+texture = ExtResource( 38 )
 script = ExtResource( 22 )
 
 [node name="-13" type="Sprite" parent="player/item_swing"]
@@ -1057,7 +1067,7 @@ visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.016, 0.016 )
-texture = ExtResource( 38 )
+texture = ExtResource( 39 )
 script = ExtResource( 22 )
 
 [node name="-14" type="Sprite" parent="player/item_swing"]
@@ -1065,7 +1075,7 @@ visible = false
 use_parent_material = true
 position = Vector2( 2.38419e-007, -4 )
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 39 )
+texture = ExtResource( 40 )
 script = ExtResource( 22 )
 
 [node name="-15" type="Sprite" parent="player/item_swing"]
@@ -1073,7 +1083,31 @@ visible = false
 position = Vector2( 2.38419e-007, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 40 )
+texture = ExtResource( 41 )
+script = ExtResource( 22 )
+
+[node name="-16" type="Sprite" parent="player/item_swing"]
+visible = false
+use_parent_material = true
+position = Vector2( 0, -4 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 42 )
+script = ExtResource( 22 )
+
+[node name="-17" type="Sprite" parent="player/item_swing"]
+visible = false
+position = Vector2( -0.0338745, -5.71312 )
+rotation = -1.5708
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 43 )
+script = ExtResource( 22 )
+
+[node name="-18" type="Sprite" parent="player/item_swing"]
+visible = false
+position = Vector2( 2.9087, -6.63316 )
+rotation = -0.00125182
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 44 )
 script = ExtResource( 22 )
 
 [node name="animation_player" type="AnimationPlayer" parent="player/item_swing"]
@@ -1095,7 +1129,7 @@ shape = SubResource( 17 )
 [node name="sprite" type="Sprite" parent="player"]
 use_parent_material = true
 position = Vector2( -1.5, -0.5 )
-texture = ExtResource( 41 )
+texture = ExtResource( 45 )
 hframes = 4
 frame = 3
 
@@ -1113,7 +1147,7 @@ anims/walk = SubResource( 12 )
 anims/walk_left = SubResource( 13 )
 
 [node name="jump" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource( 45 )
+stream = ExtResource( 49 )
 
 [node name="hitbox" type="Area2D" parent="player"]
 collision_layer = 16
@@ -1131,47 +1165,47 @@ drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 46 )
+script = ExtResource( 50 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 11 )
 
 [node name="hit_dirt" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 47 )
-
-[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 48 )
-
-[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 49 )
-
-[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 50 )
-
-[node name="place" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 51 )
 
-[node name="ui" parent="." instance=ExtResource( 52 )]
+[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 52 )
+
+[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 53 )
+
+[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 54 )
+
+[node name="place" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 55 )
+
+[node name="ui" parent="." instance=ExtResource( 56 )]
 
 [node name="spawn_point" type="StaticBody2D" parent="."]
 editor/display_folded = true
 
 [node name="spawn_point" type="Sprite" parent="spawn_point"]
 position = Vector2( 4, 2 )
-texture = ExtResource( 53 )
+texture = ExtResource( 57 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_point"]
 position = Vector2( 4, 2 )
 shape = SubResource( 18 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 54 )
+stream = ExtResource( 58 )
 autoplay = true
 
-[node name="basic_knight" parent="." instance=ExtResource( 55 )]
+[node name="basic_knight" parent="." instance=ExtResource( 59 )]
 position = Vector2( -375, -40 )
 
-[node name="sprite" parent="." instance=ExtResource( 56 )]
+[node name="sprite" parent="." instance=ExtResource( 60 )]
 position = Vector2( -375, -40 )
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]

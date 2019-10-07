@@ -105,6 +105,10 @@ func break_wall():
 	audio_cat(id)
 	
 func break_block():
+	if player.inventory.active_item().id == Block.BLUE_FLAG:
+		blue_flag()
+		return
+	
 	if player.inventory.active_item().id == Block.SLEDGEHAMMER:
 		break_wall()
 		return
@@ -182,6 +186,10 @@ func place_wall():
 		next_audio = PLACE
 	
 func place_block():
+	if player.inventory.active_item().id == Block.BLUE_FLAG:
+		blue_flag()
+		return
+	
 	if player.current_chest != null:
 		# Don't place when opening chest
 		return
@@ -342,6 +350,10 @@ func crafting_table():
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		next_audio = PLACE
 		#TODO:::!!:!:!:! Make fake blocks so that everything else works smoothyl
+
+#todo: animation?
+func blue_flag():
+	player.spawn()
 
 func get_relevant_strength():
 	var cat = Block.category(block_map.get_cell(tile_x(), tile_y()))
