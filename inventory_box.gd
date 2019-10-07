@@ -15,11 +15,14 @@ var right_mouse_delay = 0
 
 var Block = preload("res://block.gd")
 
+var tooltip
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/root/player")
 	slot = int(get_name())
 	float_ui = get_node("../../../../floating_item")
+	tooltip = get_node("../../../../tooltip")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,6 +64,8 @@ func right_clicked():
 
 func mouse_enter():
 	has_mouse = true
+	tooltip.activate(slot)
 
 func mouse_exit():
 	has_mouse = false
+	tooltip.deactivate(slot)

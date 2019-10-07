@@ -37,6 +37,24 @@ const texture_map = {
 	-9: preload("res://sprite/rock_shovel_drop.png"),
 }
 
+const lore_map = {
+	0: ["Grass", "Is always greener on the other side"],
+	1: ["Dirt", "Not much you can do with this..."],
+	2: ["Rocks", "Surprisingly easy to shape by hand"],
+	3: ["Wood", "All-natural"],
+	4: ["Coal", "You can light these rocks on fire"],
+	5: ["Copper ore", "Something useful for once"],
+	
+	-2: ["Crafting table", "You become craftier in the presence of this table"],
+	-3: ["Stickaxe", "A pickaxe made out of sticks"],
+	-4: ["Wood axe", "Chop down trees using a tree"],
+	-5: ["Wood shovel", "Easier than using your hands"],
+	-6: ["Furnace", "Nothing ever burns down by itself"],
+	-7: ["Rock pick", "Breaks stuff better"],
+	-8: ["Rock axe", "Chopin"],
+	-9: ["Rock shovel", "Now you can dig even faster! Perfect, right?"]
+}
+
 const CAT_DIRT = 0
 const CAT_ROCK = 1
 const CAT_WOOD = 2
@@ -79,6 +97,16 @@ static func get_icon(id):
 	
 static func get_texture(id):
 	return texture_map.get(id)
+	
+static func item_name(id):
+	if id in lore_map:
+		return lore_map.get(id)[0]
+	return "ERROR"
+	
+static func item_description(id):
+	if id in lore_map:
+		return lore_map.get(id)[1]
+	return "ERROR"
 	
 static func is_block(id):
 	return id >= 0
