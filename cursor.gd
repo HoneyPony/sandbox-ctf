@@ -152,6 +152,20 @@ func torch():
 	if block_map.get_cell(x, y) != -1:
 		return
 		
+	var on_ground = false
+		
+	if block_map.get_cell(x + 1, y) != -1:
+		on_ground = true
+	if block_map.get_cell(x - 1, y) != -1:
+		on_ground = true
+	if block_map.get_cell(x, y + 1) != -1:
+		on_ground = true
+	if block_map.get_cell(x, y - 1) != -1:
+		on_ground = true
+		
+	if !on_ground:
+		return
+		
 	if player.inventory.consume():
 		var table = load("res://torch.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)

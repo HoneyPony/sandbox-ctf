@@ -24,7 +24,7 @@ func handle_entity(player):
 	
 	for x in range(xs - 2, xs + 3):
 		for y in range(ys - 2, ys + 3):
-			if tilemap.get_cell(x, y) != -1:
+			if tilemap.get_cell(x, y) != -1 and tilemap.get_cell(x, y) != 6:
 				set_cell(x, y, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

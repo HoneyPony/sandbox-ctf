@@ -7,23 +7,25 @@ extends Node2D
 var light
 
 func tile_destroy(tilemap, x, y):
-	print(light)
+	tilemap.set_cell(x, y, -1)
+	
+	# called multiple times
+	if light == null:
+		return
+
 	light.get_parent().remove_child(light)
+	light = null
 	pass
+	
+	return -10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	light = get_node("light")
-	remove_child(light)
+	light = load("res://torch_light.tscn").instance()
+	light.position = position
 	get_node("/root/root/light_viewport").add_child(light)
-	light.set_owner(get_node("/root/root/light_viewport"))
 	
-	
-	
-	
-	print(light)
-	
-	$torch/animation.play("fire")
+	$sprite/animation.play("fire")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

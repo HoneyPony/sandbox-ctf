@@ -23,6 +23,7 @@ shape = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 4, 2 )
+z_index = -1
 texture = ExtResource( 3 )
 [connection signal="body_entered" from="activate_player" to="activate_player" method="player_enter"]
 [connection signal="body_exited" from="activate_player" to="activate_player" method="player_exit"]
