@@ -202,7 +202,7 @@ func _process(delta):
 		farthest.get_parent().remove_child(farthest)
 	
 	if spawn_timer <= 0:
-		if player.position.y > 15 or player.equipped:
+		if player.equipped:
 			try_spawn()
 	else:
 		spawn_timer -= delta

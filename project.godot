@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LD45"
+config/name="Sandbox CTF"
 run/main_scene="res://menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://sprite/icon.png"
 
 [autoload]
 
