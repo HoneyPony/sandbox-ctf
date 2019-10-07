@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://basic_knight.gd" type="Script" id=1]
 [ext_resource path="res://sprite/basic_knight_attack.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://sprite/heart.png" type="Texture" id=6]
 [ext_resource path="res://hearts.gd" type="Script" id=7]
 [ext_resource path="res://sound/hit_enemy.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2.02515, 6.62002 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
@@ -97,6 +100,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [ ExtResource( 2 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("flipper/node/hit_player/collider:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "walk"
@@ -155,9 +170,9 @@ scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 
 [node name="node" type="Node2D" parent="flipper"]
-editor/display_folded = true
+visible = false
 position = Vector2( -2.49536, 0.926847 )
-rotation = 0.226893
+rotation = 1.22173
 
 [node name="arm" type="Sprite" parent="flipper/node"]
 position = Vector2( 3.72173, -4.96148 )
@@ -169,6 +184,15 @@ visible = false
 position = Vector2( -1.07232, -4.99044 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
+
+[node name="hit_player" type="KinematicBody2D" parent="flipper/node"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="collider" type="CollisionShape2D" parent="flipper/node/hit_player"]
+position = Vector2( 4.51516, -5.39492 )
+shape = SubResource( 4 )
+disabled = true
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )

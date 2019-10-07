@@ -43,7 +43,7 @@ var at_furnace = false
 
 var craft_sentinel
 
-var health = 35
+var health = 40
 
 func notify_crafting():
 	var last = at_crafting_table
@@ -206,3 +206,8 @@ func _physics_process(delta):
 	
 	#print(position.y)
 	
+
+func hit(body):
+	# todo get thing
+	health -= 1
+	$hit.play()
