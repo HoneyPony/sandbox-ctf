@@ -146,6 +146,7 @@ func _physics_process(delta):
 			current_jump_impulse = initial_jump_impulse
 			current_jump_impulse_delta = 0
 			on_ground = false
+			$jump.play()
 		
 	var max_h = player_speed
 		

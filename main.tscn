@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://resize_viewport.gd" type="Script" id=1]
 [ext_resource path="res://copy_camera.gd" type="Script" id=2]
@@ -43,15 +43,17 @@
 [ext_resource path="res://sprite/player_idle.png" type="Texture" id=41]
 [ext_resource path="res://sprite/player_jumping.png" type="Texture" id=42]
 [ext_resource path="res://sprite/player_walk.png" type="Texture" id=43]
-[ext_resource path="res://cursor.gd" type="Script" id=44]
-[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=45]
-[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=46]
-[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=47]
-[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=48]
-[ext_resource path="res://sound/place.wav" type="AudioStream" id=49]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=50]
-[ext_resource path="res://sprite/spawn.png" type="Texture" id=51]
-[ext_resource path="res://music.wav" type="AudioStream" id=52]
+[ext_resource path="res://sound/jump.wav" type="AudioStream" id=44]
+[ext_resource path="res://cursor.gd" type="Script" id=45]
+[ext_resource path="res://sound/hit_dirt.wav" type="AudioStream" id=46]
+[ext_resource path="res://sound/hit_wood.wav" type="AudioStream" id=47]
+[ext_resource path="res://sound/hit_rock.wav" type="AudioStream" id=48]
+[ext_resource path="res://sound/hit_nothing.wav" type="AudioStream" id=49]
+[ext_resource path="res://sound/place.wav" type="AudioStream" id=50]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=51]
+[ext_resource path="res://sprite/spawn.png" type="Texture" id=52]
+[ext_resource path="res://music.wav" type="AudioStream" id=53]
+[ext_resource path="res://basic_knight.tscn" type="PackedScene" id=54]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_breaking.png 0"
@@ -872,6 +874,7 @@ collision_mask = 0
 format = 1
 
 [node name="player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 material = ExtResource( 17 )
 position = Vector2( 4, -5 )
 collision_layer = 524800
@@ -1071,6 +1074,9 @@ anims/jumping_left = SubResource( 11 )
 anims/walk = SubResource( 12 )
 anims/walk_left = SubResource( 13 )
 
+[node name="jump" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource( 44 )
+
 [node name="camera" type="Camera2D" parent="."]
 current = true
 drag_margin_left = 0.0
@@ -1079,40 +1085,43 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="cursor" type="Node2D" parent="."]
-script = ExtResource( 44 )
+script = ExtResource( 45 )
 
 [node name="Sprite" type="Sprite" parent="cursor"]
 visible = false
 texture = ExtResource( 11 )
 
 [node name="hit_dirt" type="AudioStreamPlayer" parent="cursor"]
-stream = ExtResource( 45 )
-
-[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 46 )
 
-[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_wood" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 47 )
 
-[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_rock" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 48 )
 
-[node name="place" type="AudioStreamPlayer" parent="cursor"]
+[node name="hit_nothing" type="AudioStreamPlayer" parent="cursor"]
 stream = ExtResource( 49 )
 
-[node name="ui" parent="." instance=ExtResource( 50 )]
+[node name="place" type="AudioStreamPlayer" parent="cursor"]
+stream = ExtResource( 50 )
+
+[node name="ui" parent="." instance=ExtResource( 51 )]
 
 [node name="spawn_point" type="StaticBody2D" parent="."]
 editor/display_folded = true
 
 [node name="spawn_point" type="Sprite" parent="spawn_point"]
 position = Vector2( 4, 2 )
-texture = ExtResource( 51 )
+texture = ExtResource( 52 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_point"]
 position = Vector2( 4, 2 )
 shape = SubResource( 18 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 52 )
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 53 )
 autoplay = true
+
+[node name="basic_knight" parent="." instance=ExtResource( 54 )]
+position = Vector2( -375, -40 )

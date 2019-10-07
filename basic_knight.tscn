@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://basic_knight.gd" type="Script" id=1]
 [ext_resource path="res://sprite/basic_knight_attack.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprite/basic_knight_walk.png" type="Texture" id=5]
 [ext_resource path="res://sprite/heart.png" type="Texture" id=6]
 [ext_resource path="res://hearts.gd" type="Script" id=7]
+[ext_resource path="res://sound/hit_enemy.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
@@ -192,4 +193,7 @@ collision_mask = 262144
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
 position = Vector2( 0, 8 )
 shape = SubResource( 2 )
+
+[node name="hit" type="AudioStreamPlayer" parent="hearts"]
+stream = ExtResource( 8 )
 [connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

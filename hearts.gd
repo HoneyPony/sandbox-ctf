@@ -37,4 +37,6 @@ func hit(body):
 	timer = 0.2
 	
 	get_parent().you_were_hit()
+	
+	$hit.play()
 	pass # Replace with function body.
