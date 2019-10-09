@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[sub_resource type="Shader" id=20]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform sampler2D light_viewport;
@@ -19,10 +19,10 @@ void fragment() {
 	COLOR.rgb *= f3(texture(light_viewport, SCREEN_UV).rgb);
 }"
 
-[sub_resource type="ViewportTexture" id=21]
+[sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("light_viewport")
 
 [resource]
 resource_local_to_scene = true
-shader = SubResource( 20 )
-shader_param/light_viewport = SubResource( 21 )
+shader = SubResource( 1 )
+shader_param/light_viewport = SubResource( 2 )
