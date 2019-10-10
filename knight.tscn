@@ -9,10 +9,10 @@
 [ext_resource path="res://hearts.gd" type="Script" id=7]
 [ext_resource path="res://sound/hit_enemy.wav" type="AudioStream" id=8]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.02515, 6.62002 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 length = 0.6
 step = 0.05
@@ -113,8 +113,7 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "walk"
+[sub_resource type="Animation" id=3]
 length = 0.64
 loop = true
 step = 0.08
@@ -155,7 +154,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 3.5
 height = 5.0
 
@@ -163,7 +162,9 @@ height = 5.0
 radius = 5.07286
 height = 5.0
 
-[node name="knight" type="KinematicBody2D"]
+[node name="knight" type="KinematicBody2D" groups=[
+"enemies",
+]]
 use_parent_material = true
 collision_layer = 16384
 collision_mask = 16385
@@ -205,17 +206,17 @@ collision_mask = 16
 [node name="collider" type="CollisionShape2D" parent="flipper/node/hit_player"]
 visible = false
 position = Vector2( 4.51516, -5.39492 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 3 )
-anims/walk = SubResource( 1 )
+anims/attack = SubResource( 2 )
+anims/walk = SubResource( 3 )
 next/attack = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="hearts" type="Sprite" parent="."]
 position = Vector2( -0.5, -8 )

@@ -196,7 +196,7 @@ func _process(delta):
 		var dist = (enemies[0].position - player.position).length_squared()
 		for e in enemies:
 			var new_dist = (e.position - player.position).length_squared()
-			if new_dist > farthest:
+			if new_dist > dist:
 				dist = new_dist
 				farthest = e
 		farthest.get_parent().remove_child(farthest)

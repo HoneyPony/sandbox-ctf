@@ -44,10 +44,10 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 3.5
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 5.03914
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 6.39335
 
 [node name="sprite" type="KinematicBody2D" groups=[
@@ -81,7 +81,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attacker"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="hearts" type="Sprite" parent="."]
 position = Vector2( 0, -6 )
@@ -97,7 +97,7 @@ collision_mask = 262144
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hearts/heart_area"]
 position = Vector2( 0.0356483, 6.0245 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="hit" type="AudioStreamPlayer" parent="hearts"]
 stream = ExtResource( 5 )
