@@ -9,6 +9,7 @@ var BRICK = 8
 var PLATFORM = 9
 
 var physics_map
+var platform_map
 
 var Tree
 
@@ -19,9 +20,6 @@ var walls
 var X_BOUND = 300
 var Y_BOUND = 350
 
-func _process(delta):
-	var s: ShaderMaterial = material
-	var b: ViewportTexture = s.get_shader_param("break_viewport")
 
 func put_chest(x, y, items):
 	var table = load("res://chest.tscn").instance()
@@ -584,9 +582,32 @@ func chest_underground():
 		treasure.append([Block.COPPER_BAR, rand(5, 11)])
 	put_chest(sx + int(width / 2), sy + height - 1, treasure)
 
+var physics_are_done = false
+func try_create_physics():
+	print("--- START PHYSICS CREATION ---")
+	var time = OS.get_ticks_msec()
+	
+	for cell in get_used_cells():
+		physics_map.set_cellv(cell, 0)
+		
+	for bridge in get_used_cells_by_id(9):
+		physics_map.set_cellv(bridge, -1)
+		platform_map.set_cellv(bridge, 0)
+		
+	print("--- DONE ---")
+	time = OS.get_ticks_msec() - time
+	print("took ", time, " ms to do this the hard way")
+	
+	physics_are_done = true
+	
+func _process(delta):
+	if not physics_are_done:
+		try_create_physics()
+
 func _ready():
 	Tree = load("res://tree.tscn")
 	physics_map = get_node("/root/root/physics_map")
+	platform_map = get_node("/root/root/platform_map")
 	walls = get_node("/root/root/walls")
 	
 	randomize()

@@ -34,7 +34,7 @@ func handle_entity(player):
 					set_cell(x, y, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	for e in entities:
-		handle_entity(e)
+#func _process(delta):
+#	for e in entities:
+#		handle_entity(e)
 		
