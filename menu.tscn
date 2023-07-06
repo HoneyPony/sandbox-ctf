@@ -52,6 +52,7 @@ margin_right = 238.0
 margin_bottom = 172.886
 texture = ExtResource( 6 )
 script = ExtResource( 5 )
+
 [connection signal="mouse_entered" from="CenterContainer/Control/play_normal" to="CenterContainer/Control/play_normal" method="mouse_enter"]
 [connection signal="mouse_exited" from="CenterContainer/Control/play_normal" to="CenterContainer/Control/play_normal" method="mouse_exit"]
 [connection signal="mouse_entered" from="CenterContainer/Control/play_perma" to="CenterContainer/Control/play_perma" method="mouse_enter"]

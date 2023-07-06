@@ -106,6 +106,11 @@ func _init(player_):
 		items.append(Item.new())
 	
 	give_self_debug(9, Block.BLUE_FLAG, 1)
+	give_self_debug(0, Block.COPPER_AXE, 1)
+	give_self_debug(1, Block.COPPER_PICK, 1)
+	give_self_debug(2, Block.CRAFT_TABLE, 1)
+	give_self_debug(3, Block.WOOD, 500)
+	give_self_debug(4, Block.COPPER_BAR, 50)
 		
 func check_recipe(recipe):
 	if recipe.requires_table and not player.at_crafting_table:

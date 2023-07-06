@@ -242,7 +242,7 @@ func _physics_process(delta):
 
 func hit(body):
 	# todo get thing
-	health -= 1
+	health -= 0
 	if health < 0:
 		var permadeath = get_node("/root/global").permadeath
 		if permadeath:

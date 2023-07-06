@@ -15,5 +15,7 @@ void fragment() {
 	COLOR = texture(TEXTURE, UV);
 	COLOR.a *= texture(break_viewport, SCREEN_UV).r;
 	
+	if(COLOR.a <= 0.2) discard;
+	
 	COLOR.rgb *= f3(texture(light_viewport, SCREEN_UV).rgb);
 }
