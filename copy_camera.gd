@@ -11,5 +11,5 @@ func _ready():
 	to_copy = get_node("/root/root/camera")
 	pass # Replace with function body.
 
-func _process(delta):
-	position = to_copy.position
+#func _process(delta):
+	#position = to_copy.position

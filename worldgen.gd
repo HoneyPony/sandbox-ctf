@@ -19,6 +19,10 @@ var walls
 var X_BOUND = 300
 var Y_BOUND = 350
 
+func _process(delta):
+	var s: ShaderMaterial = material
+	var b: ViewportTexture = s.get_shader_param("break_viewport")
+
 func put_chest(x, y, items):
 	var table = load("res://chest.tscn").instance()
 	get_node("/root/root").call_deferred("add_child", table)
