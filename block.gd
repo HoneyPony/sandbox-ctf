@@ -332,7 +332,7 @@ static func wood_strength(id):
 	
 static func rock_strength(id):
 	if id == COPPER_PICK:
-		return 1.7
+		return 10.0#1.7
 	if id == ROCK_PICK:
 		return 1.3
 	if id == -3:

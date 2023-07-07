@@ -50,9 +50,7 @@ radius = 6.39335
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.03914
 
-[node name="sprite" type="KinematicBody2D" groups=[
-"enemies",
-]]
+[node name="sprite" type="KinematicBody2D" groups=["enemies"]]
 use_parent_material = true
 collision_layer = 4
 collision_mask = 5
@@ -100,4 +98,5 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attacker"]
 shape = SubResource( 4 )
+
 [connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

@@ -162,9 +162,7 @@ height = 5.0
 radius = 5.07286
 height = 5.0
 
-[node name="basic_knight" type="KinematicBody2D" groups=[
-"enemies",
-]]
+[node name="basic_knight" type="KinematicBody2D" groups=["enemies"]]
 use_parent_material = true
 collision_layer = 0
 collision_mask = 16385
@@ -234,4 +232,5 @@ shape = SubResource( 5 )
 
 [node name="hit" type="AudioStreamPlayer" parent="hearts"]
 stream = ExtResource( 8 )
+
 [connection signal="body_entered" from="hearts/heart_area" to="hearts" method="hit"]

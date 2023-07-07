@@ -31,7 +31,7 @@ func _ready():
 	sprite = load("res://sprite.tscn")
 	
 func spawn(x, y):
-	print("spawning at ", x, ", ", y)
+	print("spawning at ", x * 4, ", ", y * 4, " | player = ", global.player.position.x, ", ", global.player.position.y)
 	spawn_timer = get_enemy_rate()
 	var instance
 	if rand(0, 2) <= 0:
@@ -57,6 +57,8 @@ func try_vertical(start, end, start_y, end_y):
 	var ex = int(end / 4)
 	var sy = int(start_y / 4)
 	var ey = int(end_y / 4)
+	
+	#print("vertical stripe: ", sx * 4, ", ", ex * 4, " x ", sy * 4, ", ", ey * 4)
 	
 	var candidate = Vector2(0, 0)
 	var has_candidate = false
@@ -109,13 +111,15 @@ func try_horizontal(start, end, start_x, end_x):
 	var sx = int(start_x / 4)
 	var ex = int(end_x / 4)
 	
+	#print("horizontal stripe: ", sx * 4, ", ", ex * 4, " x ", sy * 4, ", ", ey * 4)
+	
 	var candidate = Vector2(0, 0)
 	var has_candidate = false
 	
 	var tiles = global.tiles
 	
 	for x in range(sx, ex + 1):
-		for y in range(sy, ey + 1):
+		for y in range(sy, ey + 1):			
 			if tiles.get_cell(x, y) != -1:
 				continue
 			if tiles.get_cell(x + 1, y) != -1:
@@ -146,7 +150,7 @@ func try_horizontal(start, end, start_x, end_x):
 	return false
 				
 func try_spawn():
-	var bounds = get_viewport().size
+	var bounds = get_viewport().size / 3.0
 	
 	var player = global.player
 	

@@ -28,5 +28,5 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	var c = move_and_collide(velocity * delta)
 	if c != null:
-		if c.collider == physics_map:
+		if c.collider == global.physics_map:
 			get_parent().remove_child(self)

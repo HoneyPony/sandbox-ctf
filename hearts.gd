@@ -18,8 +18,8 @@ var Block = preload("res://block.gd")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health *= 3
-	hearts2 = get_node("hearts2")
-	hearts3 = get_node("hearts3")
+	hearts2 = get_node_or_null("hearts2")
+	hearts3 = get_node_or_null("hearts3")
 	player = global.player
 	melee = player.get_node("item_swing/hit stuff")
 	pass # Replace with function body.

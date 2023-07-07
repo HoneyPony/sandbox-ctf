@@ -56,6 +56,7 @@ func _ready():
 func _physics_process(delta):
 	if (position - player.position).length_squared() > 200 * 4 * 200 * 4:
 		get_parent().remove_child(self)
+		print("I'm outta here: ", position, " ", player.position)
 		return
 	
 	if knockback > 0:

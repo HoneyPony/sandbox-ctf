@@ -155,6 +155,7 @@ func finish_tree(x, y):
 	global.root.call_deferred("add_child", t)
 
 func tree(x, y):
+	return # Test no trees (are they slow to render?)
 	# somehow we were getting floats before.....
 	x = round(x)
 	y = round(y)
