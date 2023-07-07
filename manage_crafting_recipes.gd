@@ -15,7 +15,7 @@ var tooltip
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tooltip = get_node("../../crafting_tooltip")
-	player = get_node("/root/root/player")
+	player = global.player
 	
 func create_recipe_ui():
 	get_node("../crafting_in_1").texture = null

@@ -1,22 +1,15 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var player
-var tiles
-
 var basic_knight
 var sprite
 var mean_sprite
 var knight
 
 func hard_territory():
-	return player.position.x > 0 or player.position.y < -400
+	return global.player.position.x > 0 or global.player.position.y < -400
 	
 func very_hard_territory():
-	return player.position.x > 100
+	return global.player.position.x > 100
 
 var spawn_timer = 0
 
@@ -24,17 +17,14 @@ func rand(a, b):
 	return round(rand_range(a, b))
 
 func get_enemy_rate():
-	if player.position.y < 15:
+	if global.player.position.y < 15:
 		return rand(11, 23)
 	else:
 		return rand(4, 8)
 	
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	player = get_node("/root/root/player")
-	tiles = get_node("/root/root/tiles")
-	
+func _ready():	
 	basic_knight = load("res://basic_knight.tscn")
 	mean_sprite = load("res://mean_sprite.tscn")
 	knight = load("res://knight.tscn")
@@ -59,7 +49,7 @@ func spawn(x, y):
 		else:
 			instance = sprite.instance()
 	instance.position = Vector2(x, y) * 4
-	get_node("/root/root").add_child(instance)
+	global.root.add_child(instance)
 	pass
 	
 func try_vertical(start, end, start_y, end_y):
@@ -71,6 +61,8 @@ func try_vertical(start, end, start_y, end_y):
 	var candidate = Vector2(0, 0)
 	var has_candidate = false
 	var candidate_brick = false
+	
+	var tiles = global.tiles
 	
 	for x in range(sx, ex + 1):
 		for y in range(sy, ey + 1):
@@ -95,11 +87,11 @@ func try_vertical(start, end, start_y, end_y):
 			var brick = tiles.get_cell(x, y) == 8
 			if has_candidate:
 				if candidate_brick == brick:
-					if (test - player.position).length_squared() < (candidate - player.position).length_squared():
+					if (test - global.player.position).length_squared() < (candidate - global.player.position).length_squared():
 						candidate = test
 						candidate_brick = brick
 				elif brick and not candidate_brick:
-					if (test - player.position).length_squared() < (candidate - player.position).length_squared():
+					if (test - global.player.position).length_squared() < (candidate - global.player.position).length_squared():
 						candidate = test
 						candidate_brick = brick
 			else:
@@ -119,6 +111,8 @@ func try_horizontal(start, end, start_x, end_x):
 	
 	var candidate = Vector2(0, 0)
 	var has_candidate = false
+	
+	var tiles = global.tiles
 	
 	for x in range(sx, ex + 1):
 		for y in range(sy, ey + 1):
@@ -141,7 +135,7 @@ func try_horizontal(start, end, start_x, end_x):
 				
 			var test = Vector2(x, y)
 			if has_candidate:
-				if (test - player.position).length_squared() < (candidate - player.position).length_squared():
+				if (test - global.player.position).length_squared() < (candidate - global.player.position).length_squared():
 					candidate = test
 			else:
 				candidate = test
@@ -153,6 +147,8 @@ func try_horizontal(start, end, start_x, end_x):
 				
 func try_spawn():
 	var bounds = get_viewport().size
+	
+	var player = global.player
 	
 	var left = player.position.x - bounds.x
 	var right = player.position.x + bounds.x
@@ -193,16 +189,16 @@ func _process(delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	if enemies.size() > 100:
 		var farthest = enemies[0]
-		var dist = (enemies[0].position - player.position).length_squared()
+		var dist = (enemies[0].position - global.player.position).length_squared()
 		for e in enemies:
-			var new_dist = (e.position - player.position).length_squared()
+			var new_dist = (e.position - global.player.position).length_squared()
 			if new_dist > dist:
 				dist = new_dist
 				farthest = e
 		farthest.get_parent().remove_child(farthest)
 	
 	if spawn_timer <= 0:
-		if player.equipped:
+		if global.player.equipped:
 			try_spawn()
 	else:
 		spawn_timer -= delta

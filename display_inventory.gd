@@ -6,8 +6,6 @@ extends VBoxContainer
 
 var slot
 
-var player
-
 var Block = preload("res://block.gd")
 
 var idle = preload("res://sprite/inventory_test.png")
@@ -16,12 +14,11 @@ var active = preload("res://sprite/inventory_active.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	slot = int(get_name())
-	player = get_node("/root/root/player")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var item = player.inventory.items[slot]
+	var item = global.player.inventory.items[slot]
 	var id = item.id
 	
 	if id == -1:
@@ -36,7 +33,7 @@ func _process(delta):
 			$frame/count.show()
 			$frame/count.set_text(String(item.count))
 			
-	if player.inventory.active_hotbar == slot:
+	if global.player.inventory.active_hotbar == slot:
 		$frame.texture = active
 	else:
 		$frame.texture = idle

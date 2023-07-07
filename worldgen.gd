@@ -26,7 +26,7 @@ var Y_BOUND = 350
 
 func put_chest(x, y, items):
 	var table = load("res://chest.tscn").instance()
-	get_node("/root/root").call_deferred("add_child", table)
+	global.root.call_deferred("add_child", table)
 	table.position = Vector2(round(x * 4), round(y * 4))
 	set_cell(x, y, Block.SPECIAL)
 	set_cell(x + 1, y, Block.SPECIAL)
@@ -152,7 +152,7 @@ var tree_run = 0
 func finish_tree(x, y):
 	var t = Tree.instance()
 	t.position = Vector2(x * 4, (y + 1) * 4)
-	get_node("/root/root").call_deferred("add_child", t)
+	global.root.call_deferred("add_child", t)
 
 func tree(x, y):
 	# somehow we were getting floats before.....
@@ -608,13 +608,14 @@ func try_create_physics():
 	
 func _process(delta):
 	if not physics_are_done:
+		generate_the_world()
 		try_create_physics()
 
-func _ready():
+func generate_the_world():
 	Tree = load("res://tree.tscn")
-	physics_map = get_node("/root/root/physics_map")
-	platform_map = get_node("/root/root/platform_map")
-	walls = get_node("/root/root/walls")
+	physics_map = global.physics_map
+	platform_map = global.platform_map
+	walls = global.walls
 	
 	randomize()
 	
@@ -734,10 +735,10 @@ func _ready():
 	set_cell(spawn_x, spawn_y, 7)
 	set_cell(spawn_x + 1, spawn_y, 7)
 	
-	get_node("/root/root/spawn_point").position = Vector2(spawn_x, spawn_y) * 4
-	get_node("/root/root/player").spawn()
+	global.spawn_point.position = Vector2(spawn_x, spawn_y) * 4
+	global.player.spawn()
 	
-	get_node("/root/root/music").play()
+	global.music.play()
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)
@@ -788,5 +789,3 @@ func _ready():
 	
 			
 	##fill_poly([Vector2(-10, 0), Vector2(0, -10), Vector2(10, 0)], DIRT)
-
-	

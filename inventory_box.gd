@@ -19,7 +19,6 @@ var tooltip
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/root/player")
 	slot = int(get_name())
 	float_ui = get_node("../../../../floating_item")
 	tooltip = get_node("../../../../tooltip")
@@ -27,6 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	player = global.player
 	if !player.inventory_open:
 		has_mouse = false
 		return

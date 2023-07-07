@@ -18,7 +18,7 @@ func spawn_pickup(x, y, id):
 	x = round(x / 4)
 	y = round(y / 4)
 	var pickup = ItemPickup.instance()
-	get_node("/root/root").add_child(pickup)
+	global.root.add_child(pickup)
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 
@@ -36,7 +36,7 @@ func _init():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/root/player")
+	player = global.player
 	
 	
 	

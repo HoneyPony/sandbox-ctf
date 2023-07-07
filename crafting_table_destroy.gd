@@ -62,7 +62,7 @@ func _ready():
 	if mode == FURNACE:
 		light = load("res://torch_light.tscn").instance()
 		light.position = position
-		get_node("/root/root/light_viewport").add_child(light)
+		global.light_viewport.add_child(light)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

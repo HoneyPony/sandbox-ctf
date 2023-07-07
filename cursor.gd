@@ -72,15 +72,16 @@ func autotile(x, y, id):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	break_map = get_node("/root/root/block_break_viewport/block_break_map")
-	block_map = get_node("/root/root/tiles")
-	physics_map = get_node("/root/root/physics_map")
-	platform_map = get_node("/root/root/platform_map")
+	var root = get_parent()
+	break_map = root.get_node("block_break_viewport/block_break_map")
+	block_map = root.get_node("tiles")
+	physics_map = root.get_node("physics_map")
+	platform_map = root.get_node("platform_map")
 	item_pickup = load("res://item_pickup.tscn")
 	
-	wall_map = get_node("/root/root/walls")
+	wall_map = root.get_node("walls")
 	
-	player = get_node("/root/root/player")
+	player = root.get_node("player")
 	pass # Replace with function body.
 	
 func tile_x():
@@ -101,7 +102,7 @@ func break_wall():
 	var id = Block.wall_item(wall_id)
 		
 	var pickup = item_pickup.instance()
-	get_node("/root/root").add_child(pickup)
+	global.root.add_child(pickup)
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 	
@@ -182,7 +183,7 @@ func break_block():
 			platform_map.set_cell(x, y, -1)
 		
 		var pickup = item_pickup.instance()
-		get_node("/root/root").add_child(pickup)
+		global.root.add_child(pickup)
 		pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 		pickup.set_id(id)
 		
@@ -296,7 +297,7 @@ func torch():
 	if player.inventory.consume():
 		var table = load("res://torch.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
-		get_node("/root/root").add_child(table)
+		global.root.add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
 		next_audio = PLACE
 
@@ -316,7 +317,7 @@ func furnace():
 	if player.inventory.consume():
 		var table = load("res://furnace.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
-		get_node("/root/root").add_child(table)
+		global.root.add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		block_map.set_cell(x, y - 1, Block.SPECIAL)
@@ -339,7 +340,7 @@ func chest():
 	if player.inventory.consume():
 		var table = load("res://chest.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
-		get_node("/root/root").add_child(table)
+		global.root.add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		block_map.set_cell(x, y - 1, Block.SPECIAL)
@@ -362,7 +363,7 @@ func crafting_table():
 	if player.inventory.consume():
 		var table = load("res://crafting_table.tscn").instance()
 		table.position = Vector2(x * 4, y * 4)
-		get_node("/root/root").add_child(table)
+		global.root.add_child(table)
 		block_map.set_cell(x, y, Block.SPECIAL)
 		block_map.set_cell(x + 1, y, Block.SPECIAL)
 		next_audio = PLACE
@@ -393,7 +394,7 @@ func javelin():
 		var javelin = load("res://javelin.tscn").instance()
 		javelin.velocity = direction * 200
 		javelin.position = player.position
-		get_node("/root/root").add_child(javelin)
+		global.root.add_child(javelin)
 	
 	
 	

@@ -19,7 +19,7 @@ var tooltip
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/root/player")
+	player = global.player
 	slot = int(get_name())
 	float_ui = get_node("../../../../floating_item")
 	tooltip = get_node("../../../../tooltip")
@@ -30,6 +30,7 @@ func get_item():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	player = global.player
 	if player.current_chest == null:
 		#print("no chest")
 		has_mouse = false

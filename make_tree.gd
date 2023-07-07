@@ -4,7 +4,6 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var player
 var ItemPickup = preload("res://item_pickup.tscn")
 var logs = 0
 var top
@@ -13,7 +12,7 @@ func spawn_pickup(x, y, id):
 	x = round(x / 4)
 	y = round(y / 4)
 	var pickup = ItemPickup.instance()
-	get_node("/root/root").add_child(pickup)
+	global.root.add_child(pickup)
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 
@@ -53,9 +52,6 @@ func should_wood(used, x, y, height):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#print(position)
-	player = get_node("/root/root/player")
-	cursor = get_node("/root/root/cursor")
 	
 	var leaf = load("res://leaf.tscn")
 	var wood = load("res://log.tscn")
@@ -116,7 +112,6 @@ func _ready():
 		y -= 1
 	
 var health = 7
-var cursor
 
 func spawn_pickups():
 	var pickups = rand(logs, logs + 7)
@@ -141,8 +136,8 @@ func _process(dt):
 			break
 	
 	if is_clickable and Input.is_mouse_button_pressed(BUTTON_LEFT):
-		health -= dt * player.current_wood()
-		cursor.next_audio = cursor.HIT_WOOD
+		health -= dt * global.player.current_wood()
+		global.cursor.next_audio = global.cursor.HIT_WOOD
 	
 	if health < 0:
 		spawn_pickups()

@@ -28,7 +28,7 @@ func spawn_pickup(id):
 	var x = round(position.x / 4)
 	var y = round(position.y / 4)
 	var pickup = ItemPickup.instance()
-	get_node("/root/root").call_deferred("add_child", pickup)
+	global.root.call_deferred("add_child", pickup)
 	pickup.position = Vector2(x, y) * 4 + Vector2(2, 2)
 	pickup.set_id(id)
 	
@@ -47,9 +47,9 @@ func drops():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("/root/root/physics_map").add_entity(self)
+
 	
-	player = get_node("/root/root/player")
+	player = global.player
 	$AnimationPlayer.play("fly")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

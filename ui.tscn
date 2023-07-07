@@ -37,7 +37,6 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Hotbar" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 3.0
 margin_top = 3.0
@@ -79,14 +78,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="1" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -109,14 +107,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="2" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -139,14 +136,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="3" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -169,14 +165,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="4" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -199,14 +194,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="5" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -229,14 +223,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="6" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
@@ -259,14 +252,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="7" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
@@ -289,14 +281,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="8" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -319,14 +310,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="9" type="VBoxContainer" parent="Hotbar/VBoxContainer/Hotbar"]
-editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -349,8 +339,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -366,7 +356,6 @@ script = ExtResource( 2 )
 required_state = true
 
 [node name="Inventory" type="MarginContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 3.0
 margin_top = 3.0
@@ -410,14 +399,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="1" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -440,14 +428,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="2" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -470,14 +457,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="3" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -500,14 +486,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="4" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -530,14 +515,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="5" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -560,14 +544,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="6" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
@@ -590,14 +573,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="7" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
@@ -620,14 +602,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="8" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -650,14 +631,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="9" type="VBoxContainer" parent="Inventory/VBoxContainer/hotbar row"]
-editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -680,8 +660,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -694,7 +674,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="10" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -716,14 +695,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="11" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -746,14 +724,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="12" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -776,14 +753,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="13" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -806,14 +782,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="14" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -836,14 +811,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="15" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -866,14 +840,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="16" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
@@ -896,14 +869,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="17" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
@@ -926,14 +898,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="18" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -956,14 +927,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="19" type="VBoxContainer" parent="Inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -986,8 +956,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -1000,7 +970,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="20" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -1022,14 +991,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="21" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -1052,14 +1020,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="22" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -1082,14 +1049,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="23" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -1112,14 +1078,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="24" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -1142,14 +1107,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="25" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -1172,14 +1136,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="26" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
@@ -1202,14 +1165,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="27" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
@@ -1232,14 +1194,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="28" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -1262,14 +1223,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="29" type="VBoxContainer" parent="Inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -1292,8 +1252,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -1306,7 +1266,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="30" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -1328,14 +1287,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="31" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -1358,14 +1316,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="32" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -1388,14 +1345,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="33" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -1418,14 +1374,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="34" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -1448,14 +1403,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="35" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -1478,14 +1432,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="36" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 118.0
 margin_bottom = 24.0
@@ -1508,14 +1461,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="37" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 119.0
 margin_right = 135.0
 margin_bottom = 24.0
@@ -1538,14 +1490,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="38" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 136.0
 margin_right = 152.0
 margin_bottom = 24.0
@@ -1568,14 +1519,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="39" type="VBoxContainer" parent="Inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 153.0
 margin_right = 169.0
 margin_bottom = 24.0
@@ -1598,14 +1548,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="chest_inventory" type="TextureRect" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 174.0
 margin_top = 27.0
@@ -1632,7 +1581,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="0" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -1654,14 +1602,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="1" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -1684,14 +1631,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="2" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -1714,14 +1660,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="3" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -1744,14 +1689,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="4" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -1774,14 +1718,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="5" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 1"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -1804,8 +1747,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -1818,7 +1761,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="6" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -1840,14 +1782,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="7" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -1870,14 +1811,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="8" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -1900,14 +1840,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="9" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -1930,14 +1869,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="10" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -1960,14 +1898,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="11" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 2"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -1990,8 +1927,8 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -2004,7 +1941,6 @@ mouse_filter = 2
 custom_constants/separation = 1
 
 [node name="12" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_right = 16.0
 margin_bottom = 24.0
 custom_constants/separation = 0
@@ -2026,14 +1962,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="13" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 17.0
 margin_right = 33.0
 margin_bottom = 24.0
@@ -2056,14 +1991,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="14" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 34.0
 margin_right = 50.0
 margin_bottom = 24.0
@@ -2086,14 +2020,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="15" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 51.0
 margin_right = 67.0
 margin_bottom = 24.0
@@ -2116,14 +2049,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="16" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 68.0
 margin_right = 84.0
 margin_bottom = 24.0
@@ -2146,14 +2078,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="17" type="VBoxContainer" parent="chest_inventory/VBoxContainer/row 3"]
-editor/display_folded = true
 margin_left = 85.0
 margin_right = 101.0
 margin_bottom = 24.0
@@ -2176,14 +2107,13 @@ margin_left = -0.0352573
 margin_top = 14.7387
 margin_right = 15.9647
 margin_bottom = 23.7387
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="crafting" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -2220,8 +2150,8 @@ margin_left = 3.0
 margin_top = 122.0
 margin_right = 19.0
 margin_bottom = 131.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -2231,8 +2161,8 @@ margin_left = 20.0
 margin_top = 122.0
 margin_right = 36.0
 margin_bottom = 131.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
@@ -2242,14 +2172,13 @@ margin_left = 37.0
 margin_top = 122.0
 margin_right = 53.0
 margin_bottom = 131.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="floating_item" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 177.944
 margin_top = 104.524
@@ -2264,14 +2193,13 @@ margin_left = 0.235298
 margin_top = 13.386
 margin_right = 16.2353
 margin_bottom = 22.386
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "10"
 align = 2
 valign = 1
 
 [node name="tooltip" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -2284,9 +2212,9 @@ margin_left = 3.0
 margin_top = 23.0
 margin_right = 83.0
 margin_bottom = 88.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = SubResource( 2 )
 text = "A pickaxe made of sticks."
 align = 1
 autowrap = true
@@ -2296,15 +2224,14 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 83.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = SubResource( 2 )
 text = "STICKAXE"
 align = 1
 autowrap = true
 
 [node name="crafting_tooltip" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_right = 86.0
 margin_bottom = 101.0
@@ -2317,9 +2244,9 @@ margin_left = 3.0
 margin_top = 23.0
 margin_right = 83.0
 margin_bottom = 88.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = SubResource( 2 )
 text = "A pickaxe made of sticks."
 align = 1
 autowrap = true
@@ -2329,15 +2256,14 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 83.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.117647, 0.0352941, 1 )
 custom_constants/line_spacing = -3
+custom_fonts/font = SubResource( 2 )
 text = "STICKAXE"
 align = 1
 autowrap = true
 
 [node name="hearts" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -2521,6 +2447,7 @@ margin_bottom = 51.0
 mouse_filter = 2
 texture = ExtResource( 15 )
 script = ExtResource( 16 )
+
 [connection signal="mouse_entered" from="Inventory/VBoxContainer/hotbar row/0" to="Inventory/VBoxContainer/hotbar row/0" method="mouse_enter"]
 [connection signal="mouse_exited" from="Inventory/VBoxContainer/hotbar row/0" to="Inventory/VBoxContainer/hotbar row/0" method="mouse_exit"]
 [connection signal="mouse_entered" from="Inventory/VBoxContainer/hotbar row/1" to="Inventory/VBoxContainer/hotbar row/1" method="mouse_enter"]

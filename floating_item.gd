@@ -10,7 +10,7 @@ var Block = preload("res://block.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/root/player")
+	player = global.player
 	pass # Replace with function body.
 
 func goto(v):

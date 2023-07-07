@@ -20,7 +20,7 @@ func _ready():
 	health *= 3
 	hearts2 = get_node("hearts2")
 	hearts3 = get_node("hearts3")
-	player = get_node("/root/root/player")
+	player = global.player
 	melee = player.get_node("item_swing/hit stuff")
 	pass # Replace with function body.
 	
@@ -69,7 +69,6 @@ func hit(body):
 	if health < 1:
 		get_parent().you_died()
 		# for now
-		get_node("/root/root/physics_map").remove_entity(get_parent())
 		get_parent().get_parent().remove_child(get_parent())
 	timer = 0.2
 	

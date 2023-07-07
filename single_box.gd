@@ -8,7 +8,7 @@ var tilemap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = get_node("/root/root/tiles")
+	tilemap = global.tiles
 	pass # Replace with function body.
 
 func update_box():

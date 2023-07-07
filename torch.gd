@@ -28,7 +28,7 @@ func tile_destroy(tilemap, x, y):
 func _ready():
 	light = load("res://torch_light.tscn").instance()
 	light.position = position
-	get_node("/root/root/light_viewport").add_child(light)
+	global.light_viewport.add_child(light)
 	
 	$sprite/animation.play("fire")
 	pass # Replace with function body.

@@ -1,7 +1,7 @@
 [gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://light_material.tres" type="Material" id=1]
-[ext_resource path="res://set_shrink.gd" type="Script" id=2]
+[ext_resource path="res://root.gd" type="Script" id=2]
 [ext_resource path="res://resize_viewport.gd" type="Script" id=3]
 [ext_resource path="res://copy_camera.gd" type="Script" id=4]
 [ext_resource path="res://sprite/red.png" type="Texture" id=5]

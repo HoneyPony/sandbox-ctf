@@ -20,10 +20,10 @@ func _process(delta):
 	if has_mouse and Input.is_mouse_button_pressed(BUTTON_LEFT):
 		var name = get_name()
 		if name == "play_normal":
-			get_node("/root/global").permadeath = false
+			global.permadeath = false
 			get_tree().change_scene("res://main.tscn")
 		if name == "play_perma":
-			get_node("/root/global").permadeath = true
+			global.permadeath = true
 			get_tree().change_scene("res://main.tscn")
 		if name == "ok":
 			get_tree().change_scene("res://menu.tscn")

@@ -21,7 +21,7 @@ func tile_destroy(tilemap, x, y):
 		tilemap.set_cell(x + 1, y - 1, -1)
 
 func _ready():
-	player = get_node("/root/root/player")
+	player = global.player
 
 func player_enter(body):
 	if mode == CRAFTING:

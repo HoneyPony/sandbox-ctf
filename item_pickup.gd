@@ -17,9 +17,9 @@ var Block = preload("res://block.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/root/player")
-	tilemap = get_node("/root/root/tiles")
-	physics_map = get_node("/root/root/physics_map")
+	player = global.player
+	tilemap = global.tiles
+	physics_map = global.physics_map
 	last_position = position
 	pass # Replace with function body.
 	

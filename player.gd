@@ -88,18 +88,21 @@ func current_wood():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global.player = self
+	
 	Inventory = load("res://inventory.gd")
 	inventory = Inventory.new(self)
 	
 	anim_player = get_node("animation_player")
 	
-	camera1 = get_node("/root/root/camera")
-	camera2 = get_node("/root/root/block_break_viewport/camera")
-	camera3 = get_node("/root/root/light_viewport/camera")
+	var root = get_parent()
 	
-	craft_sentinel = get_node("/root/root/ui/crafting/sentinel")
+	camera1 = root.get_node("camera")
+	camera2 = root.get_node("block_break_viewport/camera")
+	camera3 = root.get_node("light_viewport/camera")
 	
-	get_node("/root/root/physics_map").add_entity(self)
+	craft_sentinel = root.get_node("ui/crafting/sentinel")
+	
 	pass # Replace with function body
 	
 func spawn():
@@ -107,7 +110,7 @@ func spawn():
 		for item in inventory.items:
 			if item.id == Block.RED_FLAG:
 				return
-	position = get_node("/root/root/spawn_point").position + Vector2(4, -5)
+	position = global.spawn_point.position + Vector2(4, -5)
 	horizontal_v = 0
 	vertical_v = 0
 	last_horizontal_direction = 1
@@ -244,7 +247,7 @@ func hit(body):
 	# todo get thing
 	health -= 0
 	if health < 0:
-		var permadeath = get_node("/root/global").permadeath
+		var permadeath = global.permadeath
 		if permadeath:
 			get_tree().change_scene("res://lose.tscn")
 		else:

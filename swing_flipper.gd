@@ -8,7 +8,7 @@ var player_sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player_sprite = get_node("/root/root/player/sprite")
+	player_sprite = get_parent().get_node("sprite")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
