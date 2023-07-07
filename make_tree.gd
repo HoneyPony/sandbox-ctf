@@ -114,8 +114,6 @@ func _ready():
 			else:
 				plot(leaf, x, y)
 		y -= 1
-
-var mouses = 0
 	
 var health = 7
 var cursor
@@ -131,7 +129,18 @@ func spawn_pickups():
 		spawn_pickup(x + position.x, y + position.y, 3)
 
 func _process(dt):
-	if mouses > 0 and Input.is_mouse_button_pressed(BUTTON_LEFT):
+	var radius = 4 * 20
+	var mouse = get_local_mouse_position()
+	if mouse.length() > radius:
+		return
+		
+	var is_clickable = false
+	for c in get_children():
+		if c.report():
+			is_clickable = true
+			break
+	
+	if is_clickable and Input.is_mouse_button_pressed(BUTTON_LEFT):
 		health -= dt * player.current_wood()
 		cursor.next_audio = cursor.HIT_WOOD
 	

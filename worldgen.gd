@@ -20,6 +20,9 @@ var walls
 var X_BOUND = 300
 var Y_BOUND = 350
 
+# Reduced bounds for browswer test
+#var X_BOUND = 100
+#var Y_BOUND = 120
 
 func put_chest(x, y, items):
 	var table = load("res://chest.tscn").instance()
@@ -593,6 +596,9 @@ func try_create_physics():
 	for bridge in get_used_cells_by_id(9):
 		physics_map.set_cellv(bridge, -1)
 		platform_map.set_cellv(bridge, 0)
+		
+	for special in get_used_cells_by_id(Block.SPECIAL):
+		physics_map.set_cellv(special, 0) # Chests are transparent
 		
 	print("--- DONE ---")
 	time = OS.get_ticks_msec() - time

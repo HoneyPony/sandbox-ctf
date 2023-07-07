@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://light_material.tres" type="Material" id=1]
 [ext_resource path="res://set_shrink.gd" type="Script" id=2]
@@ -110,6 +110,11 @@
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
+
+[sub_resource type="Environment" id=25]
+
+[sub_resource type="World" id=26]
+environment = SubResource( 25 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -891,12 +896,12 @@ region_rect = Rect2( -12.92, 0, 0, 0 )
 [node name="block_break_map" type="TileMap" parent="block_break_viewport"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 4, 4 )
-cell_quadrant_size = 4
 format = 1
 
 [node name="light_viewport" type="Viewport" parent="."]
 size = Vector2( 1024, 600 )
 size_override_stretch = true
+world = SubResource( 26 )
 render_target_update_mode = 3
 script = ExtResource( 3 )
 
@@ -938,7 +943,6 @@ script = ExtResource( 12 )
 visible = false
 tile_set = SubResource( 4 )
 cell_size = Vector2( 4, 4 )
-cell_quadrant_size = 1
 collision_use_kinematic = true
 collision_layer = 3
 collision_mask = 3
@@ -949,7 +953,6 @@ script = ExtResource( 14 )
 visible = false
 tile_set = SubResource( 6 )
 cell_size = Vector2( 4, 4 )
-cell_quadrant_size = 1
 collision_use_kinematic = true
 collision_layer = 16384
 collision_mask = 16384
@@ -959,7 +962,6 @@ format = 1
 material = ExtResource( 15 )
 tile_set = ExtResource( 16 )
 cell_size = Vector2( 4, 4 )
-cell_quadrant_size = 2
 collision_layer = 0
 collision_mask = 0
 format = 1
@@ -970,7 +972,6 @@ material = SubResource( 24 )
 z_index = -2
 tile_set = ExtResource( 18 )
 cell_size = Vector2( 4, 4 )
-cell_quadrant_size = 2
 collision_layer = 0
 collision_mask = 0
 format = 1
