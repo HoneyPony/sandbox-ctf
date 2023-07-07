@@ -606,10 +606,31 @@ func try_create_physics():
 	
 	physics_are_done = true
 	
+var worldgen_coroutine = null
+var worldgen_done = false
+	
 func _process(delta):
 	if not physics_are_done:
-		generate_the_world()
-		try_create_physics()
+		var time = OS.get_ticks_msec()
+		
+		if worldgen_coroutine == null:
+			worldgen_coroutine = generate_the_world()
+		
+		var deadline = time + 20
+		while OS.get_ticks_msec() < deadline:
+			if worldgen_coroutine != null:
+				worldgen_coroutine = worldgen_coroutine.resume()
+				
+			if worldgen_done:
+				break
+				
+		if worldgen_done:
+			try_create_physics()
+			physics_are_done = true
+			
+			get_tree().paused = false
+		
+		
 
 func generate_the_world():
 	Tree = load("res://tree.tscn")
@@ -630,13 +651,17 @@ func generate_the_world():
 	for i in range(0, 45):
 		ground_coal(rand(-X_BOUND, X_BOUND), ROCK)
 
+	yield()
+
 	for i in range(0, 25):
 		ground_coal(rand(-X_BOUND, X_BOUND), ROCK, 10)
+
+	yield()
 
 	for i in range(0, 25):
 		ground_coal(rand(-X_BOUND, X_BOUND), COAL)
 		
-	
+	yield()
 
 # Note to self: the shapes created by underground_ore are really interesting
 # when not filled in
@@ -658,6 +683,8 @@ func generate_the_world():
 			if rand(0, 200) < rate:
 				plot(x, y, ROCK)
 			rate -= 1
+			
+		yield()
 
 	for i in range(0, 100):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
@@ -666,12 +693,16 @@ func generate_the_world():
 		if rand(0, 1) == 0:
 			ty = ROCK
 		circle(Vector2(x, y), rand(6, 20), ty)
+		
+		yield()
 
 	for i in range(0, 900):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(40, Y_BOUND - 20)
 
 		circle(Vector2(x, y), rand(6, 20), ROCK)
+		
+		yield()
 
 	for i in range(0, rand(4, 7)):
 		var x = rand(-X_BOUND, X_BOUND)
@@ -679,41 +710,60 @@ func generate_the_world():
 		while get_cell(x, y) == -1:
 			y += 1 
 		cave_snake(x, y)
+		
+		yield()
 
 	for i in range(0, 20):
 		var x = rand(-X_BOUND, X_BOUND)
 		var y = rand(20, Y_BOUND - 100)
 		cave_snake(x, y)
+		
+		yield()
 
 	for i in range(0, 400):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(40, Y_BOUND - 20)
 		underground_ore(x, y, DIRT)
+		
+		yield()
 
 	for i in range(0, 600):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
 		underground_ore(x, y, ROCK)
+		
+		yield()
 
 	for i in range(0, 400):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
 		underground_ore(x, y, Block.COAL, 3, 7)
+		
+		yield()
 
 	for i in range(0, 250):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
 		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
 		
+		yield()
+		
 	for x in range(-X_BOUND, X_BOUND):
 		plot(x, Y_BOUND - 10, 10)
 		plot(x, -Y_BOUND + 10, 10)
+		
+	yield()
+	
 	for y in range(-Y_BOUND, Y_BOUND):
 		plot(-X_BOUND + 10, y, 11)
 		plot(X_BOUND - 10, y, 11)
 		
+	yield()
+		
 	for i in range(0, 20):
 		chest_underground()
+		
+	yield()
 		
 	#castle(-375, 0)
 	
@@ -724,6 +774,8 @@ func generate_the_world():
 		c_spawn_y += 1
 		
 	castle(c_spawn_x, c_spawn_y)
+	
+	yield()
 		
 	var spawn_y = -40
 	var spawn_x = -X_BOUND + 20
@@ -739,6 +791,8 @@ func generate_the_world():
 	global.player.spawn()
 	
 	global.music.play()
+	
+	worldgen_done = true
 #
 #	for i in range(0, 200):
 #		var x = rand(-400 + 15, 400 - 15)

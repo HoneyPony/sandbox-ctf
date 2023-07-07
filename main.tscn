@@ -959,6 +959,7 @@ collision_mask = 16384
 format = 1
 
 [node name="tiles" type="TileMap" parent="."]
+pause_mode = 2
 material = ExtResource( 15 )
 tile_set = ExtResource( 16 )
 cell_size = Vector2( 4, 4 )

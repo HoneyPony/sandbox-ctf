@@ -20,3 +20,6 @@ func setup_globals():
 func _ready():
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_IGNORE, Vector2(0, 0), shrink)
 	setup_globals()
+	
+	# Pause until the world is generated.
+	get_tree().paused = true
