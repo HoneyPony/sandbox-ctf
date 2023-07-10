@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_display.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D light_viewport;
+
+float f(float x) {
+	return min(x, 1.0);
+}
+
+vec3 f3(vec3 x) {
+	return vec3(f(x.x), f(x.y), f(x.z));
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	
+	COLOR.rgb *= f3(texture(light_viewport, SCREEN_UV).rgb);
+}"
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("light_viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/light_viewport = SubResource( 2 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Viewport")
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 600 )
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="root" parent="Viewport" instance=ExtResource( 1 )]
+material = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 6
