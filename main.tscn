@@ -90,6 +90,10 @@
 0/autotile/z_index_map = [  ]
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
 1/name = "block_breaking.png 1"
@@ -100,6 +104,10 @@
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
 
@@ -123,6 +131,11 @@ points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 5 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -144,6 +157,11 @@ points = PoolVector2Array( 0, 0, 4, 0, 4, 4, 0, 4 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 7 )
+0/shape_one_way = true
+0/shape_one_way_margin = 0.5
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": true,
@@ -900,6 +918,7 @@ texture = ExtResource( 7 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
 
 [node name="background" type="Sprite" parent="light_viewport/camera"]
+scale = Vector2( 2, 2 )
 z_index = -3
 texture = ExtResource( 8 )
 region_rect = Rect2( -12.92, 0, 0, 0 )
@@ -1049,7 +1068,7 @@ script = ExtResource( 23 )
 
 [node name="-3" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 32 )
@@ -1057,7 +1076,7 @@ script = ExtResource( 23 )
 
 [node name="-4" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 33 )
@@ -1065,7 +1084,7 @@ script = ExtResource( 23 )
 
 [node name="-5" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 34 )
@@ -1081,7 +1100,7 @@ script = ExtResource( 23 )
 
 [node name="-7" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 36 )
@@ -1089,7 +1108,7 @@ script = ExtResource( 23 )
 
 [node name="-8" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 37 )
@@ -1097,7 +1116,7 @@ script = ExtResource( 23 )
 
 [node name="-9" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( -3.41061e-013, -7.00002 )
+position = Vector2( -3.41061e-13, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 38 )
@@ -1113,7 +1132,7 @@ script = ExtResource( 23 )
 [node name="-12" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
-position = Vector2( 2.38419e-007, -4 )
+position = Vector2( 2.38419e-07, -4 )
 scale = Vector2( 0.016, 0.016 )
 texture = ExtResource( 40 )
 script = ExtResource( 23 )
@@ -1121,7 +1140,7 @@ script = ExtResource( 23 )
 [node name="-13" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
-position = Vector2( 2.38419e-007, -4 )
+position = Vector2( 2.38419e-07, -4 )
 scale = Vector2( 0.016, 0.016 )
 texture = ExtResource( 41 )
 script = ExtResource( 23 )
@@ -1129,14 +1148,14 @@ script = ExtResource( 23 )
 [node name="-14" type="Sprite" parent="player/item_swing"]
 visible = false
 use_parent_material = true
-position = Vector2( 2.38419e-007, -4 )
+position = Vector2( 2.38419e-07, -4 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 42 )
 script = ExtResource( 23 )
 
 [node name="-15" type="Sprite" parent="player/item_swing"]
 visible = false
-position = Vector2( 2.38419e-007, -7.00002 )
+position = Vector2( 2.38419e-07, -7.00002 )
 rotation = -0.785398
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 43 )
@@ -1334,4 +1353,5 @@ stream = ExtResource( 70 )
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource( 71 )
+
 [connection signal="body_entered" from="player/hitbox" to="player" method="hit"]

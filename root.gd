@@ -23,3 +23,5 @@ func _ready():
 	
 	# Pause until the world is generated.
 	get_tree().paused = true
+	
+	#Engine.target_fps = 24
