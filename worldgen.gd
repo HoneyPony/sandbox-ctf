@@ -350,18 +350,36 @@ func ground_coal(x, ty, depth = 5):
 				elif connected(xv, yv) and rand(0, 2) == 0:
 					plot(xv, yv, ty)
 					
-func underground_ore(x, y, ty, small = 6, large = 20):
-	var r = rand(small, large)
+func orb(x, y, ty, r, density):
 	for xs in range(-r, r):
 		for ys in range(-r, r):
 			if (xs * xs + ys * ys) < (r * r):
 				var xv = xs + x
 				var yv = ys + y
+				var chance = (xs * xs + ys * ys) / (r * r)
 				if get_cell(xv, yv) != -1:
-					if rand(0, 1) == 0:
+					if rand(density, 100) > chance * 100:
 						plot(xv, yv, ty)
-				elif connected(xv, yv) and rand(0, 2) == 0:
+				elif connected(xv, yv) and rand(0, 5) == 0:
 					plot(xv, yv, ty)
+					
+func underground_ore(x, y, ty, small = 6, large = 20, nesting_level = 1):
+	var r = rand(small, large)
+	var delt = int(r / 2.2)
+	var off_x = 0
+	var off_y = 0
+	var dx = rand_range(-delt, delt)
+	var dy = rand_range(-delt, delt)
+	# Density is between 0 and -100, effects the random
+	var density = rand_range(0, -100)
+	for i in range(0, rand_range(2, 7)):
+		orb(x + off_x, y + off_y, ty, r, density)
+		off_x += dx
+		off_y += dy
+		
+	# Randomly branch off again.
+	if rand_range(0, nesting_level) == 0:
+		underground_ore(x + off_x, y + off_y, small, large, nesting_level + 1)
 					
 func line_eval(p1, p2, y):
 	if p1.x == p2.x:
