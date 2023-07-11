@@ -635,6 +635,9 @@ var worldgen_coroutine = null
 var worldgen_done = false
 	
 func _process(delta):
+	if Input.is_action_just_pressed("test_worldgen"):
+		perform_smoothing(20000)
+	
 	if not physics_are_done:
 		var time = OS.get_ticks_msec()
 		
@@ -671,6 +674,29 @@ func underground_dirt(count, extend):
 		underground_ore(x, y, DIRT, 6, 20, extend)
 		
 		#yield()
+		
+func cell_smooth(x, y, type):
+	var count = 0
+	for i in range(-1, 2):
+		for j in range(-1, 2):
+			if i == 0 and j == 0:
+				continue
+			if get_cell(x + i, y + j) == type:
+				count += 1
+				
+	if count >= 4:
+		plot(x, y, type)
+		
+func random_smooth_type():
+	var types = [Block.DIRT, Block.ROCK]
+	return types[rand(0, 1)]
+		
+func perform_smoothing(count):
+	for i in range(0, count):
+		var x = rand(-X_BOUND, X_BOUND)
+		var y = rand(30, Y_BOUND)
+		
+		cell_smooth(x, y, random_smooth_type())
 
 func generate_the_world():
 	Tree = load("res://tree.tscn")
@@ -780,14 +806,14 @@ func generate_the_world():
 	for i in range(0, 200):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
-		underground_ore(x, y, Block.COAL, 3, 5, 5, -50)
+		underground_ore(x, y, Block.COAL, 2, 3, 5, -50)
 		
 		yield()
 
 	for i in range(0, 120):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
-		underground_ore(x, y, Block.COPPER_ORE, 3, 5, 5, -50)
+		underground_ore(x, y, Block.COPPER_ORE, 2, 3, 5, -50)
 		
 		yield()
 		
@@ -819,12 +845,18 @@ func generate_the_world():
 	castle(c_spawn_x, c_spawn_y)
 	
 	yield()
+	
+	for i in range(0, 40):
+		perform_smoothing(20000)
+		yield()
 		
 	var spawn_y = -40
 	var spawn_x = -X_BOUND + 20
 	
 	while get_cell(spawn_x, spawn_y) == -1 and get_cell(spawn_x + 1, spawn_y) == -1:
 		spawn_y += 1
+		
+	
 		
 	spawn_y -= 10
 	set_cell(spawn_x, spawn_y, 7)
