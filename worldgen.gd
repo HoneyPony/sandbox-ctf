@@ -17,8 +17,13 @@ var Block = preload("res://block.gd")
 
 var walls
 
+# BOUNDS FROM THE ORIGINAL JAM VERSION
 var X_BOUND = 300
 var Y_BOUND = 350
+
+# LARGE BOUNDS FOR FUN!!!!!
+#var X_BOUND = 500
+#var Y_BOUND = 450
 
 # Reduced bounds for browswer test
 #var X_BOUND = 100
@@ -350,7 +355,7 @@ func ground_coal(x, ty, depth = 5):
 				elif connected(xv, yv) and rand(0, 2) == 0:
 					plot(xv, yv, ty)
 					
-func orb(x, y, ty, r, density):
+func orb(x, y, ty, r, density, extend):
 	for xs in range(-r, r):
 		for ys in range(-r, r):
 			if (xs * xs + ys * ys) < (r * r):
@@ -360,26 +365,26 @@ func orb(x, y, ty, r, density):
 				if get_cell(xv, yv) != -1:
 					if rand(density, 100) > chance * 100:
 						plot(xv, yv, ty)
-				elif connected(xv, yv) and rand(0, 5) == 0:
+				elif connected(xv, yv) and rand(0, extend) == 0:
 					plot(xv, yv, ty)
 					
-func underground_ore(x, y, ty, small = 6, large = 20, nesting_level = 1):
+func underground_ore(x, y, ty, small = 6, large = 20, extend = 5, lowest_dense = -100, nesting_level = 1):
 	var r = rand(small, large)
 	var delt = int(r / 2.2)
 	var off_x = 0
 	var off_y = 0
 	var dx = rand_range(-delt, delt)
 	var dy = rand_range(-delt, delt)
-	# Density is between 0 and -100, effects the random
-	var density = rand_range(0, -100)
+	# Density is between 0 and -100, affects the random
+	var density = rand_range(0, lowest_dense)
 	for i in range(0, rand_range(2, 7)):
-		orb(x + off_x, y + off_y, ty, r, density)
+		orb(x + off_x, y + off_y, ty, r, density, extend)
 		off_x += dx
 		off_y += dy
 		
 	# Randomly branch off again.
-	if rand_range(0, nesting_level) == 0:
-		underground_ore(x + off_x, y + off_y, small, large, nesting_level + 1)
+	if rand_range(0, 7) > nesting_level:
+		underground_ore(x + off_x, y + off_y, ty, small, large, extend, lowest_dense, nesting_level + 1)
 					
 func line_eval(p1, p2, y):
 	if p1.x == p2.x:
@@ -469,7 +474,8 @@ func circle(center, radius, type):
 			plot(x, y, type)
 			
 func cave_snake(x, y):
-	var diameter = rand(5, 14)
+	#var diameter = rand(5, 14)
+	var diameter = rand(10, 20)
 	for i in range(15, 30):
 		var ex = x + rand(-40, 40)
 		var ey = y + rand(5, 30)
@@ -649,7 +655,22 @@ func _process(delta):
 			
 			get_tree().paused = false
 		
+
+func underground_rock(count, extend):
+	for i in range(0, count):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(20, Y_BOUND)
+		underground_ore(x, y, ROCK, 6, 20, extend)
 		
+		#yield()
+	
+func underground_dirt(count, extend):
+	for i in range(0, count):
+		var x = rand(-X_BOUND + 20, X_BOUND - 20)
+		var y = rand(40, Y_BOUND - 20)
+		underground_ore(x, y, DIRT, 6, 20, extend)
+		
+		#yield()
 
 func generate_the_world():
 	Tree = load("res://tree.tscn")
@@ -699,8 +720,9 @@ func generate_the_world():
 
 		for y in range(stop, 200):
 			# Decrease density as we descend
-			if rand(0, 200) < rate:
-				plot(x, y, ROCK)
+			#if rand(0, 200) < rate:
+			# Completely filled..?
+			plot(x, y, ROCK)
 			rate -= 1
 			
 		yield()
@@ -732,38 +754,40 @@ func generate_the_world():
 		
 		yield()
 
-	for i in range(0, 20):
+	for i in range(0, 10):
+		var x = rand(-X_BOUND, X_BOUND)
+		var y = rand(20, Y_BOUND - 100)
+		cave_snake(x, y)
+		
+		yield()
+		
+	underground_rock(200, 100)
+	yield()
+
+	underground_dirt(300, 30)
+	yield()
+
+	underground_rock(200, 8)
+	yield()
+		
+	for i in range(0, 10):
 		var x = rand(-X_BOUND, X_BOUND)
 		var y = rand(20, Y_BOUND - 100)
 		cave_snake(x, y)
 		
 		yield()
 
-	for i in range(0, 400):
+	for i in range(0, 200):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
-		var y = rand(40, Y_BOUND - 20)
-		underground_ore(x, y, DIRT)
+		var y = rand(20, Y_BOUND)
+		underground_ore(x, y, Block.COAL, 3, 5, 5, -50)
 		
 		yield()
 
-	for i in range(0, 600):
+	for i in range(0, 120):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
 		var y = rand(20, Y_BOUND)
-		underground_ore(x, y, ROCK)
-		
-		yield()
-
-	for i in range(0, 400):
-		var x = rand(-X_BOUND + 20, X_BOUND - 20)
-		var y = rand(20, Y_BOUND)
-		underground_ore(x, y, Block.COAL, 3, 7)
-		
-		yield()
-
-	for i in range(0, 250):
-		var x = rand(-X_BOUND + 20, X_BOUND - 20)
-		var y = rand(20, Y_BOUND)
-		underground_ore(x, y, Block.COPPER_ORE, 3, 7)
+		underground_ore(x, y, Block.COPPER_ORE, 3, 5, 5, -50)
 		
 		yield()
 		
