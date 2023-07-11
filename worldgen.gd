@@ -636,7 +636,8 @@ var worldgen_done = false
 	
 func _process(delta):
 	if Input.is_action_just_pressed("test_worldgen"):
-		perform_smoothing(20000)
+		#perform_smoothing(20000)
+		perform_grass(500)
 	
 	if not physics_are_done:
 		var time = OS.get_ticks_msec()
@@ -687,6 +688,63 @@ func cell_smooth(x, y, type):
 	if count >= 4:
 		plot(x, y, type)
 		
+func cell_smooth_inverse(x, y, type):
+	var count = 0
+	for i in range(-1, 2):
+		for j in range(-1, 2):
+			if i == 0 and j == 0:
+				continue
+			if get_cell(x + i, y + j) == type:
+				count += 1
+				
+	if count <= 3:
+		plot(x, y, type)
+		
+		
+func cell_smooth_grass(x, y, type, recurse = 1):
+	var count = 0
+	var t = get_cell(x, y)
+	#if t != Block.DIRT:
+	#	return
+	var near_air = false
+	
+	for i in range(-1, 2):
+		for j in range(-1, 2):
+			if i == 0 and j == 0:
+				continue
+			var c = get_cell(x + i, y + j)
+			if c == type:
+				count += 1
+			if c == -1:
+				# We want a low count... grow near air
+				count -= 3
+				near_air = true
+				
+	if count <= 3:
+		plot(x, y, type)
+		if near_air:
+			if recurse < 15:
+				grow_grass(x, y, null, recurse + 1)
+		
+		
+func grow_grass(x, y, grasses, recurse = 1):
+	var tiles = [Vector2(-1, -1), Vector2(-1, 0), Vector2(-1, 1), Vector2(0, -1), Vector2(0, 1), Vector2(1, -1), Vector2(1, 0), Vector2(1, 1)]
+	tiles.shuffle()
+	
+	for v in tiles:
+		var c = get_cell(x + v.x, y + v.y)
+		if c != Block.GRASS and c != -1:
+			cell_smooth_grass(x + v.x, y + v.y, Block.GRASS, recurse)
+			#plot(x + v.x, y + v.y, Block.GRASS)
+			#grasses.append(v)
+			#return
+			
+func perform_grass(count):
+	var grasses = get_used_cells_by_id(Block.GRASS)
+	for i in range(0, count):
+		var g = grasses[rand(0, grasses.size() - 1)]
+		grow_grass(g.x, g.y, grasses)
+		
 func random_smooth_type():
 	var types = [Block.DIRT, Block.ROCK]
 	return types[rand(0, 1)]
@@ -694,18 +752,11 @@ func random_smooth_type():
 func perform_smoothing(count):
 	for i in range(0, count):
 		var x = rand(-X_BOUND, X_BOUND)
-		var y = rand(30, Y_BOUND)
+		var y = rand(0, Y_BOUND)
 		
 		cell_smooth(x, y, random_smooth_type())
 
-func generate_the_world():
-	Tree = load("res://tree.tscn")
-	physics_map = global.physics_map
-	platform_map = global.platform_map
-	walls = global.walls
-	
-	randomize()
-	
+func generate_world_top():
 	var ground_sweep = Vector2(-X_BOUND, 0)
 	var allowed = [0, 1, 2, 3]
 	while ground_sweep.x < X_BOUND:
@@ -717,16 +768,29 @@ func generate_the_world():
 	for i in range(0, 45):
 		ground_coal(rand(-X_BOUND, X_BOUND), ROCK)
 
-	yield()
+	#yield()
 
 	for i in range(0, 25):
 		ground_coal(rand(-X_BOUND, X_BOUND), ROCK, 10)
 
-	yield()
+	#yield()
 
 	for i in range(0, 25):
 		ground_coal(rand(-X_BOUND, X_BOUND), COAL)
 		
+	#yield()
+
+func generate_the_world():
+	Tree = load("res://tree.tscn")
+	physics_map = global.physics_map
+	platform_map = global.platform_map
+	walls = global.walls
+	
+	randomize()
+	var s = rand(0, 10000)
+	seed(s)
+	
+	generate_world_top()
 	yield()
 
 # Note to self: the shapes created by underground_ore are really interesting
@@ -787,14 +851,18 @@ func generate_the_world():
 		
 		yield()
 		
-	underground_rock(200, 100)
-	yield()
+	#underground_rock(200, 100)
+	#yield()
 
-	underground_dirt(300, 30)
-	yield()
+	#underground_dirt(300, 30)
+	#yield()
 
-	underground_rock(200, 8)
-	yield()
+	#underground_rock(200, 8)
+	#yield()
+	
+	#seed(s)
+	#generate_world_top()
+	#yield()
 		
 	for i in range(0, 10):
 		var x = rand(-X_BOUND, X_BOUND)
@@ -846,9 +914,12 @@ func generate_the_world():
 	
 	yield()
 	
-	for i in range(0, 40):
+	for i in range(0, 3):#40):
 		perform_smoothing(20000)
 		yield()
+		
+	perform_grass(3000)
+	yield()
 		
 	var spawn_y = -40
 	var spawn_x = -X_BOUND + 20
