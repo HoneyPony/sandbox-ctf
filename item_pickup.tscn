@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://item_pickup.gd" type="Script" id=1]
-[ext_resource path="res://sprite/grass.png" type="Texture" id=2]
+[ext_resource path="res://tiles/grass.png" type="Texture" id=2]
 [ext_resource path="res://sprite/dark_edges.png" type="Texture" id=3]
 [ext_resource path="res://sound/pickup.wav" type="AudioStream" id=4]
 

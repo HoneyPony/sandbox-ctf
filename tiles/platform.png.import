@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/platform.png-47bd42da2984980717aa1e0150b0f08a.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/platform.png"
+dest_files=[ "res://.import/platform.png-47bd42da2984980717aa1e0150b0f08a.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/copper_pick_drop.png-0a46ba00efa562e00e0d097a6daffa22.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/copper_pick_drop.png"
+dest_files=[ "res://.import/copper_pick_drop.png-0a46ba00efa562e00e0d097a6daffa22.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

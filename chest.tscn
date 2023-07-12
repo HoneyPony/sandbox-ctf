@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://crafting_table_destroy.gd" type="Script" id=1]
-[ext_resource path="res://sprite/chest.png" type="Texture" id=2]
+[ext_resource path="res://tiles/chest.png" type="Texture" id=2]
 [ext_resource path="res://chest.gd" type="Script" id=3]
 
 [node name="chest" type="Node2D" groups=[

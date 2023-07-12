@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/dirt_wall.png-3ea1f27b116b13959e02cf15133f36a4.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/dirt_wall.png"
+dest_files=[ "res://.import/dirt_wall.png-3ea1f27b116b13959e02cf15133f36a4.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

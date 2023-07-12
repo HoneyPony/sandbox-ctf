@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/copper_ore.png-048ec615be9377524e90a659da9c22e5.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/copper_ore.png"
+dest_files=[ "res://.import/copper_ore.png-048ec615be9377524e90a659da9c22e5.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

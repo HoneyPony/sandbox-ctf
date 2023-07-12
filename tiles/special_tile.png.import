@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/special_tile.png-5b2a246b7747f77e820bf602de9c03b9.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/special_tile.png"
+dest_files=[ "res://.import/special_tile.png-5b2a246b7747f77e820bf602de9c03b9.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

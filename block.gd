@@ -104,49 +104,49 @@ const icon_map = {
 }
 
 const texture_map = {
-	0: preload("res://sprite/grass.png"),
-	1: preload("res://sprite/dirt.png"),
-	2: preload("res://sprite/rocks.png"),
-	3: preload("res://sprite/wood.png"),
-	4: preload("res://sprite/coal.png"),
-	5: preload("res://sprite/copper_ore.png"),
-	8: preload("res://sprite/brick.png"),
-	9: preload("res://sprite/platform.png"),
+	0: preload("res://tiles/grass.png"),
+	1: preload("res://tiles/dirt.png"),
+	2: preload("res://tiles/rocks.png"),
+	3: preload("res://tiles/wood.png"),
+	4: preload("res://tiles/coal.png"),
+	5: preload("res://tiles/copper_ore.png"),
+	8: preload("res://tiles/brick.png"),
+	9: preload("res://tiles/platform.png"),
 	
-	-2: preload("res://sprite/crafting_table_drop.png"),
-	-3: preload("res://sprite/stickaxe_drop.png"),
-	-4: preload("res://sprite/wood_axe_drop.png"),
-	-5: preload("res://sprite/wood_shovel_drop.png"),
-	-6: preload("res://sprite/furnace_drop.png"),
-	-7: preload("res://sprite/rock_pick_drop.png"),
-	-8: preload("res://sprite/rock_axe_drop.png"),
-	-9: preload("res://sprite/rock_shovel_drop.png"),
-	-10: preload("res://sprite/torch_drop.png"),
+	-2: preload("res://tiles/crafting_table_drop.png"),
+	-3: preload("res://tiles/stickaxe_drop.png"),
+	-4: preload("res://tiles/wood_axe_drop.png"),
+	-5: preload("res://tiles/wood_shovel_drop.png"),
+	-6: preload("res://tiles/furnace_drop.png"),
+	-7: preload("res://tiles/rock_pick_drop.png"),
+	-8: preload("res://tiles/rock_axe_drop.png"),
+	-9: preload("res://tiles/rock_shovel_drop.png"),
+	-10: preload("res://tiles/torch_drop.png"),
 	
-	-12: preload("res://sprite/dirt_wall.png"),
-	-13: preload("res://sprite/rocks_wall.png"),
-	-14: preload("res://sprite/wood_wall.png"),
+	-12: preload("res://tiles/dirt_wall.png"),
+	-13: preload("res://tiles/rocks_wall.png"),
+	-14: preload("res://tiles/wood_wall.png"),
 	
-	-15: preload("res://sprite/sledgehammer_drop.png"),
+	-15: preload("res://tiles/sledgehammer_drop.png"),
 	
-	-16: preload("res://sprite/brick_wall.png"),
+	-16: preload("res://tiles/brick_wall.png"),
 	
-	-17: preload("res://sprite/chest_drop.png"),
-	-18: preload("res://sprite/blue_flag_drop.png"),
-	COPPER_BAR: preload("res://sprite/copper_bar_drop.png"),
+	-17: preload("res://tiles/chest_drop.png"),
+	-18: preload("res://tiles/blue_flag_drop.png"),
+	COPPER_BAR: preload("res://tiles/copper_bar_drop.png"),
 	
-	-20: preload("res://sprite/copper_pick_drop.png"),
-	-21: preload("res://sprite/copper_axe_drop.png"),
-	-22: preload("res://sprite/copper_shovel_drop.png"),
+	-20: preload("res://tiles/copper_pick_drop.png"),
+	-21: preload("res://tiles/copper_axe_drop.png"),
+	-22: preload("res://tiles/copper_shovel_drop.png"),
 	
-	-23: preload("res://sprite/wood_sword_drop.png"),
-	-24: preload("res://sprite/rock_sword_drop.png"),
-	-25: preload("res://sprite/copper_sword_drop.png"),
+	-23: preload("res://tiles/wood_sword_drop.png"),
+	-24: preload("res://tiles/rock_sword_drop.png"),
+	-25: preload("res://tiles/copper_sword_drop.png"),
 	
-	-26: preload("res://sprite/energy_particle_drop.png"),
-	-27: preload("res://sprite/javelin_drop.png"),
+	-26: preload("res://tiles/energy_particle_drop.png"),
+	-27: preload("res://tiles/javelin_drop.png"),
 	
-	-28: preload("res://sprite/red_flag_drop.png"),
+	-28: preload("res://tiles/red_flag_drop.png"),
 }
 
 #const lore_map = {

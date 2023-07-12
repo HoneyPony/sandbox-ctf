@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/wood_shovel_drop.png-cd4d3367af58bbb851d59b62fbbdd453.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/wood_shovel_drop.png"
+dest_files=[ "res://.import/wood_shovel_drop.png-cd4d3367af58bbb851d59b62fbbdd453.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

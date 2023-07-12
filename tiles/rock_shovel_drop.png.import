@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/rock_shovel_drop.png-06d978ef191a8cb800c3588a45076292.res"
+group_file="res://atlases/tiles.png"
+valid=true
+[deps]
+
+
+source_file="res://tiles/rock_shovel_drop.png"
+dest_files=[ "res://.import/rock_shovel_drop.png-06d978ef191a8cb800c3588a45076292.res" ]
+
+[params]
+
+atlas_file="res://atlases/tiles.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true
