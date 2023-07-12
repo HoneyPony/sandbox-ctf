@@ -64,8 +64,10 @@ func plot_wall(x, y, id):
 
 func plot(x, y, id):
 	set_cell(x, y, id, false, false, false, handle(x, y, id))
-	if id == Block.DIRT and y < 100:
+	if id == Block.DIRT:
 		plot_wall(x, y, Block.DIRT_WALL)
+	if id == Block.ROCK:
+		plot_wall(x, y, Block.ROCK_WALL)
 	
 func rand(a, b):
 	return round(rand_range(a, b))
