@@ -6,6 +6,9 @@ extends KinematicBody2D
 
 # Player speed = 2 pixels / 0.66 seconds for walkcycle
 
+onready var right_stair_top = $right_stair_top
+onready var right_stair_bottom = $right_stair_bottom
+
 export var player_speed = 40
 export var player_horizontal_acceleration = 1
 
@@ -48,6 +51,14 @@ var health = 40
 
 var current_chest = null
 var chest_open = false
+
+func should_up_stair_right():
+	print("p/t: ", right_stair_top.overlaps_body(global.physics_map), " b: ", right_stair_bottom.overlaps_body(global.physics_map))
+	if right_stair_top.get_overlapping_bodies().empty():
+		if not right_stair_bottom.get_overlapping_bodies().empty():
+			print("TRUE")
+			return true
+	return false
 
 func set_chest(node):
 	current_chest = node
@@ -169,6 +180,18 @@ func jump_impulse_delta_delta():
 		return jump_impulse_delta_delta
 	else:
 		return jump_cancel_delta_delta
+		
+func handle_stairs():
+	# heading right
+	#print(horizontal_v)
+	if horizontal_v > player_speed * 0.5:
+		#print("Stiars!")
+		if should_up_stair_right():
+			print("STAIRS")
+			move_and_collide(Vector2(0, -4))
+			move_and_collide(Vector2(0.1, 0))
+			# Necessary?
+			#move_and_slide(Vector2(0.2, 0))
 	
 func _physics_process(delta):	
 	#set_collision_layer_bit(14, !Input.is_action_pressed("player_down"))
@@ -198,6 +221,10 @@ func _physics_process(delta):
 	current_jump_impulse_delta += jump_impulse_delta_delta() * delta
 	current_jump_impulse -= current_jump_impulse_delta * delta
 	current_jump_impulse = max(current_jump_impulse, 0)
+	
+	# Handle stairs before regular movement so that we will slide
+	# onto the stairs with our horizontal velocity.
+	#handle_stairs()
 	
 	var v = move_and_slide(Vector2(horizontal_v, vertical_v))
 	horizontal_v = v.x
