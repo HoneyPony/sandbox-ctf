@@ -474,8 +474,9 @@ func circle(center, radius, type):
 			plot(x, y, type)
 			
 func cave_snake(x, y):
-	#var diameter = rand(5, 14)
-	var diameter = rand(10, 20)
+	var diameter = rand(2, 7) # with the cellular automata..?
+	#var diameter = rand(5, 14) # original jam game
+	#var diameter = rand(10, 20) # bigger caevs
 	for i in range(15, 30):
 		var ex = x + rand(-40, 40)
 		var ey = y + rand(5, 30)
@@ -637,6 +638,7 @@ var worldgen_done = false
 func _process(delta):
 	if Input.is_action_just_pressed("test_worldgen"):
 		#perform_smoothing(20000)
+		#perform_smoothing_air(20000)
 		perform_grass(500)
 	
 	if not physics_are_done:
@@ -705,28 +707,44 @@ func cell_smooth_inverse(x, y, type):
 # Cellular automata for grass. Grows outwards from a grass block
 # that is next to an air block. Grows only onto other solid blocks.
 # Additionally, will repeatedly grow deeper, onto cardinal neighbors.	
-func cell_grow_grass(x, y, depth = 1):
+func cell_grow_grass(x, y, done_set, depth = 1):
 	# Max that grass can grow out.
-	if depth > 5:
+	if depth > 3:
 		return
 	
 	# Only grow onto solid blocks.
 	if get_cell(x, y) == -1:
 		return
+		
+	var apply_rule = false
+	if depth > 3:
+		apply_rule = true
+	if get_cell(x, y) != Block.DIRT:
+		apply_rule = true
+		
+	# Use a set to keep track of previously seen squares.
+	# This lets us use a basically arbitrary depth limit
+	# without exponential lag growth.
+	done_set[Vector2(x, y)] = true
 	
-	if depth <= 3:
+	if depth <= 2:
 		plot(x, y, Block.GRASS)
 	else:
 		var c = count_8_neighbors(x, y, Block.GRASS)
 		if c <= 3:
 			# Thin out grass for later blocks.
 			plot(x, y, Block.GRASS)
+			
+	var next = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, -1), Vector2(0, 1)]
+	next.shuffle()
 	
 	# Repeat the cellular automata to cardinal neighbors.
-	cell_grow_grass(x - 1, y    , depth + 1)
-	cell_grow_grass(x + 1, y    , depth + 1)
-	cell_grow_grass(x,     y - 1, depth + 1)
-	cell_grow_grass(x,     y + 1, depth + 1)
+	for v in next:
+		var coord = Vector2(x, y) + v
+		if coord in done_set:
+			continue
+		cell_grow_grass(coord.x, coord.y, done_set, depth + 1)
+
 	
 	
 func cell_grow_grass_root(x, y):
@@ -734,7 +752,7 @@ func cell_grow_grass_root(x, y):
 	# Assume that t is GRASS when the method is called.
 	if count_8_neighbors(x, y, -1) >= 1:
 		# If we have some neighboring air: grow the grass.
-		cell_grow_grass(x, y, 1)
+		cell_grow_grass(x, y, {}, 1)
 		
 func cell_smooth_grass(x, y, type, recurse = 1):
 	var count = 0
@@ -791,6 +809,12 @@ func perform_smoothing(count):
 		var y = rand(0, Y_BOUND)
 		
 		cell_smooth(x, y, random_smooth_type())
+		
+func perform_smoothing_air(count):
+	for i in range(0, count):
+		var x = rand(-X_BOUND, X_BOUND)
+		var y = rand(0, Y_BOUND)
+		cell_smooth(x, y, -1)
 
 func generate_world_top():
 	var ground_sweep = Vector2(-X_BOUND, 0)
@@ -906,6 +930,15 @@ func generate_the_world():
 		cave_snake(x, y)
 		
 		yield()
+		
+	# Air pocket smoothing:
+	# This creates much smoother looking caves, out of really
+	# messy caves. I think. Hopefully. Should be done before
+	# e.g. making ores or the castle or the boundary walls because
+	# the smoothing will destroy anything.
+	# We do a lot of this smoothing, it makes the world very smooth...
+	for i in range(0, 100):
+		perform_smoothing_air(20000)
 
 	for i in range(0, 200):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
@@ -921,24 +954,16 @@ func generate_the_world():
 		
 		yield()
 		
-	for x in range(-X_BOUND, X_BOUND):
-		plot(x, Y_BOUND - 10, 10)
-		plot(x, -Y_BOUND + 10, 10)
-		
-	yield()
-	
-	for y in range(-Y_BOUND, Y_BOUND):
-		plot(-X_BOUND + 10, y, 11)
-		plot(X_BOUND - 10, y, 11)
-		
-	yield()
-		
-	for i in range(0, 20):
-		chest_underground()
-		
-	yield()
-		
 	#castle(-375, 0)
+	
+	for i in range(0, 3):#40):
+		perform_smoothing(20000)
+		yield()
+		
+	# Lots of grass growing.
+	for i in range(0, 400):
+		perform_grass(100)
+		yield()
 	
 	var c_spawn_y = -40
 	var c_spawn_x = rand(0, 50)
@@ -950,12 +975,24 @@ func generate_the_world():
 	
 	yield()
 	
-	for i in range(0, 3):#40):
-		perform_smoothing(20000)
-		yield()
+	for i in range(0, 20):
+		chest_underground()
 		
-	perform_grass(3000)
 	yield()
+
+	# The unbreakable borders must be the very last step.
+	for x in range(-X_BOUND, X_BOUND):
+		plot(x, Y_BOUND - 10, 10)
+		plot(x, -Y_BOUND + 10, 10)
+		
+	yield()
+	
+	for y in range(-Y_BOUND, Y_BOUND):
+		plot(-X_BOUND + 10, y, 11)
+		plot(X_BOUND - 10, y, 11)
+		
+	yield()
+	
 		
 	var spawn_y = -40
 	var spawn_x = -X_BOUND + 20
