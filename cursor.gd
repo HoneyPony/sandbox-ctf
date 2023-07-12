@@ -139,12 +139,15 @@ func break_block():
 	if block_map.get_cell(x, y) == 11:
 		return
 		
+	
+		
+	if block_timer < block_time:
+		return
+		
+	# The first step in breaking
 	if break_map.get_cell(x, y) == -1:
 		break_map.set_cell(x, y, 0)
 		audio_cat(block_map.get_cell(x, y))
-		return
-		
-	if block_timer < block_time:
 		return
 		
 	block_timer = 0
@@ -152,7 +155,7 @@ func break_block():
 	var progress = break_map.get_cell_autotile_coord(x, y).x
 		
 	audio_cat(block_map.get_cell(x, y))
-	if progress == 9:
+	if progress == 6:
 		var id = block_map.get_cell(x, y)
 		
 		if id == Block.SPECIAL:
@@ -173,9 +176,9 @@ func break_block():
 				return
 				
 		else:
-			# Make sure physics will work
-			if block_map.get_cell(x, y + 1) != -1:
-				physics_map.set_cell(x, y + 1, 0)
+			# OLD: Makes sure physics will work. NOW: Breaks physics.
+			#if block_map.get_cell(x, y + 1) != -1:
+			#	physics_map.set_cell(x, y + 1, 0)
 			
 			break_map.set_cell(x, y, -1)
 			block_map.set_cell(x, y, -1)
@@ -425,10 +428,10 @@ func _process(delta):
 	block_time = base_block_time / get_total_speedup()
 	
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		if tile_x() != x1:
-			block_timer = 0
-		if tile_y() != y1:
-			block_timer = 0
+#		if tile_x() != x1:
+#			block_timer = 0
+#		if tile_y() != y1:
+#			block_timer = 0
 		break_block()
 	else:
 		block_timer = 0
