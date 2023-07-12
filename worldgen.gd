@@ -910,15 +910,21 @@ func generate_the_world():
 		cave_snake(x, y)
 		
 		yield()
-		
-	#underground_rock(200, 100)
-	#yield()
+	
+	# underground_rock(200)	
+	for i in range(0, 2):
+		underground_rock(100, 100)
+		yield()
 
-	#underground_dirt(300, 30)
-	#yield()
+	# underground_dirt(300)
+	for i in range(0, 3):
+		underground_dirt(100, 30)
+		yield()
 
-	#underground_rock(200, 8)
-	#yield()
+	# underground_rock(200)
+	for i in range(0, 2):
+		underground_rock(100, 100)
+		yield()
 	
 	#seed(s)
 	#generate_world_top()
@@ -937,8 +943,10 @@ func generate_the_world():
 	# e.g. making ores or the castle or the boundary walls because
 	# the smoothing will destroy anything.
 	# We do a lot of this smoothing, it makes the world very smooth...
-	for i in range(0, 1):#100):
+	for i in range(0, 100):
+		# Yield after each smoothing...
 		perform_smoothing_air(20000)
+		yield()
 
 	for i in range(0, 200):
 		var x = rand(-X_BOUND + 20, X_BOUND - 20)
@@ -956,7 +964,7 @@ func generate_the_world():
 		
 	#castle(-375, 0)
 	
-	for i in range(0, 3):#40):
+	for i in range(0, 40):
 		perform_smoothing(20000)
 		yield()
 		
