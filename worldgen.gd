@@ -676,7 +676,7 @@ func underground_dirt(count, extend):
 		
 		#yield()
 		
-func cell_smooth(x, y, type):
+func count_8_neighbors(x, y, type):
 	var count = 0
 	for i in range(-1, 2):
 		for j in range(-1, 2):
@@ -684,8 +684,10 @@ func cell_smooth(x, y, type):
 				continue
 			if get_cell(x + i, y + j) == type:
 				count += 1
-				
-	if count >= 4:
+	return count
+		
+func cell_smooth(x, y, type):
+	if count_8_neighbors(x, y, type) >= 4:
 		plot(x, y, type)
 		
 func cell_smooth_inverse(x, y, type):
@@ -699,7 +701,40 @@ func cell_smooth_inverse(x, y, type):
 				
 	if count <= 3:
 		plot(x, y, type)
-		
+	
+# Cellular automata for grass. Grows outwards from a grass block
+# that is next to an air block. Grows only onto other solid blocks.
+# Additionally, will repeatedly grow deeper, onto cardinal neighbors.	
+func cell_grow_grass(x, y, depth = 1):
+	# Max that grass can grow out.
+	if depth > 5:
+		return
+	
+	# Only grow onto solid blocks.
+	if get_cell(x, y) == -1:
+		return
+	
+	if depth <= 3:
+		plot(x, y, Block.GRASS)
+	else:
+		var c = count_8_neighbors(x, y, Block.GRASS)
+		if c <= 3:
+			# Thin out grass for later blocks.
+			plot(x, y, Block.GRASS)
+	
+	# Repeat the cellular automata to cardinal neighbors.
+	cell_grow_grass(x - 1, y    , depth + 1)
+	cell_grow_grass(x + 1, y    , depth + 1)
+	cell_grow_grass(x,     y - 1, depth + 1)
+	cell_grow_grass(x,     y + 1, depth + 1)
+	
+	
+func cell_grow_grass_root(x, y):
+	var t = get_cell(x, y)
+	# Assume that t is GRASS when the method is called.
+	if count_8_neighbors(x, y, -1) >= 1:
+		# If we have some neighboring air: grow the grass.
+		cell_grow_grass(x, y, 1)
 		
 func cell_smooth_grass(x, y, type, recurse = 1):
 	var count = 0
@@ -743,7 +778,8 @@ func perform_grass(count):
 	var grasses = get_used_cells_by_id(Block.GRASS)
 	for i in range(0, count):
 		var g = grasses[rand(0, grasses.size() - 1)]
-		grow_grass(g.x, g.y, grasses)
+		cell_grow_grass_root(g.x, g.y)
+		#grow_grass(g.x, g.y, grasses)
 		
 func random_smooth_type():
 	var types = [Block.DIRT, Block.ROCK]
