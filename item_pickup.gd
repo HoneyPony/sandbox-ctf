@@ -70,15 +70,5 @@ func _physics_process(dt):
 	
 	var d = sign(speed)
 	
-	if abs(speed) > 0.1:
-		var x = round(position.x / 4)
-		var y = round(position.y / 4)
-		if tilemap.get_cell(x, y + d) != -1 and tilemap.get_cell(x, y + d) != 9:
-			physics_map.set_cell(x, y + d, 0)
-		if tilemap.get_cell(x, y + 2 * d) != -1 and tilemap.get_cell(x, y + 2 * d) != 9:
-			physics_map.set_cell(x, y + 2 * d, 0)
-		if tilemap.get_cell(x, y + 3 * d) != -1 and tilemap.get_cell(x, y + 3 * d) != 9:
-			physics_map.set_cell(x, y + 3 * d, 0)
-	
 	move_and_collide(Vector2(0, speed))
 	position.x = ax
