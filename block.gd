@@ -1,3 +1,60 @@
+const CAT_DIRT = 0
+const CAT_ROCK = 1
+const CAT_WOOD = 2
+const CAT_SPECIAL = 3
+
+const GRASS = 0
+const DIRT = 1
+const ROCK = 2
+const WOOD = 3
+const COAL = 4
+const COPPER_ORE = 5
+const SPECIAL = 6
+const SPAWN = 7
+const BRICK = 8
+const PLATFORM = 9
+
+const COPPER_BAR = 12
+
+const CRAFT_TABLE = -2
+const WOOD_PICK = -3
+const WOOD_AXE = -4
+const WOOD_SHOVEL = -5
+const FURNACE = -6
+const ROCK_PICK = -7
+const ROCK_AXE = -8
+const ROCK_SHOVEL = -9
+const TORCH = -10
+
+const GRASS_WALL = -11
+const DIRT_WALL = -12
+const ROCK_WALL = -13
+const WOOD_WALL = -14
+const SLEDGEHAMMER = -15
+const BRICK_WALL = -16
+
+const CHEST = -17
+const BLUE_FLAG = -18
+
+#const COPPER_BAR = -19
+const COPPER_PICK = -20
+const COPPER_AXE = -21
+const COPPER_SHOVEL = -22
+
+const WOOD_SWORD = -23
+const ROCK_SWORD = -24
+const COPPER_SWORD = -25
+
+const ENERGY_PART = -26
+const JAVELIN = -27
+const RED_FLAG = -28
+
+const GRASS_WALL_TILE = -1
+const DIRT_WALL_TILE = 0
+const ROCK_WALL_TILE = 1
+const WOOD_WALL_TILE = 2
+const BRICK_WALL_TILE = 3
+
 const icon_map = {
 
 	0: preload("res://sprite/grass_icon.png"),
@@ -29,7 +86,7 @@ const icon_map = {
 	
 	-17: preload("res://sprite/chest_icon.png"),
 	-18: preload("res://sprite/blue_flag_icon.png"),
-	-19: preload("res://sprite/copper_bar_icon.png"),
+	COPPER_BAR: preload("res://sprite/copper_bar_icon.png"),
 	
 	-20: preload("res://sprite/copper_pick_icon.png"),
 	-21: preload("res://sprite/copper_axe_icon.png"),
@@ -76,7 +133,7 @@ const texture_map = {
 	
 	-17: preload("res://sprite/chest_drop.png"),
 	-18: preload("res://sprite/blue_flag_drop.png"),
-	-19: preload("res://sprite/copper_bar_drop.png"),
+	COPPER_BAR: preload("res://sprite/copper_bar_drop.png"),
 	
 	-20: preload("res://sprite/copper_pick_drop.png"),
 	-21: preload("res://sprite/copper_axe_drop.png"),
@@ -139,7 +196,7 @@ const lore_map = {
 	
 	-17: ["Chest", "Place to store extra items"],
 	-18: ["Blue flag", "Swing to teleport home. Does not work when carrying red flag"],
-	-19: ["Copper bar", "Used to make copper tools"],
+	COPPER_BAR: ["Copper bar", "Used to make copper tools"],
 	
 	-20: ["Copper pick", "Good improvement to mining speed"],
 	-21: ["Copper axe", "Good improvement to woodcutting speed"],
@@ -155,60 +212,7 @@ const lore_map = {
 	-28: ["Red flag", "Take this back to your base to win!"],
 }
 
-const CAT_DIRT = 0
-const CAT_ROCK = 1
-const CAT_WOOD = 2
-const CAT_SPECIAL = 3
 
-const GRASS = 0
-const DIRT = 1
-const ROCK = 2
-const WOOD = 3
-const COAL = 4
-const COPPER_ORE = 5
-const SPECIAL = 6
-const SPAWN = 7
-const BRICK = 8
-const PLATFORM = 9
-
-const CRAFT_TABLE = -2
-const WOOD_PICK = -3
-const WOOD_AXE = -4
-const WOOD_SHOVEL = -5
-const FURNACE = -6
-const ROCK_PICK = -7
-const ROCK_AXE = -8
-const ROCK_SHOVEL = -9
-const TORCH = -10
-
-const GRASS_WALL = -11
-const DIRT_WALL = -12
-const ROCK_WALL = -13
-const WOOD_WALL = -14
-const SLEDGEHAMMER = -15
-const BRICK_WALL = -16
-
-const CHEST = -17
-const BLUE_FLAG = -18
-
-const COPPER_BAR = -19
-const COPPER_PICK = -20
-const COPPER_AXE = -21
-const COPPER_SHOVEL = -22
-
-const WOOD_SWORD = -23
-const ROCK_SWORD = -24
-const COPPER_SWORD = -25
-
-const ENERGY_PART = -26
-const JAVELIN = -27
-const RED_FLAG = -28
-
-const GRASS_WALL_TILE = -1
-const DIRT_WALL_TILE = 0
-const ROCK_WALL_TILE = 1
-const WOOD_WALL_TILE = 2
-const BRICK_WALL_TILE = 3
 
 static func wall_tile(item_id):
 	if item_id == DIRT_WALL:
@@ -255,6 +259,8 @@ static func tiles(id):
 		return 4
 	if id == PLATFORM:
 		return 1
+	if id == COPPER_BAR:
+		return 8
 		
 static func is_wall(id):
 	return id == DIRT_WALL or id == ROCK_WALL or id == WOOD_WALL or id == BRICK_WALL
@@ -311,6 +317,8 @@ static func category(id):
 	if id == COAL: return CAT_ROCK
 	if id == COPPER_ORE: return CAT_ROCK
 	if id == SPECIAL: return CAT_SPECIAL
+	
+	if id == COPPER_BAR: return CAT_ROCK
 	
 	if id == BRICK: return CAT_ROCK
 	

@@ -60,9 +60,9 @@ func audio_cat(id):
 		next_audio = HIT_WOOD
 
 func snap_number(num, count):
-		var res = int(num) % count
-		if res < 0: res += count
-		return res
+	var res = int(num) % count
+	if res < 0: res += count
+	return res
 		
 func autotile(x, y, id):
 	var number = Block.tiles(id)

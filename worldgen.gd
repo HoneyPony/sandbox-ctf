@@ -937,7 +937,7 @@ func generate_the_world():
 	# e.g. making ores or the castle or the boundary walls because
 	# the smoothing will destroy anything.
 	# We do a lot of this smoothing, it makes the world very smooth...
-	for i in range(0, 100):
+	for i in range(0, 1):#100):
 		perform_smoothing_air(20000)
 
 	for i in range(0, 200):
