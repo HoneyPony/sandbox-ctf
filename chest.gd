@@ -26,7 +26,7 @@ func spawn_pickups():
 	for item in items:
 		for i in range(0, item.count):
 			spawn_pickup(global_position.x, global_position.y, item.id)
-		
+	
 		
 
 func _init():
