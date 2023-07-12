@@ -26,7 +26,7 @@ func _ready():
 func set_id(x):
 	id = x
 	$item.texture = Block.get_texture(id)
-	if Block.is_block(id):
+	if Block.is_framed_block(id):
 		$item.region_rect = Rect2(0, 0, 4, 4)
 		$item.region_enabled = true
 		if id != Block.PLATFORM:

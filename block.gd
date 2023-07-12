@@ -121,7 +121,7 @@ const texture_map = {
 	-7: preload("res://tiles/rock_pick_drop.png"),
 	-8: preload("res://tiles/rock_axe_drop.png"),
 	-9: preload("res://tiles/rock_shovel_drop.png"),
-	-10: preload("res://tiles/torch_drop.png"),
+	-10: preload("res://broken_tiles/torch_drop.png"),
 	
 	-12: preload("res://tiles/dirt_wall.png"),
 	-13: preload("res://tiles/rocks_wall.png"),
@@ -133,7 +133,7 @@ const texture_map = {
 	
 	-17: preload("res://tiles/chest_drop.png"),
 	-18: preload("res://tiles/blue_flag_drop.png"),
-	COPPER_BAR: preload("res://tiles/copper_bar_drop.png"),
+	COPPER_BAR: preload("res://broken_tiles/copper_bar_drop.png"),
 	
 	-20: preload("res://tiles/copper_pick_drop.png"),
 	-21: preload("res://tiles/copper_axe_drop.png"),
@@ -285,6 +285,13 @@ static func is_block(id):
 	if id == WOOD_WALL or id == ROCK_WALL or id == DIRT_WALL or id == BRICK_WALL:
 		return true
 	return id >= 0
+	
+# Whether the item is a block, AND should be displayed by using
+# a region rect when dropped as an item pickup.
+static func is_framed_block(id):
+	if id == COPPER_BAR:
+		return false
+	return is_block(id)
 	
 static func is_placeable(id):
 	return id >= 0
